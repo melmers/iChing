@@ -1,0 +1,64 @@
+
+.listChings {
+  list-style-type: none;
+//  white-space: nowrap;
+}
+
+.iching-display {
+  height: 224px;
+  overflow:auto;
+  scroll-snap-type: y mandatory;
+}
+
+.listChing {
+  scroll-snap-align: start;
+}
+
+.card {
+  border: 1px solid #666;
+  height:180px;
+  padding:20px;
+  float:left;
+}
+.coins {
+  width:50px;
+  vertical-align:text-top;
+}
+.hexagram {
+  width:90px;
+  font-family:"Courier New", Courier, monospace;
+  font-size:14px;
+  font-weight:bold;
+  line-height:156%;
+  text-align:center;
+  vertical-align:text-top;
+}
+.hexborder {
+  border: 1px solid #666;
+}
+.buttons {
+  width:140px;
+}
+.question {
+  width:300px;
+}
+.boxQuestion {
+  width:100%;
+  height:110px;
+  overflow:auto;
+}
+.throw {
+  width:600px;
+}
+.decoder {
+  padding-left:20px;
+}
+.hexlink {
+  text-decoration:underline;
+  cursor:pointer;
+  color:blue;
+}
+.HexPage {
+  width:100%;
+  height:480px;
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>iChing.ng</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+  <body ng-app="myApp">
+
+    <script src="./iching-data.js"></script>
+    <script src="ichingController.js"></script>
+
+    <div ng-controller="iChingCtrl" ng-init="rbThrow.value='ThrowAll'">
+
+      <div class="iching-display">
+        <table class="listChings">
+          <tr ng-repeat="x in divinations" class="listChing">
+            <td class="card buttons">
+
+              <!-- This format is used in the first row, lots of buttons for making new throws -->
+              <div ng-show="$index == '0'">
+                <input type="radio" ng-model="rbThrow.value" value="ThrowEach">Throw each line<br>
+                <input type="radio" ng-model="rbThrow.value" value="ThrowAll">All at once<br>
+                <button id="btnThrow" ng-click="ThrowCoins()">Throw Coins</button><br>
+                <br>
+                <button ng-show="divinations[0].coins[0] != ''" ng-click="clearDivination()">Clear</button><br>
+                <button ng-show="divinations[0].coins[5] != ''" ng-click="saveDivination()">Save</button>
+
+                <div ng-show="divinations.length > 1">
+                  <br>{{ divinations.length-1 }} saved (below)
+                </div>
+              </div>
+
+              <!-- This format is used in the additional rows for saved throws, only needs delete button -->
+              <div ng-show="$index > '0'">
+                <button ng-click="deleteDivination($index)">Delete</button><br>
+                <br><br><br><br><br>#{{ $index }} of {{ divinations.length-1 }} saved
+              </div>
+
+              <!-- The rest of the display is the same for all rows -->
+
+            </td>
+            <td class="card question">
+              <!-- first row only, editable textarea to enter questions -->
+              <div ng-show="$index == '0'">
+                My Question:<br>
+                <textarea type="text" placeholder='Enter your question here and click "Throw Coins"' class="boxQuestion" ng-model="x.question.value" spellcheck="false" data-gramm="false"></textarea><br>
+              </div>
+
+              <!-- for saved throws, readonly textarea (for now) -->
+              <div ng-show="$index > '0'">
+                My question was:<br>
+                <textarea readonly type="text" class="boxQuestion" ng-model="x.question.value" spellcheck="false" data-gramm="false"></textarea><br>
+              </div>
+
+              <br>
+                <!-- for saved throws, show time of throw -->
+                <div ng-show="$index > '0'">
+                  {{x.time | date:'medium'}}
+                </div>
+            </td>
+
+            <td class="card throw">
+              <table><tr>
+                <td class="coins">
+                  <div ng-show="x.coins[0]!=''">Coins</div>
+                  {{ showCoins(x.coins[5]) }}<br>
+                  {{ showCoins(x.coins[4]) }}<br>
+                  {{ showCoins(x.coins[3]) }}<br>
+                  {{ showCoins(x.coins[2]) }}<br>
+                  {{ showCoins(x.coins[1]) }}<br>
+                  {{ showCoins(x.coins[0]) }}<br><br>
+                </td>
+                <td class="hexagram">
+                  <div class="hexborder" ng-show="x.coins[5]!=''">
+                    <div class="hexlink" ng-click="showHexWeb(x.hexagramNow.number)">
+                      {{ x.hexagramNow.number }}<br>
+                    </div>
+                    {{ showLine(x.hexagramNow.lines[5]) }}<br>
+                    {{ showLine(x.hexagramNow.lines[4]) }}<br>
+                    {{ showLine(x.hexagramNow.lines[3]) }}<br>
+                    {{ showLine(x.hexagramNow.lines[2]) }}<br>
+                    {{ showLine(x.hexagramNow.lines[1]) }}<br>
+                    {{ showLine(x.hexagramNow.lines[0]) }}
+                  </div>
+                </td>
+                <td class="hexagram">
+                  <div class="hexborder" ng-show="x.coins[5]!=''">
+                    <div class="hexlink" ng-click="showHexWeb(x.hexagramNext.number)">
+                      {{ x.hexagramNext.number }}<br>
+                    </div>
+                    {{ showLine(x.hexagramNext.lines[5]) }}<br>
+                    {{ showLine(x.hexagramNext.lines[4]) }}<br>
+                    {{ showLine(x.hexagramNext.lines[3]) }}<br>
+                    {{ showLine(x.hexagramNext.lines[2]) }}<br>
+                    {{ showLine(x.hexagramNext.lines[1]) }}<br>
+                    {{ showLine(x.hexagramNext.lines[0]) }}
+                  </div>
+                </td>
+                <td class="decoder">
+                  <div class="hexlink" ng-click="showHexWeb(x.hexagramNow.number)">
+                    {{ x.hexagramNow.name }}<br>
+                  </div>
+                  {{ x.hexagramNow.trigram1 }}<br>
+                  {{ x.hexagramNow.trigram2 }}<br><br>
+
+                  <div ng-show="x.hexagramNow.name!=''">
+                    Changing to...<br><br>
+                  </div>
+
+                  <div class="hexlink" ng-click="showHexWeb(x.hexagramNext.number)">
+                    {{ x.hexagramNext.name }}<br>
+                  </div>
+                  {{ x.hexagramNext.trigram1 }}<br>
+                  {{ x.hexagramNext.trigram2 }}<br><br>
+
+                </td>
+              </tr></table>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div id="HexagramWebCard">
+        <label for="lookup">Lookup Hexagrams:</label>
+        <select id="lookup" name="lookup" ng-click="clickLookup()">
+          <option value="Jim DeKorne's">Jim DeKorne's</option>
+          <option value="Divination">Divination</option>
+          <option value="The-iChing">The-iChing</option>
+        </select>
+        <iframe ng-src="{{ichingWeb}}" class="HexPage"></iframe>  
+      </div>
+
+    </div>
+  </body>
+</html>
