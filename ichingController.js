@@ -7,8 +7,19 @@
 angular.module('myApp', [])
   .controller('iChingCtrl', ['$scope', '$sce', function($scope, $sce) {
 
+//    $scope.data = {
+//        singleSelect: null,
+//        multipleSelect: [],
+//        option1: "Jim DeKorne's"
+//    };
+
+    $scope.forceUnknownOption = function() {
+     $scope.data.singleSelect = 'nonsense';
+    };
+
+
     $scope.lineNow = 0;
-    $scope.hexShown = 0;
+    $scope.urlHexagram = "";
     $scope.divinations = [];
     $scope.divinations.push(angular.copy(no_divination));   // start with a blank
 
@@ -174,7 +185,7 @@ angular.module('myApp', [])
       }
 
       // show hexagram now decoded from web
-      $scope.showHexWeb($scope.divinations[0].hexagramNow.number);
+      //$scope.showHexWeb($scope.divinations[0].hexagramNow.number);
     };
 
     // Calculate Key for the Now Hexagram
@@ -237,39 +248,23 @@ angular.module('myApp', [])
     //
     // WEB DISPLAY HELPERS FOR HEXAGRAM DECODE FROM OTHER WEBSITES
     //
-    $scope.updateHexWeb = function() {
-        if ($scope.divinations.length > 1) {   // if at least 1 saved, show it
-          $scope.showHexWeb($scope.divinations[1].hexagramNow.number);
-        }
-        else {   // show edit buf
-            if($scope.divinations[0].hexagramNow.number != "")
-                $scope.showHexWeb($scope.divinations[0].hexagramNow.number);
-        }
-    }
-
     $scope.showHexWeb = function(n) {
-        let s = "";
-
-        $scope.hexShown = n;
-        
         if(lookup.value=="Jim DeKorne's") {
-            s = "http://www.jamesdekorne.com/GBCh/hex" + n + ".htm";
-            $scope.ichingWeb = $sce.trustAsResourceUrl('http://www.jamesdekorne.com');
+            $scope.urlHexagram = "http://www.jamesdekorne.com/GBCh/hex" + n + ".htm";
+//            $scope.ichingWeb = $sce.trustAsResourceUrl('http://www.jamesdekorne.com');
         }
         else if(lookup.value=="Divination") {
-            s = "https://divination.com/iching/lookup/" + n;
-            $scope.ichingWeb = $sce.trustAsResourceUrl('https://www.divination.com');
+            $scope.urlHexagram = "https://divination.com/iching/lookup/" + n;
+//            $scope.ichingWeb = $sce.trustAsResourceUrl('https://www.divination.com');
         }
         else if(lookup.value=="The-iChing") {
-            s = "http://the-iching.com/hexagram_" + n;
-            $scope.ichingWeb = $sce.trustAsResourceUrl('http://the-iching.com');
+            $scope.urlHexagram = "http://the-iching.com/hexagram_" + n;
+//            $scope.ichingWeb = $sce.trustAsResourceUrl('http://the-iching.com');
         }
 
-        $scope.ichingWeb = $sce.trustAsResourceUrl(s);
-    }
+//        $scope.ichingWeb = $sce.trustAsResourceUrl(s);
 
-    $scope.clickLookup = function() {
-      $scope.showHexWeb($scope.hexShown);
+        window.open($scope.urlHexagram, '_blank');
     }
 
   }]);
