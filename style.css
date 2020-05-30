@@ -68,3 +68,22 @@
   scroll-snap-align: start;
 }
 
+.infoAbout {
+  padding-left: 30px;
+  color:blue;
+  display:block;
+  float:left;
+}
+
+.txtLocalData {
+  padding-left: 30px;
+  display:none;
+  float:left;
+}
+
+.boxLocalData {
+  width:700px;
+  height:600px;
+  overflow: scroll; /* Horizontal and vertical scrollbar*/
+  resize:none;
+}

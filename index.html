@@ -16,125 +16,160 @@
 
     <div ng-controller="iChingCtrl" ng-init="rbThrow.value='ThrowAll'">
 
-      <div class="iching-display">
-        <table class="listChings">
-          <tr ng-repeat="x in divinations" class="listChing">
-            <td class="card buttons">
+      <button class="tablink" ng-click="selTab=0" ng-init="selTab='0'">iChing</button>
+      <button class="tablink" ng-click="selTab=1">About</button>
+      <br><br>
 
-              <!-- This format is used in the first row, lots of buttons for making new throws -->
-              <div ng-show="$index == '0'">
-                <input type="radio" ng-model="rbThrow.value" value="ThrowEach">Throw each line<br>
-                <input type="radio" ng-model="rbThrow.value" value="ThrowAll">All at once<br>
-                <button id="btnThrow" ng-click="ThrowCoins()">Throw Coins</button><br>
-                <br>
-                <button ng-show="divinations[0].coins[0] != ''" ng-click="clearDivination()">Clear</button><br>
-                <button ng-show="divinations[0].coins[5] != ''" ng-click="saveDivination()">Save</button>
+      <div ng-show="selTab == '0'">
 
-                <div ng-show="divinations.length > 1">
-                  <br>{{ divinations.length-1 }} saved (below)
-                </div>
-              </div>
-
-              <!-- This format is used in the additional rows for saved throws, only needs delete button -->
-              <div ng-show="$index > '0'">
-                <button ng-click="deleteDivination($index)">Delete</button><br>
-                <br><br><br><br><br>#{{ $index }} of {{ divinations.length-1 }} saved
-              </div>
-
-              <!-- The rest of the display is the same for all rows -->
-
-            </td>
-            <td class="card question">
-              <!-- first row only, editable textarea to enter questions -->
-              <div ng-show="$index == '0'">
-                My Question:<br>
-                <textarea type="text" placeholder='Enter your question here and click "Throw Coins"' class="boxQuestion" ng-model="x.question.value" spellcheck="false" data-gramm="false"></textarea><br>
-              </div>
-
-              <!-- for saved throws, readonly textarea (for now) -->
-              <div ng-show="$index > '0'">
-                My question was:<br>
-                <textarea readonly type="text" class="boxQuestion" ng-model="x.question.value" spellcheck="false" data-gramm="false"></textarea><br>
-              </div>
-
-              <br>
-                <!-- for saved throws, show time of throw -->
-                <div ng-show="$index > '0'">
-                  {{x.time | date:'medium'}}
-                </div>
-            </td>
-
-            <td class="card throw">
-              <table><tr>
-                <td class="coins">
-                  <div ng-show="x.coins[0]!=''">Coins</div>
-                  {{ showCoins(x.coins[5]) }}<br>
-                  {{ showCoins(x.coins[4]) }}<br>
-                  {{ showCoins(x.coins[3]) }}<br>
-                  {{ showCoins(x.coins[2]) }}<br>
-                  {{ showCoins(x.coins[1]) }}<br>
-                  {{ showCoins(x.coins[0]) }}<br><br>
-                </td>
-                <td class="hexagram">
-                  <div class="hexborder" ng-show="x.coins[5]!=''">
-                    <div class="hexlink" ng-click="showHexWeb(x.hexagramNow.number)">
-                      {{ x.hexagramNow.number }}<br>
-                    </div>
-                    {{ showLine(x.hexagramNow.lines[5]) }}<br>
-                    {{ showLine(x.hexagramNow.lines[4]) }}<br>
-                    {{ showLine(x.hexagramNow.lines[3]) }}<br>
-                    {{ showLine(x.hexagramNow.lines[2]) }}<br>
-                    {{ showLine(x.hexagramNow.lines[1]) }}<br>
-                    {{ showLine(x.hexagramNow.lines[0]) }}
-                  </div>
-                </td>
-                <td class="hexagram">
-                  <div class="hexborder" ng-show="x.coins[5]!=''">
-                    <div class="hexlink" ng-click="showHexWeb(x.hexagramNext.number)">
-                      {{ x.hexagramNext.number }}<br>
-                    </div>
-                    {{ showLine(x.hexagramNext.lines[5]) }}<br>
-                    {{ showLine(x.hexagramNext.lines[4]) }}<br>
-                    {{ showLine(x.hexagramNext.lines[3]) }}<br>
-                    {{ showLine(x.hexagramNext.lines[2]) }}<br>
-                    {{ showLine(x.hexagramNext.lines[1]) }}<br>
-                    {{ showLine(x.hexagramNext.lines[0]) }}
-                  </div>
-                </td>
-                <td class="decoder">
-                  <div class="hexlink" ng-click="showHexWeb(x.hexagramNow.number)">
-                    {{ x.hexagramNow.name }}<br>
-                  </div>
-                  {{ x.hexagramNow.trigram1 }}<br>
-                  {{ x.hexagramNow.trigram2 }}<br><br>
-
-                  <div ng-show="x.hexagramNow.name!=''">
-                    Changing to...<br><br>
-                  </div>
-
-                  <div class="hexlink" ng-click="showHexWeb(x.hexagramNext.number)">
-                    {{ x.hexagramNext.name }}<br>
-                  </div>
-                  {{ x.hexagramNext.trigram1 }}<br>
-                  {{ x.hexagramNext.trigram2 }}<br><br>
-
-                </td>
-              </tr></table>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-      <div id="HexagramWebCard">
-        <label id="lbllookup" for="lookup">Lookup Hexagrams:</label>
-        <select name="lookup" id="lookup">
-          <option value="Jim DeKorne's">Jim DeKorne's</option>
-          <option value="Divination">Divination</option>
-          <option value="The-iChing">The-iChing</option>
-        </select>
+        <div id="HexagramWebCard">
+          <label id="lbllookup" for="lookup">Lookup Hexagrams:</label>
+          <select name="lookup" id="lookup">
+            <option value="Jim DeKorne's">Jim DeKorne's</option>
+            <option value="Divination">Divination</option>
+            <option value="The-iChing">The-iChing</option>
+          </select>
 <!--
-        <iframe sandbox="allow-forms allow-scripts allow-popups" ng-src="{{ichingWeb}}" class="HexPage"></iframe>
+          <iframe sandbox="allow-forms allow-scripts allow-popups" ng-src="{{ichingWeb}}" class="HexPage"></iframe>
 -->
+        </div>
+
+        <div class="iching-display">
+          <table class="listChings">
+            <tr ng-repeat="x in divinations track by $index" class="listChing">
+              <td class="card buttons">
+
+                <!-- This format is used in the first row, lots of buttons for making new throws -->
+                <div ng-show="$index == '0'">
+                  <input type="radio" ng-model="rbThrow.value" value="ThrowEach">Throw each line<br>
+                  <input type="radio" ng-model="rbThrow.value" value="ThrowAll">All at once<br>
+                  <button id="btnThrow" ng-click="ThrowCoins()">Throw Coins</button><br>
+                  <br>
+                  <button ng-show="divinations[0].coins[0] != ''" ng-click="clearDivination()">Clear</button><br>
+                  <button ng-show="divinations[0].coins[5] != ''" ng-click="saveDivination()">Save</button>
+
+                  <div ng-show="divinations.length > 1">
+                    <br>{{ divinations.length-1 }} saved (below)
+                  </div>
+                </div>
+
+                <!-- This format is used in the additional rows for saved throws, only needs delete button -->
+                <div ng-show="$index > '0'">
+                  <button ng-click="deleteDivination($index)">Delete</button><br>
+                  <br><br><br><br><br>#{{ $index }} of {{ divinations.length-1 }} saved
+                </div>
+
+                <!-- The rest of the display is the same for all rows -->
+
+              </td>
+              <td class="card question">
+                <!-- first row only, editable textarea to enter questions -->
+                <div ng-show="$index == '0'">
+                  My Question:<br>
+                  <textarea type="text" class="boxQuestion" ng-model="x.question.value" spellcheck="false" data-gramm="false" placeholder='Enter your question here and click "Throw Coins"'></textarea><br>
+                </div>
+
+                <!-- for saved throws, readonly textarea (for now) -->
+                <div ng-show="$index > '0'">
+                  My question was:<br>
+                  <textarea readonly type="text" class="boxQuestion" ng-model="x.question.value" spellcheck="false" data-gramm="false"></textarea><br>
+                </div>
+
+                <br>
+                  <!-- for saved throws, show time of throw -->
+                  <div ng-show="$index >= '0'">
+                    {{x.time | date:'medium'}}
+                  </div>
+              </td>
+
+              <td class="card throw">
+                <table><tr>
+                  <td class="coins">
+                    <div ng-show="x.coins[0]!=''">Coins</div>
+                    {{ showCoins(x.coins[5]) }}<br>
+                    {{ showCoins(x.coins[4]) }}<br>
+                    {{ showCoins(x.coins[3]) }}<br>
+                    {{ showCoins(x.coins[2]) }}<br>
+                    {{ showCoins(x.coins[1]) }}<br>
+                    {{ showCoins(x.coins[0]) }}<br><br>
+                  </td>
+                  <td class="hexagram">
+                    <div class="hexborder" ng-show="x.coins[5]!=''">
+                      <div class="hexlink" ng-click="showHexWeb(x.hexagramNow.number)">
+                        {{ x.hexagramNow.number }}<br>
+                      </div>
+                      {{ showLine(x.hexagramNow.lines[5]) }}<br>
+                      {{ showLine(x.hexagramNow.lines[4]) }}<br>
+                      {{ showLine(x.hexagramNow.lines[3]) }}<br>
+                      {{ showLine(x.hexagramNow.lines[2]) }}<br>
+                      {{ showLine(x.hexagramNow.lines[1]) }}<br>
+                      {{ showLine(x.hexagramNow.lines[0]) }}
+                    </div>
+                  </td>
+                  <td class="hexagram">
+                    <div class="hexborder" ng-show="x.coins[5]!=''">
+                      <div class="hexlink" ng-click="showHexWeb(x.hexagramNext.number)">
+                        {{ x.hexagramNext.number }}<br>
+                      </div>
+                      {{ showLine(x.hexagramNext.lines[5]) }}<br>
+                      {{ showLine(x.hexagramNext.lines[4]) }}<br>
+                      {{ showLine(x.hexagramNext.lines[3]) }}<br>
+                      {{ showLine(x.hexagramNext.lines[2]) }}<br>
+                      {{ showLine(x.hexagramNext.lines[1]) }}<br>
+                      {{ showLine(x.hexagramNext.lines[0]) }}
+                    </div>
+                  </td>
+                  <td class="decoder">
+                    <div class="hexlink" ng-click="showHexWeb(x.hexagramNow.number)">
+                      {{ x.hexagramNow.name }}<br>
+                    </div>
+                    {{ x.hexagramNow.trigram2 }}<br>
+                    {{ x.hexagramNow.trigram1 }}<br><br>
+
+                    <div ng-show="x.hexagramNow.name!=''">
+                      Changing to...<br><br>
+                    </div>
+
+                    <div class="hexlink" ng-click="showHexWeb(x.hexagramNext.number)">
+                      {{ x.hexagramNext.name }}<br>
+                    </div>
+                    {{ x.hexagramNext.trigram2 }}<br>
+                    {{ x.hexagramNext.trigram1 }}<br><br>
+
+                  </td>
+                </tr></table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      
+      <div ng-show="selTab == '1'">
+        <div class="infoAbout">
+          This program makes divining from the iChing quick and easy.<br>
+          <br>
+          You can throw three coins each time and create each of the six lines individually.<br>
+          Or, you can throw the coins for all lines at once.<br>
+          <br>
+          Select which way you want to throw the coins, and enter a question.<br>
+          When you are centered on your question, click "Throw Coins".<br>
+          <br>
+          Hexagrams are decoded, with change lines used to create the second hexagram.<br>
+          Click on the hexagram number to see it explained by various websites.<br>
+          <br>
+          Use the "Lookup Hexagrams" pulldown list to select which website is used to explain the hexagrams.<br>
+          <br>
+          Hexagrams you have thrown can be saved for continued contemplation at a later time.<br>
+          Data is saved in your browsers local data, so your data is private.<br>
+          Also, no accounts need to be created on other sites.<br>
+          <button ng-click="resetDivinations()">Delete iChing in Local Data</button> (You shouldn't need to do this)<br>
+          <br>
+          Click the iChing tab above to continue:<br>
+        </div>
+        <div class="txtLocalData">
+          LocalData:<br>
+          <textarea readonly type="text" class="boxLocalData" ng-model="txtLocalData" spellcheck="false" data-gramm="false"></textarea><br>
+        </div>          
       </div>
 
     </div>

@@ -13,21 +13,25 @@ angular.module('myApp', [])
 //        option1: "Jim DeKorne's"
 //    };
 
-    $scope.forceUnknownOption = function() {
-     $scope.data.singleSelect = 'nonsense';
-    };
-
 
     $scope.lineNow = 0;
     $scope.urlHexagram = "";
-    $scope.divinations = [];
-    $scope.divinations.push(angular.copy(no_divination));   // start with a blank
+    $scope.txtLocalData = "";
+    //$scope.divinations = [];
+    //$scope.divinations.push(angular.copy(no_divination));   // start with a blank
 
 /***/
     var retrievedObject = localStorage.getItem('iching');
 
     if (retrievedObject) {
+        $scope.divinations = [];
         $scope.divinations = JSON.parse(retrievedObject);
+        $scope.txtLocalData = retrievedObject;
+        
+        //localStorage.removeItem('iching');
+        //$scope.divinations = [];
+        //$scope.divinations.push(angular.copy(no_divination));   // start with a blank
+
         // wait for DOM to update...
         //setTimeout(function(){ $scope.updateHexWeb(); }, 1000);
                 
@@ -36,10 +40,11 @@ angular.module('myApp', [])
       //$scope.showHexWeb($scope.divinations[1].hexagramNow.number);
 
     }
-//    else {
-//        $scope.divinations = [];
-//        $scope.divinations.push(angular.copy(no_divination));   // start with a blank
-//    }
+    else {
+        $scope.divinations = [];
+        $scope.divinations.push(angular.copy(no_divination));   // start with a blank
+    }
+
 /***/
 
 /***    
@@ -86,6 +91,7 @@ angular.module('myApp', [])
 
     // return the display for a line of the hexagram 
     $scope.showLine = function(l) {
+      // will be pretty graphics, but for now show text strings
       return linePatterns[l];
     }
 
@@ -98,25 +104,26 @@ angular.module('myApp', [])
 
         // See if we want to throw each line individually
         if ($scope.rbThrow.value == 'ThrowEach') {
-            if($scope.lineNow<=0) {
-                $scope.divinations[0] = JSON.parse(JSON.stringify(no_divination));   // start with a blank
+            if($scope.lineNow>5) {
+                let q = $scope.divinations[0].question;     // save question
+                $scope.clearDivination();
+                $scope.divinations[0].question = q;         // restore question
+                $scope.lineNow=0;
             }
 
-          // generate a 16 bit random number and pull 3 bits out to use as coin states
-          var random_number = Math.floor(Math.random()*65535);
-          toss = (random_number & mask)/divider;  // 1110 pull these three bits for number
-          //var n = ((random_number)>>>0).toString(16).padStart(4, '0')  // show in hex with 4 digits padded to 0
-          var n = ((toss)>>>0).toString(2).padStart(3, '0')  // show in binary with 3 digits padded to 0
-          $scope.rndCoins = n;     // show the coins after the throw button for debug
-          $scope.divinations[0].coins[$scope.lineNow] = n;   // save the coins for each line
-          //ShowCoins();
+            // generate a 16 bit random number and pull 3 bits out to use as coin states
+            var random_number = Math.floor(Math.random()*65535);
+            toss = (random_number & mask)/divider;  // 1110 pull these three bits for number
+            //var n = ((random_number)>>>0).toString(16).padStart(4, '0')  // show in hex with 4 digits padded to 0
+            var n = ((toss)>>>0).toString(2).padStart(3, '0')  // show in binary with 3 digits padded to 0
+            $scope.rndCoins = n;     // show the coins after the throw button for debug
+            $scope.divinations[0].coins[$scope.lineNow] = n;   // save the coins for each line
+            $scope.lineNow += 1;         // move to next line
 
-          //lineNow += 1;         // move to next line
-          if (++$scope.lineNow > 5) {    // if all 6 lines done?
-            $scope.divinations[0].time = Date.now();
-            calcHexagrams();
-            $scope.lineNow = 0;       // time to reset
-          }
+            if ($scope.lineNow > 5) {    // if all 6 lines done?
+                $scope.divinations[0].time = Date.now();
+                calcHexagrams();
+            }
         }
         else {
           // generate a 20 bit random number and pull 18 bits out as 6 groups of three bits to use as coin states
@@ -155,10 +162,16 @@ angular.module('myApp', [])
       }
 
       $scope.divinations[0].hexagramNow.key = calcKeyNow();
-      $scope.divinations[0].hexagramNow.trigram1 = (parseInt($scope.divinations[0].hexagramNow.key, 2) & 0x38) / 8;   // top 3 of 6 bits
-      $scope.divinations[0].hexagramNow.trigram1 = trigramNames[$scope.divinations[0].hexagramNow.trigram1];
-      $scope.divinations[0].hexagramNow.trigram2 = parseInt($scope.divinations[0].hexagramNow.key, 2) & 7;            // bottom 3 bits
+      $scope.divinations[0].hexagramNow.trigram2 = (parseInt($scope.divinations[0].hexagramNow.key, 2) & 0x38) / 8;   // top 3 of 6 bits
       $scope.divinations[0].hexagramNow.trigram2 = trigramNames[$scope.divinations[0].hexagramNow.trigram2];
+      $scope.divinations[0].hexagramNow.trigram1 = parseInt($scope.divinations[0].hexagramNow.key, 2) & 7;            // bottom 3 bits
+      $scope.divinations[0].hexagramNow.trigram1 = trigramNames[$scope.divinations[0].hexagramNow.trigram1];
+
+      $scope.divinations[0].hexagramNext.key = calcKeyNext();
+      $scope.divinations[0].hexagramNext.trigram2 = (parseInt($scope.divinations[0].hexagramNext.key, 2) & 0x38) / 8;   // top 3 of 6 bits
+      $scope.divinations[0].hexagramNext.trigram2 = trigramNames[$scope.divinations[0].hexagramNext.trigram2];
+      $scope.divinations[0].hexagramNext.trigram1 = parseInt($scope.divinations[0].hexagramNext.key, 2) & 7;            // bottom 3 bits
+      $scope.divinations[0].hexagramNext.trigram1 = trigramNames[$scope.divinations[0].hexagramNext.trigram1];
 
       // Lookup name of Now Hexagram
       for(i=0; i<Hexagrams.length; ++i) {
@@ -168,12 +181,6 @@ angular.module('myApp', [])
           break;
         }
       }
-
-      $scope.divinations[0].hexagramNext.key = calcKeyNext();
-      $scope.divinations[0].hexagramNext.trigram1 = (parseInt($scope.divinations[0].hexagramNext.key, 2) & 0x38) / 8;   // top 3 of 6 bits
-      $scope.divinations[0].hexagramNext.trigram1 = trigramNames[$scope.divinations[0].hexagramNext.trigram1];
-      $scope.divinations[0].hexagramNext.trigram2 = parseInt($scope.divinations[0].hexagramNext.key, 2) & 7;            // bottom 3 bits
-      $scope.divinations[0].hexagramNext.trigram2 = trigramNames[$scope.divinations[0].hexagramNext.trigram2];
 
       // Lookup name of Next Hexagram
       for(i=0; i<Hexagrams.length; ++i) {
@@ -224,7 +231,6 @@ angular.module('myApp', [])
     //
     $scope.clearDivination = function() {
         $scope.divinations[0] = JSON.parse(JSON.stringify(no_divination));   // restore to a blank divination
-        $scope.updateHexWeb();
     };
 
     $scope.deleteDivination = function(n) {
@@ -242,6 +248,13 @@ angular.module('myApp', [])
 
         // save the divinations in local storage (on disk)
         localStorage.setItem('iching', JSON.stringify($scope.divinations));
+    };
+
+    $scope.resetDivinations = function() {
+        localStorage.removeItem('iching');
+        $scope.divinations = [];
+        $scope.divinations.push(angular.copy(no_divination));   // start with a blank
+        $scope.selTab = '0';
     };
 
 
