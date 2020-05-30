@@ -85,6 +85,6 @@
 .boxLocalData {
   width:700px;
   height:600px;
-  overflow: scroll; /* Horizontal and vertical scrollbar*/
+  overflow:auto;
   resize:none;
 }
