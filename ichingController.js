@@ -174,25 +174,29 @@ angular.module('myApp', [])
       $scope.divinations[0].hexagramNext.trigram1 = trigramNames[$scope.divinations[0].hexagramNext.trigram1];
 
       // Lookup name of Now Hexagram
-      for(i=0; i<Hexagrams.length; ++i) {
-        if(Hexagrams[i].Key==$scope.divinations[0].hexagramNow.key) {
+      for(i=0; i<64; ++i) {
+        if(HexagramsJamesDekorne[i].Key==$scope.divinations[0].hexagramNow.key) {
           $scope.divinations[0].hexagramNow.number = i+1;
-          $scope.divinations[0].hexagramNow.name = Hexagrams[i].Name;
+          $scope.divinations[0].hexagramNow.name = lookupHexName(i);
           break;
         }
       }
 
       // Lookup name of Next Hexagram
-      for(i=0; i<Hexagrams.length; ++i) {
-        if(Hexagrams[i].Key==$scope.divinations[0].hexagramNext.key) {
+      for(i=0; i<64; ++i) {
+        if(HexagramsJamesDekorne[i].Key==$scope.divinations[0].hexagramNext.key) {
           $scope.divinations[0].hexagramNext.number = i+1;
-          $scope.divinations[0].hexagramNext.name = Hexagrams[i].Name;
+          $scope.divinations[0].hexagramNext.name = lookupHexName(i);
           break;
         }
       }
 
       // show hexagram now decoded from web
       //$scope.showHexWeb($scope.divinations[0].hexagramNow.number);
+    };
+
+    $scope.lookup_change = function() {
+      calcHexagrams();
     };
 
     // Calculate Key for the Now Hexagram
@@ -224,7 +228,6 @@ angular.module('myApp', [])
       }
       return k;
     };
-
 
     //
     // STORAGE HELPERS - CLEAR, DELETE and SAVE
@@ -261,23 +264,17 @@ angular.module('myApp', [])
     //
     // WEB DISPLAY HELPERS FOR HEXAGRAM DECODE FROM OTHER WEBSITES
     //
+
+    function lookupHexName(n) {
+      if(lookup.value=="Jim DeKorne's")     return HexagramsJamesDekorne[n].Name;
+      else if(lookup.value=="Divination")   return HexagramsDivination[n].Name;
+      else if(lookup.value=="The-iChing")   return HexagramsTheiChing[n].Name;
+    }
+
     $scope.showHexWeb = function(n) {
-        if(lookup.value=="Jim DeKorne's") {
-            $scope.urlHexagram = "http://www.jamesdekorne.com/GBCh/hex" + n + ".htm";
-//            $scope.ichingWeb = $sce.trustAsResourceUrl('http://www.jamesdekorne.com');
-        }
-        else if(lookup.value=="Divination") {
-            $scope.urlHexagram = "https://divination.com/iching/lookup/" + n;
-//            $scope.ichingWeb = $sce.trustAsResourceUrl('https://www.divination.com');
-        }
-        else if(lookup.value=="The-iChing") {
-            $scope.urlHexagram = "http://the-iching.com/hexagram_" + n;
-//            $scope.ichingWeb = $sce.trustAsResourceUrl('http://the-iching.com');
-        }
-
-//        $scope.ichingWeb = $sce.trustAsResourceUrl(s);
-
-        window.open($scope.urlHexagram, '_blank');
+        if(lookup.value=="Jim DeKorne's")     window.open(HexagramsJamesDekorne[n-1].url, '_blank');
+        else if(lookup.value=="Divination")   window.open(HexagramsDivination[n-1].url, '_blank');
+        else if(lookup.value=="The-iChing")   window.open(HexagramsTheiChing[n-1].url, '_blank');
     }
 
   }]);
