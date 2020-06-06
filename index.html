@@ -80,6 +80,7 @@
                 </td>
                 <td class="coins">
                   <div ng-show="x.coins[0]!=''">Coins</div>
+                  <br>
                   {{ showCoins(x.coins[5]) }}<br>
                   {{ showCoins(x.coins[4]) }}<br>
                   {{ showCoins(x.coins[3]) }}<br>
@@ -93,6 +94,10 @@
             <td class="card throw">
               <table><tr>
                 <td class="hexagram">
+                  <div ng-show="x.hexagramNow.name!=''">
+                    Present<br>
+                  </div>
+
                   <div class="hexborder" ng-show="x.coins[5]!=''">
                     <div class="hexlink" ng-click="showHexWeb(x.hexagramNow.number)">
                       {{ x.hexagramNow.number }}<br>
@@ -106,18 +111,17 @@
                   </div>
                 </td>
                 <td class="decoder present">
-                  <div ng-show="x.hexagramNow.name!=''">
-                    Present<br><br>
-                  </div>
-
-                  {{ x.hexagramNow.trigram2 }}<br>
-                  {{ x.hexagramNow.trigram1 }}<br><br>
-
+                  <br>
                   <div class="hexlink" ng-click="showHexWeb(x.hexagramNow.number)">
-                    {{ x.hexagramNow.name }}<br>
+                    {{ x.hexagramNow.name }}<br><br>
                   </div>
+                  {{ x.hexagramNow.trigram2 }}<br>
+                  {{ x.hexagramNow.trigram1 }}
                 </td>
                 <td class="hexagram">
+                  <div ng-show="x.hexagramNext.name!=''">
+                    Future<br>
+                  </div>
                   <div class="hexborder" ng-show="x.coins[5]!=''">
                     <div class="hexlink" ng-click="showHexWeb(x.hexagramNext.number)">
                       {{ x.hexagramNext.number }}<br>
@@ -131,16 +135,12 @@
                   </div>
                 </td>
                 <td class="decoder future">
-                  <div ng-show="x.hexagramNext.name!=''">
-                    Future<br><br>
-                  </div>
-
-                  {{ x.hexagramNext.trigram2 }}<br>
-                  {{ x.hexagramNext.trigram1 }}<br><br>
-
+                  <br>
                   <div class="hexlink" ng-click="showHexWeb(x.hexagramNext.number)">
-                    {{ x.hexagramNext.name }}<br>
+                    {{ x.hexagramNext.name }}<br><br>
                   </div>
+                  {{ x.hexagramNext.trigram2 }}<br>
+                  {{ x.hexagramNext.trigram1 }}
                 </td>
               </tr></table>
             </td>
