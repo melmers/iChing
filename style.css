@@ -17,6 +17,8 @@
   line-height:156%;
   text-align:center;
   vertical-align:text-top;
+  padding-left:10px;
+  padding-right:10px;
 }
 .hexborder {
   border: 1px solid #666;
@@ -25,19 +27,21 @@
   width:140px;
 }
 .question {
-  width:300px;
+  width:335px;
 }
 .boxQuestion {
-  width:100%;
+  width:280px;
   height:110px;
   overflow:auto;
   resize:none;
+  margin-right:10px;
 }
 .throw {
-  width:600px;
+  width:800px;
 }
 .decoder {
-  padding-left:20px;
+  width:auto;
+  vertical-align:text-top;
 }
 .hexlink {
   text-decoration:underline;
