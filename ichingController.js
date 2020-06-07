@@ -177,7 +177,7 @@ angular.module('myApp', [])
       for(i=0; i<64; ++i) {
         if(HexagramsJamesDekorne[i].Key==$scope.divinations[0].hexagramNow.key) {
           $scope.divinations[0].hexagramNow.number = i+1;
-          $scope.divinations[0].hexagramNow.name = lookupHexName(i);
+          //$scope.divinations[0].hexagramNow.name = lookupHexName(i);
           break;
         }
       }
@@ -186,7 +186,7 @@ angular.module('myApp', [])
       for(i=0; i<64; ++i) {
         if(HexagramsJamesDekorne[i].Key==$scope.divinations[0].hexagramNext.key) {
           $scope.divinations[0].hexagramNext.number = i+1;
-          $scope.divinations[0].hexagramNext.name = lookupHexName(i);
+          //$scope.divinations[0].hexagramNext.name = lookupHexName(i);
           break;
         }
       }
@@ -196,7 +196,8 @@ angular.module('myApp', [])
     };
 
     $scope.lookup_change = function() {
-      calcHexagrams();
+      //$window.location.reload();
+      //calcHexagrams();
     };
 
     // Calculate Key for the Now Hexagram
@@ -265,16 +266,21 @@ angular.module('myApp', [])
     // WEB DISPLAY HELPERS FOR HEXAGRAM DECODE FROM OTHER WEBSITES
     //
 
-    function lookupHexName(n) {
-      if(lookup.value=="Jim DeKorne's")     return HexagramsJamesDekorne[n].Name;
-      else if(lookup.value=="Divination")   return HexagramsDivination[n].Name;
-      else if(lookup.value=="The-iChing")   return HexagramsTheiChing[n].Name;
+    $scope.lookupHexName = function(n) {
+      if(n != "") {
+        if(lookup.value=="Jim DeKorne's")     return HexagramsJamesDekorne[n-1].Name;
+        else if(lookup.value=="Divination")   return HexagramsDivination[n-1].Name;
+        else if(lookup.value=="The-iChing")   return HexagramsTheiChing[n-1].Name;
+      }
+      return "";
     }
 
     $scope.showHexWeb = function(n) {
+      if(n != "") {
         if(lookup.value=="Jim DeKorne's")     window.open(HexagramsJamesDekorne[n-1].url, '_blank');
         else if(lookup.value=="Divination")   window.open(HexagramsDivination[n-1].url, '_blank');
         else if(lookup.value=="The-iChing")   window.open(HexagramsTheiChing[n-1].url, '_blank');
+      }
     }
 
   }]);

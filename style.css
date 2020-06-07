@@ -82,7 +82,7 @@
 
 .txtLocalData {
   padding-left: 30px;
-  display:none;
+  display:block;
   float:left;
 }
 

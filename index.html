@@ -94,7 +94,7 @@
             <td class="card throw">
               <table><tr>
                 <td class="hexagram">
-                  <div ng-show="x.hexagramNow.name!=''">
+                  <div ng-show="x.hexagramNow.number!=''">
                     Present<br>
                   </div>
 
@@ -113,13 +113,13 @@
                 <td class="decoder present">
                   <br>
                   <div class="hexlink" ng-click="showHexWeb(x.hexagramNow.number)">
-                    {{ x.hexagramNow.name }}<br><br>
+                    {{ lookupHexName(x.hexagramNow.number) }}<br><br>
                   </div>
                   {{ x.hexagramNow.trigram2 }}<br>
                   {{ x.hexagramNow.trigram1 }}
                 </td>
                 <td class="hexagram">
-                  <div ng-show="x.hexagramNext.name!=''">
+                  <div ng-show="x.hexagramNext.number!=''">
                     Future<br>
                   </div>
                   <div class="hexborder" ng-show="x.coins[5]!=''">
@@ -137,7 +137,7 @@
                 <td class="decoder future">
                   <br>
                   <div class="hexlink" ng-click="showHexWeb(x.hexagramNext.number)">
-                    {{ x.hexagramNext.name }}<br><br>
+                    {{ lookupHexName(x.hexagramNext.number) }}<br><br>
                   </div>
                   {{ x.hexagramNext.trigram2 }}<br>
                   {{ x.hexagramNext.trigram1 }}
