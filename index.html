@@ -14,7 +14,7 @@
     <script src="./iching-data.js"></script>
     <script src="ichingController.js"></script>
 
-    <div ng-controller="iChingCtrl" ng-init="rbThrow.value='ThrowAll'">
+    <div ng-controller="iChingCtrl" ng-init="rbThrow.value='ThrowEach'">
 
       <button class="tablink" ng-click="selTab=0" ng-init="selTab='0'">iChing</button>
       <button class="tablink" ng-click="selTab=1">About</button>
@@ -22,9 +22,9 @@
       <div  class="tablink">
         <label id="lbllookup" for="lookup">Lookup Hexagrams:</label>
         <select name="lookup" id="lookup" ng-click="lookup_change()">
-          <option value="Jim DeKorne's">Jim DeKorne's</option>
-          <option value="Divination">Divination</option>
-          <option value="The-iChing">The-iChing</option>
+          <option value="Jim DeKorne's">www.jamesdekorne.com</option>
+          <option value="Divination">www.divination.com</option>
+          <option value="The-iChing">www.the-iching.com</option>
         </select>
       </div>
       <br><br>
@@ -38,9 +38,9 @@
 
               <!-- This format is used in the first row, lots of buttons for doing new throws -->
               <div ng-show="$index == '0'">
-                <input type="radio" ng-model="rbThrow.value" value="ThrowEach">Throw each line<br>
-                <input type="radio" ng-model="rbThrow.value" value="ThrowAll">All at once<br>
                 <button id="btnThrow" ng-click="ThrowCoins()">Throw Coins</button><br>
+                <input type="radio" ng-model="rbThrow.value" value="ThrowEach">Each line<br>
+                <input type="radio" ng-model="rbThrow.value" value="ThrowAll">All at once<br>
                 <br>
                 <button ng-show="divinations[0].coins[0] != ''" ng-click="clearDivination()">Clear</button><br>
                 <button ng-show="divinations[0].coins[5] != ''" ng-click="saveDivination()">Save</button>
@@ -80,7 +80,6 @@
                 </td>
                 <td class="coins">
                   <div ng-show="x.coins[0]!=''">Coins</div>
-                  <br>
                   {{ showCoins(x.coins[5]) }}<br>
                   {{ showCoins(x.coins[4]) }}<br>
                   {{ showCoins(x.coins[3]) }}<br>
@@ -94,14 +93,10 @@
             <td class="card throw">
               <table><tr>
                 <td class="hexagram">
-                  <div ng-show="x.hexagramNow.number!=''">
+                  <div ng-show="x.coins[0]!=''">
                     Present<br>
                   </div>
-
-                  <div class="hexborder" ng-show="x.coins[5]!=''">
-                    <div class="hexlink" ng-click="showHexWeb(x.hexagramNow.number)">
-                      {{ x.hexagramNow.number }}<br>
-                    </div>
+                  <div class="hexborder" ng-show="x.coins[0]!=''">
                     {{ showLine(x.hexagramNow.lines[5]) }}<br>
                     {{ showLine(x.hexagramNow.lines[4]) }}<br>
                     {{ showLine(x.hexagramNow.lines[3]) }}<br>
@@ -115,17 +110,14 @@
                   <div class="hexlink" ng-click="showHexWeb(x.hexagramNow.number)">
                     {{ lookupHexName(x.hexagramNow.number) }}<br><br>
                   </div>
-                  {{ x.hexagramNow.trigram2 }}<br>
+                  <div class="trigram2">{{ x.hexagramNow.trigram2 }}<br></div>
                   {{ x.hexagramNow.trigram1 }}
                 </td>
                 <td class="hexagram">
-                  <div ng-show="x.hexagramNext.number!=''">
+                  <div ng-show="x.coins[0]!=''">
                     Future<br>
                   </div>
-                  <div class="hexborder" ng-show="x.coins[5]!=''">
-                    <div class="hexlink" ng-click="showHexWeb(x.hexagramNext.number)">
-                      {{ x.hexagramNext.number }}<br>
-                    </div>
+                  <div class="hexborder" ng-show="x.coins[0]!=''">
                     {{ showLine(x.hexagramNext.lines[5]) }}<br>
                     {{ showLine(x.hexagramNext.lines[4]) }}<br>
                     {{ showLine(x.hexagramNext.lines[3]) }}<br>
@@ -139,7 +131,7 @@
                   <div class="hexlink" ng-click="showHexWeb(x.hexagramNext.number)">
                     {{ lookupHexName(x.hexagramNext.number) }}<br><br>
                   </div>
-                  {{ x.hexagramNext.trigram2 }}<br>
+                  <div class="trigram2">{{ x.hexagramNext.trigram2 }}<br></div>
                   {{ x.hexagramNext.trigram1 }}
                 </td>
               </tr></table>

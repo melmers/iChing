@@ -120,10 +120,10 @@ angular.module('myApp', [])
             $scope.divinations[0].coins[$scope.lineNow] = n;   // save the coins for each line
             $scope.lineNow += 1;         // move to next line
 
-            if ($scope.lineNow > 5) {    // if all 6 lines done?
+//            if ($scope.lineNow > 5) {    // if all 6 lines done?
                 $scope.divinations[0].time = Date.now();
                 calcHexagrams();
-            }
+//            }
         }
         else {
           // generate a 20 bit random number and pull 18 bits out as 6 groups of three bits to use as coin states
@@ -161,36 +161,37 @@ angular.module('myApp', [])
           $scope.divinations[0].hexagramNext.lines[l] = ((lineValues[i] & 1) ^ 1);
       }
 
-      $scope.divinations[0].hexagramNow.key = calcKeyNow();
-      $scope.divinations[0].hexagramNow.trigram2 = (parseInt($scope.divinations[0].hexagramNow.key, 2) & 0x38) / 8;   // top 3 of 6 bits
-      $scope.divinations[0].hexagramNow.trigram2 = trigramNames[$scope.divinations[0].hexagramNow.trigram2];
-      $scope.divinations[0].hexagramNow.trigram1 = parseInt($scope.divinations[0].hexagramNow.key, 2) & 7;            // bottom 3 bits
-      $scope.divinations[0].hexagramNow.trigram1 = trigramNames[$scope.divinations[0].hexagramNow.trigram1];
+      if ($scope.lineNow > 5) {    // if all 6 lines done?
+        $scope.divinations[0].hexagramNow.key = calcKeyNow();
+        $scope.divinations[0].hexagramNow.trigram2 = (parseInt($scope.divinations[0].hexagramNow.key, 2) & 0x38) / 8;   // top 3 of 6 bits
+        $scope.divinations[0].hexagramNow.trigram2 = trigramNames[$scope.divinations[0].hexagramNow.trigram2];
+        $scope.divinations[0].hexagramNow.trigram1 = parseInt($scope.divinations[0].hexagramNow.key, 2) & 7;            // bottom 3 bits
+        $scope.divinations[0].hexagramNow.trigram1 = trigramNames[$scope.divinations[0].hexagramNow.trigram1];
 
-      $scope.divinations[0].hexagramNext.key = calcKeyNext();
-      $scope.divinations[0].hexagramNext.trigram2 = (parseInt($scope.divinations[0].hexagramNext.key, 2) & 0x38) / 8;   // top 3 of 6 bits
-      $scope.divinations[0].hexagramNext.trigram2 = trigramNames[$scope.divinations[0].hexagramNext.trigram2];
-      $scope.divinations[0].hexagramNext.trigram1 = parseInt($scope.divinations[0].hexagramNext.key, 2) & 7;            // bottom 3 bits
-      $scope.divinations[0].hexagramNext.trigram1 = trigramNames[$scope.divinations[0].hexagramNext.trigram1];
+        $scope.divinations[0].hexagramNext.key = calcKeyNext();
+        $scope.divinations[0].hexagramNext.trigram2 = (parseInt($scope.divinations[0].hexagramNext.key, 2) & 0x38) / 8;   // top 3 of 6 bits
+        $scope.divinations[0].hexagramNext.trigram2 = trigramNames[$scope.divinations[0].hexagramNext.trigram2];
+        $scope.divinations[0].hexagramNext.trigram1 = parseInt($scope.divinations[0].hexagramNext.key, 2) & 7;            // bottom 3 bits
+        $scope.divinations[0].hexagramNext.trigram1 = trigramNames[$scope.divinations[0].hexagramNext.trigram1];
 
-      // Lookup name of Now Hexagram
-      for(i=0; i<64; ++i) {
-        if(HexagramsJamesDekorne[i].Key==$scope.divinations[0].hexagramNow.key) {
-          $scope.divinations[0].hexagramNow.number = i+1;
-          //$scope.divinations[0].hexagramNow.name = lookupHexName(i);
-          break;
+        // Lookup name of Now Hexagram
+        for(i=0; i<64; ++i) {
+          if(HexagramsJamesDekorne[i].Key==$scope.divinations[0].hexagramNow.key) {
+            $scope.divinations[0].hexagramNow.number = i+1;
+            //$scope.divinations[0].hexagramNow.name = lookupHexName(i);
+            break;
+          }
+        }
+
+        // Lookup name of Next Hexagram
+        for(i=0; i<64; ++i) {
+          if(HexagramsJamesDekorne[i].Key==$scope.divinations[0].hexagramNext.key) {
+            $scope.divinations[0].hexagramNext.number = i+1;
+            //$scope.divinations[0].hexagramNext.name = lookupHexName(i);
+            break;
+          }
         }
       }
-
-      // Lookup name of Next Hexagram
-      for(i=0; i<64; ++i) {
-        if(HexagramsJamesDekorne[i].Key==$scope.divinations[0].hexagramNext.key) {
-          $scope.divinations[0].hexagramNext.number = i+1;
-          //$scope.divinations[0].hexagramNext.name = lookupHexName(i);
-          break;
-        }
-      }
-
       // show hexagram now decoded from web
       //$scope.showHexWeb($scope.divinations[0].hexagramNow.number);
     };
