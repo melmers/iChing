@@ -276,6 +276,14 @@ angular.module('myApp', [])
       return "";
     }
 
+    $scope.lookupHexLink = function(n) {
+      if(n != "") {
+        if(lookup.value=="Jim DeKorne's")     return HexagramsJamesDekorne[n-1].url;
+        else if(lookup.value=="Divination")   return HexagramsDivination[n-1].url;
+        else if(lookup.value=="The-iChing")   return HexagramsTheiChing[n-1].url;
+      }
+    }
+
     $scope.showHexWeb = function(n) {
       if(n != "") {
         if(lookup.value=="Jim DeKorne's")     window.open(HexagramsJamesDekorne[n-1].url, '_blank');

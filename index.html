@@ -22,9 +22,9 @@
       <div  class="tablink">
         <label id="lbllookup" for="lookup">Lookup Hexagrams:</label>
         <select name="lookup" id="lookup" ng-click="lookup_change()">
-          <option value="Jim DeKorne's">www.jamesdekorne.com</option>
-          <option value="Divination">www.divination.com</option>
-          <option value="The-iChing">www.the-iching.com</option>
+          <option value="Jim DeKorne's">jamesdekorne.com</option>
+          <option value="Divination">divination.com</option>
+          <option value="The-iChing">the-iching.com</option>
         </select>
       </div>
       <br><br>
@@ -107,9 +107,8 @@
                 </td>
                 <td class="decoder present">
                   <br>
-                  <div class="hexlink" ng-click="showHexWeb(x.hexagramNow.number)">
-                    {{ lookupHexName(x.hexagramNow.number) }}<br><br>
-                  </div>
+                  <a ng-href="{{ lookupHexLink(x.hexagramNow.number) }}" target="_blank">{{ lookupHexName(x.hexagramNow.number) }}</a>
+                  <br><br>
                   <div class="trigram2">{{ x.hexagramNow.trigram2 }}<br></div>
                   {{ x.hexagramNow.trigram1 }}
                 </td>
@@ -128,9 +127,8 @@
                 </td>
                 <td class="decoder future">
                   <br>
-                  <div class="hexlink" ng-click="showHexWeb(x.hexagramNext.number)">
-                    {{ lookupHexName(x.hexagramNext.number) }}<br><br>
-                  </div>
+                  <a ng-href="{{ lookupHexLink(x.hexagramNext.number) }}" target="_blank">{{ lookupHexName(x.hexagramNext.number) }}</a>
+                  <br><br>
                   <div class="trigram2">{{ x.hexagramNext.trigram2 }}<br></div>
                   {{ x.hexagramNext.trigram1 }}
                 </td>
