@@ -75,7 +75,7 @@ angular.module('myApp', [])
     }
     else {
         $scope.divinations = [];
-        $scope.divinations.push(angular.copy(no_divination));   // start with a blank
+        $scope.divinations.push(angular.copy($scope.no_divination));   // start with a blank
     }
 
 /***/
@@ -279,7 +279,7 @@ angular.module('myApp', [])
     $scope.resetDivinations = function() {
         localStorage.removeItem('iching');
         $scope.divinations = [];
-        $scope.divinations.push(angular.copy(no_divination));   // start with a blank
+        $scope.divinations.push(angular.copy($scope.no_divination));   // start with a blank
         $scope.selTab = '0';
     };
 
