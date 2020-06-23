@@ -9,6 +9,30 @@
   line-height:130%;
   vertical-align:text-top;
 }
+.triBrowser {
+  width:340px;
+  display:block;
+  float:left;
+  margin-left:40px;
+}
+.hexBrowser {
+  width: 600px;
+  text-align:left;
+  font-weight:normal;
+  display:block;
+  float:left;
+}
+.hexBrowser a {
+  display:block;
+  float:left;
+}
+.hexBrowserItem {
+  width:30px;
+  text-align:right;
+  font-weight:normal;
+  display: block;
+  float: left;
+}
 .hexagram {
   width:90px;
   font-weight:bold;
@@ -23,6 +47,8 @@
   font-size:13.5px;
   font-weight:bold;
   border: 1px solid #666;
+  background-color:lightcyan;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 .trigram2 {
   border-bottom:1px solid #000;

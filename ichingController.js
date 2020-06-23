@@ -37,14 +37,14 @@ angular.module('myApp', [])
     ];
 
     $scope.trigramNames = [
-      "K'un, Kun - Earth - The Receptive",  //000
-      "Chen, Zhen - Thunder - The Arousing", //001
-      "Kan - Water - The Abysmal",  //010
-      "Tui, Dui - Lake - The Joyousness",  //011
-      "Ken, Gen - Mountain - The Stillness",  //100
-      "Li - Fire - The Clinging Fire",   //101
-      "Sun, Xun - Wind or Wood - The Gentleness",  //110
-      "Ch'ien, Quian - Heaven - The Dragon" //111
+      String.fromCharCode(0x2637) + " K'un, Kun - Earth - The Receptive",  //000
+      String.fromCharCode(0x2633) + " Chen, Zhen - Thunder - The Arousing", //001
+      String.fromCharCode(0x2635) + " Kan - Water - The Abysmal",  //010
+      String.fromCharCode(0x2631) + " Tui, Dui - Lake - The Joyousness",  //011
+      String.fromCharCode(0x2636) + " Ken, Gen - Mountain - The Stillness",  //100
+      String.fromCharCode(0x2632) + " Li - Fire - The Clinging Fire",   //101
+      String.fromCharCode(0x2634) + " Sun, Xun - Wind or Wood - The Gentleness",  //110
+      String.fromCharCode(0x2630) + " Ch'ien, Quian - Heaven - The Dragon" //111
     ];
 
     $scope.lineNow = 0;
@@ -285,6 +285,73 @@ angular.module('myApp', [])
 
 
     // ****** THIS NEEDS TO BE IN A FACTORY ******
+    $scope.hexNumbers = [
+        {   id: 1   },
+        {   id: 2   },
+        {   id: 3   },
+        {   id: 4   },
+        {   id: 5   },
+        {   id: 6   },
+        {   id: 7   },
+        {   id: 8   },
+        {   id: 9   },
+        {   id: 10   },
+        {   id: 11   },
+        {   id: 12   },
+        {   id: 13   },
+        {   id: 14   },
+        {   id: 15   },
+        {   id: 16   },
+        {   id: 17   },
+        {   id: 18   },
+        {   id: 19   },
+        {   id: 20   },
+        {   id: 21   },
+        {   id: 22   },
+        {   id: 23   },
+        {   id: 24   },
+        {   id: 25   },
+        {   id: 26   },
+        {   id: 27   },
+        {   id: 28   },
+        {   id: 29   },
+        {   id: 30   },
+        {   id: 31   },
+        {   id: 32   },
+        {   id: 33   },
+        {   id: 34   },
+        {   id: 35   },
+        {   id: 36   },
+        {   id: 37   },
+        {   id: 38   },
+        {   id: 39   },
+        {   id: 40   },
+        {   id: 41   },
+        {   id: 42   },
+        {   id: 43   },
+        {   id: 44   },
+        {   id: 45   },
+        {   id: 46   },
+        {   id: 47   },
+        {   id: 48   },
+        {   id: 49   },
+        {   id: 50   },
+        {   id: 51   },
+        {   id: 52   },
+        {   id: 53   },
+        {   id: 54   },
+        {   id: 55   },
+        {   id: 56   },
+        {   id: 57   },
+        {   id: 58   },
+        {   id: 59   },
+        {   id: 60   },
+        {   id: 61   },
+        {   id: 62   },
+        {   id: 63   },
+        {   id: 64   }        
+    ];
+
     // Info from various iChing websites
     $scope.iChingInfo = [
       { id: 0, Domain: "https://cafeausoul.com/iching/", Short: "CafeAuSoul.com", Hexagrams: [
@@ -538,8 +605,8 @@ angular.module('myApp', [])
         {   Key: "101110",  url: "http://the-iching.com/hexagram_50",  Name: "50 - The Cauldron",  },  //46 101 110
         {   Key: "001001",  url: "http://the-iching.com/hexagram_51",  Name: "51 - Shock",   },  //9 001 001
         {   Key: "100100",  url: "http://the-iching.com/hexagram_52",  Name: "52 - Keeping Still",   },  //36 100 100
-        {   Key: "110100",  url: "http://the-iching.com/hexagram_53",  Name: "53 - A Steady Pace",    },  //52 110 100
-        {   Key: "001011",  url: "http://the-iching.com/hexagram_54",  Name: "54 - Careful Affection",   },  //11 001 011
+        {   Key: "110100",  url: "http://the-iching.com/hexagram_53",  Name: "53 - Infiltrating (jiàn). Development",    },  //52 110 100
+        {   Key: "001011",  url: "http://the-iching.com/hexagram_54",  Name: "54 - Converting The Maiden (guī mèi). The Marrying Maiden",   },  //11 001 011
         {   Key: "001101",  url: "http://the-iching.com/hexagram_55",  Name: "55 - Great Abundance",  },  //13 001 101
         {   Key: "101100",  url: "http://the-iching.com/hexagram_56",  Name: "56 - The Wanderer",  },  //44 101 100
         {   Key: "110110",  url: "http://the-iching.com/hexagram_57",  Name: "57 - Gentle Penetration",   },  //54 110 110

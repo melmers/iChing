@@ -17,10 +17,11 @@
     <div ng-controller="iChingCtrl" ng-init="rbThrow.value='ThrowEach'">
 
       <button class="tablink" ng-click="selTab=0" ng-init="selTab='0'">iChing</button>
-      <button class="tablink" ng-click="selTab=1">About</button>
+      <button class="tablink" ng-click="selTab=1">Explore</button>
+      <button class="tablink" ng-click="selTab=2">About</button>
       &nbsp;&nbsp;
       <div  class="tablink">
-        <label id="lbllookup" for="lookup">Lookup Hexagrams:</label>
+        <label id="lbllookup" for="lookup">Default Lookup Hexagrams:</label>
         <select name="lookup" ng-model="iChingWeb" ng-init="iChingWeb=0"
                 ng-options="iChing.id as iChing.Short for iChing in iChingInfo">
         </select>
@@ -162,6 +163,30 @@
       </div>
       
       <div ng-show="selTab == '1'">
+              <div class="triBrowser">
+                  The Trigrams:<br><br>
+                  {{ trigramNames[0] }}<br>
+                  {{ trigramNames[1] }}<br>
+                  {{ trigramNames[2] }}<br>
+                  {{ trigramNames[3] }}<br>
+                  {{ trigramNames[4] }}<br>
+                  {{ trigramNames[5] }}<br>
+                  {{ trigramNames[6] }}<br>
+                  {{ trigramNames[7] }}<br>
+              </div>
+              <div class="hexBrowser">
+                  &#9775 Hexagram Browser:
+                  <select ng-model="hexSel" ng-init="hexSel=54" ng-options="hex.id as hex.id for hex in hexNumbers"></select><br><br>
+                  <a ng-href="{{ iChingInfo[0].Hexagrams[hexSel-1].url }}" target="_blank">{{ iChingInfo[0].Hexagrams[hexSel-1].Name }} --- from {{ iChingInfo[0].Short }}</a><br>
+                  <a ng-href="{{ iChingInfo[1].Hexagrams[hexSel-1].url }}" target="_blank">{{ iChingInfo[1].Hexagrams[hexSel-1].Name }} --- from {{ iChingInfo[1].Short }}</a><br>
+                  <a ng-href="{{ iChingInfo[2].Hexagrams[hexSel-1].url }}" target="_blank">{{ iChingInfo[2].Hexagrams[hexSel-1].Name }} --- from {{ iChingInfo[2].Short }}</a><br>
+                  <a ng-href="{{ iChingInfo[3].Hexagrams[hexSel-1].url }}" target="_blank">{{ iChingInfo[3].Hexagrams[hexSel-1].Name }} --- from {{ iChingInfo[3].Short }}</a><br>
+                  <a ng-href="{{ iChingInfo[4].Hexagrams[hexSel-1].url }}" target="_blank">{{ iChingInfo[4].Hexagrams[hexSel-1].Name }} --- from {{ iChingInfo[4].Short }}</a><br>
+
+              </div>
+      </div>
+      
+      <div ng-show="selTab == '2'">
         <div class="infoAbout">
           This program makes divining from the iChing quick and easy.<br>
           <br>
