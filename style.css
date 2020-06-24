@@ -9,30 +9,6 @@
   line-height:130%;
   vertical-align:text-top;
 }
-.triBrowser {
-  width:340px;
-  display:block;
-  float:left;
-  margin-left:40px;
-}
-.hexBrowser {
-  width: 600px;
-  text-align:left;
-  font-weight:normal;
-  display:block;
-  float:left;
-}
-.hexBrowser a {
-  display:block;
-  float:left;
-}
-.hexBrowserItem {
-  width:30px;
-  text-align:right;
-  font-weight:normal;
-  display: block;
-  float: left;
-}
 .hexagram {
   width:90px;
   font-weight:bold;
@@ -67,7 +43,7 @@
   margin-right:10px;
 }
 .throw {
-  width:800px;
+  width:830px;
 }
 .decoder {
   vertical-align:text-top;
@@ -92,6 +68,34 @@
   color:blue;
   display:block;
   float:left;
+}
+.triBrowser {
+  width:320px;
+  display:block;
+  float:left;
+  margin-left:15px;
+}
+.hexBrowser {
+  width: 580px;
+  text-align:left;
+  font-weight:normal;
+  display:block;
+  float:left;
+}
+.hexBrowser a {
+  display:block;
+  float:left;
+}
+.hexspokes {
+  display:block;
+  float:left;
+}
+.hexBrowserItem {
+  width:30px;
+  text-align:right;
+  font-weight:normal;
+  display: block;
+  float: left;
 }
 
 .txtLocalData {

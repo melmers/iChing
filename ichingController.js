@@ -22,7 +22,11 @@ angular.module('myApp', [])
     //               11 = 3: value 1 (yang line), changing to yin
     //    
     // Line Patterns: (in order of above line type codes)  
-    $scope.linePatterns = ['---- ----', '---------','--- X ---', '----0----'];
+    //$scope.linePatterns = [ '---- ----', '---------','--- X ---', '----0----'];
+    $scope.linePatterns = [ String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + ' ' + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014),
+                            String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014),
+                            String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + ' X ' + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014),
+                            String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + '0' + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) + String.fromCharCode(0x2014) ];
 
     // Coin patterns and their associated line types
     $scope.lineValues = [
@@ -554,69 +558,69 @@ angular.module('myApp', [])
       ] },
       { id: 3, Domain: "http://the-iching.com", Short: "The-iChing.com", Hexagrams: [
         {   Key: "111111",  url: "http://the-iching.com/hexagram_1",  Name: "1 - Force (qián). The Creative",      },  //63 111 111
-        {   Key: "000000",  url: "http://the-iching.com/hexagram_2",  Name: "2 - Receptive Power",     },  //00 000 000
-        {   Key: "010001",  url: "http://the-iching.com/hexagram_3",  Name: "3 - Difficulty at the Beginning",       },  //17 010 001
-        {   Key: "100010",  url: "http://the-iching.com/hexagram_4",  Name: "4 - Youthful Folly",     },  //34 100 010
-        {   Key: "010111",  url: "http://the-iching.com/hexagram_5",  Name: "5 - Patience",          },  //23 010 111
-        {   Key: "111010",  url: "http://the-iching.com/hexagram_6",  Name: "6 - Conflict",           },  //58 111 010
-        {   Key: "000010",  url: "http://the-iching.com/hexagram_7",  Name: "7 - Organized Discipline",       },  //02 000 010
-        {   Key: "010000",  url: "http://the-iching.com/hexagram_8",  Name: "8 - Holding Together", },  //16 010 000
-        {   Key: "110111",  url: "http://the-iching.com/hexagram_9",  Name: "9 - Small Influences",  },  //55 110 111
-        {   Key: "111011",  url: "http://the-iching.com/hexagram_10",  Name: "10 - Treading Carefully",  },  //59 111 011
-        {   Key: "000111",  url: "http://the-iching.com/hexagram_11",  Name: "11 - Harmony",         },  //7 000 111
-        {   Key: "111000",  url: "http://the-iching.com/hexagram_12",  Name: "12 - Standstill",     },  //56 111 000
-        {   Key: "111101",  url: "http://the-iching.com/hexagram_13",  Name: "13 - Fellowship", },  //61 111 101
-        {   Key: "101111",  url: "http://the-iching.com/hexagram_14",  Name: "14 - Affluence",          },  //47 101 111
-        {   Key: "000100",  url: "http://the-iching.com/hexagram_15",  Name: "15 - Humility",      },  //4 000 100
-        {   Key: "001000",  url: "http://the-iching.com/hexagram_16",  Name: "16 - Enthusiasm",   },  //8 001 000
-        {   Key: "011001",  url: "http://the-iching.com/hexagram_17",  Name: "17 - Following",   },  //25 011 001
-        {   Key: "100110",  url: "http://the-iching.com/hexagram_18",  Name: "18 - Repairing the Damage",    },  //38 100 110
-        {   Key: "000011",  url: "http://the-iching.com/hexagram_19",  Name: "19 - Approach of Spring",  },  //3 000 011
-        {   Key: "110000",  url: "http://the-iching.com/hexagram_20",  Name: "20 - Overview",   },  //48 110 000
-        {   Key: "101001",  url: "http://the-iching.com/hexagram_21",  Name: "21 - Cutting Through",   },  //41 101 001
-        {   Key: "100101",  url: "http://the-iching.com/hexagram_22",  Name: "22 - Grace and Beauty",   },  //37 100 101
-        {   Key: "100000",  url: "http://the-iching.com/hexagram_23",  Name: "23 - Splitting Apart",    },  //32 100 000
-        {   Key: "000001",  url: "http://the-iching.com/hexagram_24",  Name: "24 - Returning",    },  //1 000 001
-        {   Key: "111001",  url: "http://the-iching.com/hexagram_25",  Name: "25 - Innocence",   },  //57 111 001
-        {   Key: "100111",  url: "http://the-iching.com/hexagram_26",  Name: "26 - Containment of Potential",    },  //39 100 111
-        {   Key: "100001",  url: "http://the-iching.com/hexagram_27",  Name: "27 - Nourishment",   },  //33 100 001
-        {   Key: "011110",  url: "http://the-iching.com/hexagram_28",  Name: "28 - Excessive Pressure",   },  //30 011 110
-        {   Key: "010010",  url: "http://the-iching.com/hexagram_29",  Name: "29 - Dangerous Depths",    },  //18 010 010
-        {   Key: "101101",  url: "http://the-iching.com/hexagram_30",  Name: "30 - Clinging Like Fire",   },  //45 101 101
-        {   Key: "011100",  url: "http://the-iching.com/hexagram_31",  Name: "31 - Mutual Attraction",  },  //28 011 100
-        {   Key: "001110",  url: "http://the-iching.com/hexagram_32",  Name: "32 - Endurance",   },  //14 001 110
-        {   Key: "111100",  url: "http://the-iching.com/hexagram_33",  Name: "33 - Retreat",     },  //60 111 100
-        {   Key: "001111",  url: "http://the-iching.com/hexagram_34",  Name: "34 - Great Vigor", },  //15 001 111
-        {   Key: "101000",  url: "http://the-iching.com/hexagram_35",  Name: "35 - Easy Progress",  },  //40 101 000
-        {   Key: "000101",  url: "http://the-iching.com/hexagram_36",  Name: "36 - Darkening of the Light",    },  //5 000 101
-        {   Key: "110101",  url: "http://the-iching.com/hexagram_37",  Name: "37 - Extended Family",    },  //53 110 101
-        {   Key: "101011",  url: "http://the-iching.com/hexagram_38",  Name: "38 - Diverging Interests",   },  //43 101 011
-        {   Key: "010100",  url: "http://the-iching.com/hexagram_39",  Name: "39 - Temporary Obstacles",   },  //20 010 100
-        {   Key: "001010",  url: "http://the-iching.com/hexagram_40",  Name: "40 - Deliverance",  },  //10 001 010
-        {   Key: "100011",  url: "http://the-iching.com/hexagram_41",  Name: "41 - Decrease",  },  //35 100 011
-        {   Key: "110001",  url: "http://the-iching.com/hexagram_42",  Name: "42 - Increase",  },  //49 110 001
-        {   Key: "011111",  url: "http://the-iching.com/hexagram_43",  Name: "43 - Determination",  },  //31 011 111
-        {   Key: "111110",  url: "http://the-iching.com/hexagram_44",  Name: "44 - Liaison",  },  //62 111 110
-        {   Key: "011000",  url: "http://the-iching.com/hexagram_45",  Name: "45 - Gathering Together",  },  //24 011 000
-        {   Key: "000110",  url: "http://the-iching.com/hexagram_46",  Name: "46 - Pushing Upward",    },  //6 000 110
-        {   Key: "011010",  url: "http://the-iching.com/hexagram_47",  Name: "47 - Oppression",    },  //26 011 010
-        {   Key: "010110",  url: "http://the-iching.com/hexagram_48",  Name: "48 - The Well",    },  //22 010 110
-        {   Key: "011101",  url: "http://the-iching.com/hexagram_49",  Name: "49 - Revolution",   },  //29 011 101
-        {   Key: "101110",  url: "http://the-iching.com/hexagram_50",  Name: "50 - The Cauldron",  },  //46 101 110
-        {   Key: "001001",  url: "http://the-iching.com/hexagram_51",  Name: "51 - Shock",   },  //9 001 001
-        {   Key: "100100",  url: "http://the-iching.com/hexagram_52",  Name: "52 - Keeping Still",   },  //36 100 100
+        {   Key: "000000",  url: "http://the-iching.com/hexagram_2",  Name: "2 - Field (kūn). The Receptive",     },  //00 000 000
+        {   Key: "010001",  url: "http://the-iching.com/hexagram_3",  Name: "3 - Sprouting (zhūn). Difficulty at the Beginning",       },  //17 010 001
+        {   Key: "100010",  url: "http://the-iching.com/hexagram_4",  Name: "4 - Enveloping (méng). Youthful Folly",     },  //34 100 010
+        {   Key: "010111",  url: "http://the-iching.com/hexagram_5",  Name: "5 - Attending (xū). Waiting",          },  //23 010 111
+        {   Key: "111010",  url: "http://the-iching.com/hexagram_6",  Name: "6 - Arguing (sòng). Conflict",           },  //58 111 010
+        {   Key: "000010",  url: "http://the-iching.com/hexagram_7",  Name: "7 - Leading (shī). The Army",       },  //02 000 010
+        {   Key: "010000",  url: "http://the-iching.com/hexagram_8",  Name: "8 - Grouping (bǐ). Holding Together", },  //16 010 000
+        {   Key: "110111",  url: "http://the-iching.com/hexagram_9",  Name: "9 - Small Accumulating (xiǎo chù). Small Taming",  },  //55 110 111
+        {   Key: "111011",  url: "http://the-iching.com/hexagram_10",  Name: "10 - Treading (lǚ). Treading (Conduct)",  },  //59 111 011
+        {   Key: "000111",  url: "http://the-iching.com/hexagram_11",  Name: "11 - Pervading (tài). Peace",         },  //7 000 111
+        {   Key: "111000",  url: "http://the-iching.com/hexagram_12",  Name: "12 - Obstruction (pǐ). Standstill",     },  //56 111 000
+        {   Key: "111101",  url: "http://the-iching.com/hexagram_13",  Name: "13 - Concording People (tóng rén). Fellowship", },  //61 111 101
+        {   Key: "101111",  url: "http://the-iching.com/hexagram_14",  Name: "14 - Great Possessing (dà yǒu). Great Possession",          },  //47 101 111
+        {   Key: "000100",  url: "http://the-iching.com/hexagram_15",  Name: "15 - Humbling (qiān). Modesty",      },  //4 000 100
+        {   Key: "001000",  url: "http://the-iching.com/hexagram_16",  Name: "16 - Providing-For (yù). Enthusiasm",   },  //8 001 000
+        {   Key: "011001",  url: "http://the-iching.com/hexagram_17",  Name: "17 - Following (suí)",   },  //25 011 001
+        {   Key: "100110",  url: "http://the-iching.com/hexagram_18",  Name: "18 - Corrupting (gǔ). Work on the Decayed",    },  //38 100 110
+        {   Key: "000011",  url: "http://the-iching.com/hexagram_19",  Name: "19 - Nearing (lín). Approach",  },  //3 000 011
+        {   Key: "110000",  url: "http://the-iching.com/hexagram_20",  Name: "20 - Viewing (guān). Contemplation",   },  //48 110 000
+        {   Key: "101001",  url: "http://the-iching.com/hexagram_21",  Name: "21 - Gnawing Bite (shì kè). Biting Through",   },  //41 101 001
+        {   Key: "100101",  url: "http://the-iching.com/hexagram_22",  Name: "22 - Adorning (bì). Grace",   },  //37 100 101
+        {   Key: "100000",  url: "http://the-iching.com/hexagram_23",  Name: "23 - Stripping (bō). Splitting Apart",    },  //32 100 000
+        {   Key: "000001",  url: "http://the-iching.com/hexagram_24",  Name: "24 - Returning (fù). Return",    },  //1 000 001
+        {   Key: "111001",  url: "http://the-iching.com/hexagram_25",  Name: "25 - Without Embroiling (wú wàng). Innocence",   },  //57 111 001
+        {   Key: "100111",  url: "http://the-iching.com/hexagram_26",  Name: "26 - Great Accumulating (dà chù). Great Taming",    },  //39 100 111
+        {   Key: "100001",  url: "http://the-iching.com/hexagram_27",  Name: "27 - Swallowing (yí). Mouth Corners",   },  //33 100 001
+        {   Key: "011110",  url: "http://the-iching.com/hexagram_28",  Name: "28 - Great Exceeding (dà guò). Great Preponderance",   },  //30 011 110
+        {   Key: "010010",  url: "http://the-iching.com/hexagram_29",  Name: "29 - Gorge (kǎn). The Abysmal Water",    },  //18 010 010
+        {   Key: "101101",  url: "http://the-iching.com/hexagram_30",  Name: "30 - Radiance (lí). The Clinging",   },  //45 101 101
+        {   Key: "011100",  url: "http://the-iching.com/hexagram_31",  Name: "31 - Conjoining (xián). Influence",  },  //28 011 100
+        {   Key: "001110",  url: "http://the-iching.com/hexagram_32",  Name: "32 - Persevering (héng). Duration",   },  //14 001 110
+        {   Key: "111100",  url: "http://the-iching.com/hexagram_33",  Name: "33 - Retiring (dùn). Retreat",     },  //60 111 100
+        {   Key: "001111",  url: "http://the-iching.com/hexagram_34",  Name: "34 - Great Invigorating (dà zhuàng). Great Power", },  //15 001 111
+        {   Key: "101000",  url: "http://the-iching.com/hexagram_35",  Name: "35 - Prospering (jìn). Progress",  },  //40 101 000
+        {   Key: "000101",  url: "http://the-iching.com/hexagram_36",  Name: "36 - Brightness Hiding (míng yí). Darkening of the Light",    },  //5 000 101
+        {   Key: "110101",  url: "http://the-iching.com/hexagram_37",  Name: "37 - Dwelling People (jiā rén). The Family",    },  //53 110 101
+        {   Key: "101011",  url: "http://the-iching.com/hexagram_38",  Name: "38 - Polarising (kuí). Opposition",   },  //43 101 011
+        {   Key: "010100",  url: "http://the-iching.com/hexagram_39",  Name: "39 - Limping (jiǎn). Obstruction",   },  //20 010 100
+        {   Key: "001010",  url: "http://the-iching.com/hexagram_40",  Name: "40 - Taking-Apart (xiè). Deliverance",  },  //10 001 010
+        {   Key: "100011",  url: "http://the-iching.com/hexagram_41",  Name: "41 - Diminishing (sǔn). Decrease",  },  //35 100 011
+        {   Key: "110001",  url: "http://the-iching.com/hexagram_42",  Name: "42 - Augmenting (yì). Increase",  },  //49 110 001
+        {   Key: "011111",  url: "http://the-iching.com/hexagram_43",  Name: "43 - Parting (guài). Breakthrough",  },  //31 011 111
+        {   Key: "111110",  url: "http://the-iching.com/hexagram_44",  Name: "44 - Coupling (gòu). Coming to Meet",  },  //62 111 110
+        {   Key: "011000",  url: "http://the-iching.com/hexagram_45",  Name: "45 - Clustering (cuì). Gathering Together",  },  //24 011 000
+        {   Key: "000110",  url: "http://the-iching.com/hexagram_46",  Name: "46 - Ascending (shēng). Pushing Upward",    },  //6 000 110
+        {   Key: "011010",  url: "http://the-iching.com/hexagram_47",  Name: "47 - Confining (kùn). Oppression",    },  //26 011 010
+        {   Key: "010110",  url: "http://the-iching.com/hexagram_48",  Name: "48 - Welling (jǐng). The Well",    },  //22 010 110
+        {   Key: "011101",  url: "http://the-iching.com/hexagram_49",  Name: "49 - Skinning (gé). Revolution",   },  //29 011 101
+        {   Key: "101110",  url: "http://the-iching.com/hexagram_50",  Name: "50 - Holding (dǐng). The Cauldron",  },  //46 101 110
+        {   Key: "001001",  url: "http://the-iching.com/hexagram_51",  Name: "51 - Shake (zhèn). Arousing",   },  //9 001 001
+        {   Key: "100100",  url: "http://the-iching.com/hexagram_52",  Name: "52 - Bound (gèn). The Keeping Still",   },  //36 100 100
         {   Key: "110100",  url: "http://the-iching.com/hexagram_53",  Name: "53 - Infiltrating (jiàn). Development",    },  //52 110 100
         {   Key: "001011",  url: "http://the-iching.com/hexagram_54",  Name: "54 - Converting The Maiden (guī mèi). The Marrying Maiden",   },  //11 001 011
-        {   Key: "001101",  url: "http://the-iching.com/hexagram_55",  Name: "55 - Great Abundance",  },  //13 001 101
-        {   Key: "101100",  url: "http://the-iching.com/hexagram_56",  Name: "56 - The Wanderer",  },  //44 101 100
-        {   Key: "110110",  url: "http://the-iching.com/hexagram_57",  Name: "57 - Gentle Penetration",   },  //54 110 110
-        {   Key: "011011",  url: "http://the-iching.com/hexagram_58",  Name: "58 - Joy",   },  //27 011 011
-        {   Key: "110010",  url: "http://the-iching.com/hexagram_59",  Name: "59 - Dispersing",  },  //50 110 010
-        {   Key: "010011",  url: "http://the-iching.com/hexagram_60",  Name: "60 - Limits and Connections", },  //19 010 011
-        {   Key: "110011",  url: "http://the-iching.com/hexagram_61",  Name: "61 - Centering in Truth",   },  //51 110 011
-        {   Key: "001100",  url: "http://the-iching.com/hexagram_62",  Name: "62 - Attention to Detail",  },  //12 001 100
-        {   Key: "010101",  url: "http://the-iching.com/hexagram_63",  Name: "63 - After Completion",    },  //21 010 101
-        {   Key: "101010",  url: "http://the-iching.com/hexagram_64",  Name: "64 - Nearing Completion",   }  //42 101 010
+        {   Key: "001101",  url: "http://the-iching.com/hexagram_55",  Name: "55 - Abounding (fēng). Abundance",  },  //13 001 101
+        {   Key: "101100",  url: "http://the-iching.com/hexagram_56",  Name: "56 - Sojourning (lǚ). The Wanderer",  },  //44 101 100
+        {   Key: "110110",  url: "http://the-iching.com/hexagram_57",  Name: "57 - Ground (xùn). The Gentle",   },  //54 110 110
+        {   Key: "011011",  url: "http://the-iching.com/hexagram_58",  Name: "58 - Open (duì). The Joyous",   },  //27 011 011
+        {   Key: "110010",  url: "http://the-iching.com/hexagram_59",  Name: "59 - Dispersing (huàn). Dispersion",  },  //50 110 010
+        {   Key: "010011",  url: "http://the-iching.com/hexagram_60",  Name: "60 - Articulating (jié). Limitation", },  //19 010 011
+        {   Key: "110011",  url: "http://the-iching.com/hexagram_61",  Name: "61 - Centre Confirming (zhōng fú). Inner Truth",   },  //51 110 011
+        {   Key: "001100",  url: "http://the-iching.com/hexagram_62",  Name: "62 - Small Exceeding (xiǎo guò). Small Preponderance",  },  //12 001 100
+        {   Key: "010101",  url: "http://the-iching.com/hexagram_63",  Name: "63 - Already Fording (jì jì). After Completion",    },  //21 010 101
+        {   Key: "101010",  url: "http://the-iching.com/hexagram_64",  Name: "64 - Not-Yet Fording (wèi jì). Before Completion",   }  //42 101 010
       ] },
       { id: 4, Domain: "http://inthefamilyway.org/iching/", Short: "InTheFamilyWay.org", Hexagrams: [
         {   Key: "111111",  url: "http://inthefamilyway.org/iching/hexagrams/h1/",  Name: "1 - Inspiring Force/Creator QIAN",      },  //63 111 111
