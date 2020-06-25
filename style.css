@@ -89,6 +89,7 @@
 .hexspokes {
   display:block;
   float:left;
+  width:500px;
 }
 .hexBrowserItem {
   width:30px;

@@ -687,6 +687,72 @@ angular.module('myApp', [])
         {   Key: "001100",  url: "http://inthefamilyway.org/iching/hexagrams/h62/",  Name: "62 - Small Traverses/Flying Bird XIAO GUO",  },  //12 001 100
         {   Key: "010101",  url: "http://inthefamilyway.org/iching/hexagrams/h63/",  Name: "63 - Already Crossing JI JI",    },  //21 010 101
         {   Key: "101010",  url: "http://inthefamilyway.org/iching/hexagrams/h64/",  Name: "64 - Not Yet Crossing WEI JI",   }  //42 101 010
+      ] },
+      { id: 5, Domain: "https://www.taoistiching.org", Short: "TaoistiChing.org", Hexagrams: [
+        {   Key: "111111",  url: "https://www.taoistiching.org/1.html",  Name: "1 - The Creative",      },  //63 111 111
+        {   Key: "000000",  url: "https://www.taoistiching.org/2.html",  Name: "2 - Earth",     },  //00 000 000
+        {   Key: "010001",  url: "https://www.taoistiching.org/3.html",  Name: "3 - Difficulty",       },  //17 010 001
+        {   Key: "100010",  url: "https://www.taoistiching.org/4.html",  Name: "4 - Darkness",     },  //34 100 010
+        {   Key: "010111",  url: "https://www.taoistiching.org/5.html",  Name: "5 - Attending",          },  //23 010 111
+        {   Key: "111010",  url: "https://www.taoistiching.org/6.html",  Name: "6 - Contention",           },  //58 111 010
+        {   Key: "000010",  url: "https://www.taoistiching.org/7.html",  Name: "7 - Army/Discipline",       },  //02 000 010
+        {   Key: "010000",  url: "https://www.taoistiching.org/8.html",  Name: "8 - Accord", },  //16 010 000
+        {   Key: "110111",  url: "https://www.taoistiching.org/9.html",  Name: "9 - Small Nurturance",  },  //55 110 111
+        {   Key: "111011",  url: "https://www.taoistiching.org/10.html",  Name: "10 - Treading",  },  //59 111 011
+        {   Key: "000111",  url: "https://www.taoistiching.org/11.html",  Name: "11 - Tranquility",         },  //7 000 111
+        {   Key: "111000",  url: "https://www.taoistiching.org/12.html",  Name: "12 - Obstruction",     },  //56 111 000
+        {   Key: "111101",  url: "https://www.taoistiching.org/13.html",  Name: "13 - Sameness with People", },  //61 111 101
+        {   Key: "101111",  url: "https://www.taoistiching.org/14.html",  Name: "14 - Great Possession",          },  //47 101 111
+        {   Key: "000100",  url: "https://www.taoistiching.org/15.html",  Name: "15 - Humility",      },  //4 000 100
+        {   Key: "001000",  url: "https://www.taoistiching.org/16.html",  Name: "16 - Joy",   },  //8 001 000
+        {   Key: "011001",  url: "https://www.taoistiching.org/17.html",  Name: "17 - Following",   },  //25 011 001
+        {   Key: "100110",  url: "https://www.taoistiching.org/18.html",  Name: "18 - Degeneration",    },  //38 100 110
+        {   Key: "000011",  url: "https://www.taoistiching.org/19.html",  Name: "19 - Overseeing",  },  //3 000 011
+        {   Key: "110000",  url: "https://www.taoistiching.org/20.html",  Name: "20 - Observation",   },  //48 110 000
+        {   Key: "101001",  url: "https://www.taoistiching.org/21.html",  Name: "21 - Biting Through",   },  //41 101 001
+        {   Key: "100101",  url: "https://www.taoistiching.org/22.html",  Name: "22 - Adornment",   },  //37 100 101
+        {   Key: "100000",  url: "https://www.taoistiching.org/23.html",  Name: "23 - Stripping Away",    },  //32 100 000
+        {   Key: "000001",  url: "https://www.taoistiching.org/24.html",  Name: "24 - Return",    },  //1 000 001
+        {   Key: "111001",  url: "https://www.taoistiching.org/25.html",  Name: "25 - Fidelity",   },  //57 111 001
+        {   Key: "100111",  url: "https://www.taoistiching.org/26.html",  Name: "26 - Nuturance of the Great",    },  //39 100 111
+        {   Key: "100001",  url: "https://www.taoistiching.org/27.html",  Name: "27 - Nourishment",   },  //33 100 001
+        {   Key: "011110",  url: "https://www.taoistiching.org/28.html",  Name: "28 - Excess of the Great",   },  //30 011 110
+        {   Key: "010010",  url: "https://www.taoistiching.org/29.html",  Name: "29 - Mastering Pitfals",    },  //18 010 010
+        {   Key: "101101",  url: "https://www.taoistiching.org/30.html",  Name: "30 - Fire",   },  //45 101 101
+        {   Key: "011100",  url: "https://www.taoistiching.org/31.html",  Name: "31 - Sensitivity",  },  //28 011 100
+        {   Key: "001110",  url: "https://www.taoistiching.org/32.html",  Name: "32 - Constancy",   },  //14 001 110
+        {   Key: "111100",  url: "https://www.taoistiching.org/33.html",  Name: "33 - Withdrawal",     },  //60 111 100
+        {   Key: "001111",  url: "https://www.taoistiching.org/34.html",  Name: "34 - Great Power", },  //15 001 111
+        {   Key: "101000",  url: "https://www.taoistiching.org/35.html",  Name: "35 - Advance",  },  //40 101 000
+        {   Key: "000101",  url: "https://www.taoistiching.org/36.html",  Name: "36 - Concealment of illumination",    },  //5 000 101
+        {   Key: "110101",  url: "https://www.taoistiching.org/37.html",  Name: "37 - People in the Home",    },  //53 110 101
+        {   Key: "101011",  url: "https://www.taoistiching.org/38.html",  Name: "38 - Disharmony",   },  //43 101 011
+        {   Key: "010100",  url: "https://www.taoistiching.org/39.html",  Name: "39 - Halting",   },  //20 010 100
+        {   Key: "001010",  url: "https://www.taoistiching.org/40.html",  Name: "40 - Liberation",  },  //10 001 010
+        {   Key: "100011",  url: "https://www.taoistiching.org/41.html",  Name: "41 - Reduction",  },  //35 100 011
+        {   Key: "110001",  url: "https://www.taoistiching.org/42.html",  Name: "42 - Increase",  },  //49 110 001
+        {   Key: "011111",  url: "https://www.taoistiching.org/43.html",  Name: "43 - Parting",  },  //31 011 111
+        {   Key: "111110",  url: "https://www.taoistiching.org/44.html",  Name: "44 - Meeting",  },  //62 111 110
+        {   Key: "011000",  url: "https://www.taoistiching.org/45.html",  Name: "45 - Gathering",  },  //24 011 000
+        {   Key: "000110",  url: "https://www.taoistiching.org/46.html",  Name: "46 - Rising",    },  //6 000 110
+        {   Key: "011010",  url: "https://www.taoistiching.org/47.html",  Name: "47 - Exhaustion",    },  //26 011 010
+        {   Key: "010110",  url: "https://www.taoistiching.org/48.html",  Name: "48 - The Well",    },  //22 010 110
+        {   Key: "011101",  url: "https://www.taoistiching.org/49.html",  Name: "49 - Revolution",   },  //29 011 101
+        {   Key: "101110",  url: "https://www.taoistiching.org/50.html",  Name: "50 - The Cauldron",  },  //46 101 110
+        {   Key: "001001",  url: "https://www.taoistiching.org/51.html",  Name: "51 - Thunder",   },  //9 001 001
+        {   Key: "100100",  url: "https://www.taoistiching.org/52.html",  Name: "52 - Mountain",   },  //36 100 100
+        {   Key: "110100",  url: "https://www.taoistiching.org/53.html",  Name: "53 - Gradual Progress",    },  //52 110 100
+        {   Key: "001011",  url: "https://www.taoistiching.org/54.html",  Name: "54 - Making a Young Girl Marry",   },  //11 001 011
+        {   Key: "001101",  url: "https://www.taoistiching.org/55.html",  Name: "55 - Abundance",  },  //13 001 101
+        {   Key: "101100",  url: "https://www.taoistiching.org/56.html",  Name: "56 - Travel",  },  //44 101 100
+        {   Key: "110110",  url: "https://www.taoistiching.org/57.html",  Name: "57 - Wind",   },  //54 110 110
+        {   Key: "011011",  url: "https://www.taoistiching.org/58.html",  Name: "58 - Joy",   },  //27 011 011
+        {   Key: "110010",  url: "https://www.taoistiching.org/59.html",  Name: "59 - Dispersal",  },  //50 110 010
+        {   Key: "010011",  url: "https://www.taoistiching.org/60.html",  Name: "60 - Discipline", },  //19 010 011
+        {   Key: "110011",  url: "https://www.taoistiching.org/61.html",  Name: "61 - Faithfulness in the Center",   },  //51 110 011
+        {   Key: "001100",  url: "https://www.taoistiching.org/62.html",  Name: "62 - Predominance of the Small",  },  //12 001 100
+        {   Key: "010101",  url: "https://www.taoistiching.org/63.html",  Name: "63 - Settled",    },  //21 010 101
+        {   Key: "101010",  url: "https://www.taoistiching.org/64.html",  Name: "64 - Unsettled",   }  //42 101 010
       ] }
     ];
 
