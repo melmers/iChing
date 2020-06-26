@@ -16,36 +16,36 @@ var focalNode = [
 ];
 
 var nodeSet = [
-  {id: "N2", name: "#36 Damage of Illumination", type: "Data Type 3", relName: "#35 Advance", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N3", name: "#38 Disparity", type: "Data Type 4", relName: "#37 Members of a Family", hlink: "http://www.if4it.com/resources.html"},
-  {id: "N4", name: "#40 Liberation", type: "Data Type 5", relName: "#39 Halting", hlink: "http://www.if4it.com/taxonomy.html"},
-  {id: "N5", name: "#42 Increase", type: "Data Type 1", relName: "#41 Reduction", hlink: "http://www.if4it.com/disciplines.html"},
-  {id: "N6", name: "#44 Meeting", type: "Data Type 2", relName: "#43 Parting", hlink: "http://www.if4it.com"},
-  {id: "N7", name: "#46 Rising", type: "Data Type 3", relName: "#45 Gathering", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N8", name: "#48 The Well", type: "Data Type 4", relName: "#47 Exhaustion", hlink: "http://www.if4it.com/resources.html"},
-  {id: "N9", name: "#50 The Cauldron", type: "Data Type 5", relName: "#49 Revelution", hlink: "http://www.if4it.com/taxonomy.html"},
-  {id: "N10", name: "#52 Mountain", type: "Data Type 1", relName: "#51 Thunder", hlink: "http://www.if4it.com/disciplines.html"},
-  {id: "N11", name: "#54 Making a Young Girl Marry", type: "Data Type 2", relName: "#53 Gradual Progress", hlink: "http://www.if4it.com"},
-  {id: "N12", name: "#56 Travel", type: "Data Type 3", relName: "#55 Richness", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N13", name: "#58 Joy", type: "Data Type 4", relName: "#57 Wind", hlink: "http://www.if4it.com/resources.html"},
-  {id: "N14", name: "#60 Discipline", type: "Data Type 5", relName: "#59 Dispersal", hlink: "http://www.if4it.com/taxonomy.html"},
-  {id: "N15", name: "#62 Predominance of the Small", type: "Data Type 1", relName: "#61 Faith in the Center", hlink: "http://www.if4it.com/disciplines.html"},
-  {id: "N16", name: "#64 Unfinished", type: "Data Type 3", relName: "#63 Completion", hlink: "http://www.if4it.com"},
-  {id: "N17", name: "#4 Darkness", type: "Data Type 1", relName: "#3 Difficulty", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N18", name: "#6 Contention", type: "Data Type 1", relName: "#5 Waiting", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N19", name: "#8 Accord", type: "Data Type 4", relName: "#7 The Army", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N20", name: "#10 Treading", type: "Data Type 4", relName: "#9 Small Nurturance", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N21", name: "#12 Obstruction", type: "Data Type 4", relName: "#11 Tranquility", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N22", name: "#14 Great Possession", type: "Data Type 1", relName: "#13 Sameness with others", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N23", name: "#16 Delight", type: "Data Type 5", relName: "#15 Modesty", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N24", name: "#18 Degeneration", type: "Data Type 5", relName: "#17 Following", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N25", name: "#20 Observing", type: "Data Type 6", relName: "#19 Overseeing", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N26", name: "#22 Adornment", type: "Data Type 6", relName: "#21 Biting Through", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N27", name: "#24 Return", type: "Data Type 6", relName: "#23 Stripping Away", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N28", name: "#26 Great Accumulation", type: "Data Type 6", relName: "#25 Fidelity", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N29", name: "#28 Great Access", type: "Data Type 6", relName: "#27 Jaws", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N30", name: "#32 Perserverance", type: "Data Type 6", relName: "#31 Sensing", hlink: "http://www.if4it.com/glossary.html"},
-  {id: "N31", name: "#34 Great Power", type: "Data Type 6", relName: "#33 Withdrawl", hlink: "http://www.if4it.com/glossary.html"}
+  {id: "N2", name: "#36 Damage of Illumination", type: "Data Type 3", relName: "Advance #35", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N3", name: "#38 Disparity", type: "Data Type 4", relName: "Members of a Family #37", hlink: "http://www.if4it.com/resources.html"},
+  {id: "N4", name: "#40 Liberation", type: "Data Type 5", relName: "Halting #39", hlink: "http://www.if4it.com/taxonomy.html"},
+  {id: "N5", name: "#42 Increase", type: "Data Type 1", relName: "Reduction #41", hlink: "http://www.if4it.com/disciplines.html"},
+  {id: "N6", name: "#44 Meeting", type: "Data Type 2", relName: "Parting #43", hlink: "http://www.if4it.com"},
+  {id: "N7", name: "#46 Rising", type: "Data Type 3", relName: "Gathering #45", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N8", name: "#48 The Well", type: "Data Type 4", relName: "Exhaustion #47", hlink: "http://www.if4it.com/resources.html"},
+  {id: "N9", name: "#50 The Cauldron", type: "Data Type 5", relName: "Revolution #49", hlink: "http://www.if4it.com/taxonomy.html"},
+  {id: "N10", name: "#52 Mountain", type: "Data Type 1", relName: "Thunder #51", hlink: "http://www.if4it.com/disciplines.html"},
+  {id: "N11", name: "#54 Making a Young Girl Marry", type: "Data Type 2", relName: "Gradual Progress #53", hlink: "http://www.if4it.com"},
+  {id: "N12", name: "#56 Travel", type: "Data Type 3", relName: "Richness #55", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N13", name: "#58 Joy", type: "Data Type 4", relName: "Wind #57", hlink: "http://www.if4it.com/resources.html"},
+  {id: "N14", name: "#60 Discipline", type: "Data Type 5", relName: "Dispersal #59", hlink: "http://www.if4it.com/taxonomy.html"},
+  {id: "N15", name: "#62 Predominance of the Small", type: "Data Type 1", relName: "Faith in the Center #61", hlink: "http://www.if4it.com/disciplines.html"},
+  {id: "N16", name: "#64 Unfinished", type: "Data Type 3", relName: "Completion #63", hlink: "http://www.if4it.com"},
+  {id: "N17", name: "Darkness #4", type: "Data Type 1", relName: "#3 Difficulty", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N18", name: "Contention #6", type: "Data Type 1", relName: "#5 Waiting", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N19", name: "Accord #8", type: "Data Type 4", relName: "#7 The Army", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N20", name: "Treading #10", type: "Data Type 4", relName: "#9 Small Nurturance", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N21", name: "Obstruction #12", type: "Data Type 4", relName: "#11 Tranquility", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N22", name: "Great Possession #14", type: "Data Type 1", relName: "#13 Sameness with others", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N23", name: "Delight #16", type: "Data Type 5", relName: "#15 Modesty", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N24", name: "Degeneration #18", type: "Data Type 5", relName: "#17 Following", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N25", name: "Observing #20", type: "Data Type 6", relName: "#19 Overseeing", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N26", name: "Adornment #22", type: "Data Type 6", relName: "#21 Biting Through", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N27", name: "Return #24", type: "Data Type 6", relName: "#23 Stripping Away", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N28", name: "Great Accumulation #26", type: "Data Type 6", relName: "#25 Fidelity", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N29", name: "Great Access #28", type: "Data Type 6", relName: "#27 Jaws", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N30", name: "Perserverance #32", type: "Data Type 6", relName: "#31 Sensing", hlink: "http://www.if4it.com/glossary.html"},
+  {id: "N31", name: "Great Power #34", type: "Data Type 6", relName: "#33 Withdrawl", hlink: "http://www.if4it.com/glossary.html"}
 ];
 
 
@@ -461,11 +461,11 @@ function drawRadialHubAndSpoke( drawingName, focalNode, nodeSet, selectString, c
       //.attr("dx", "-20px")
       .attr("dx", function(d) {
         var a = angle(d, 0, 0);
-        return a < 0 ? "-16px" : "16px";
+        return a < 0 ? "70px" : "-70px";
       })
       .attr("text-anchor", function(d) {
         var a = angle(d, 0, 0);
-        return a < 0 ? "start" : "end";
+        return a < 0 ? "end" : "start";
       })
       .attr("transform", function(d) { //set text'ss origin to the centroid
         //we have to make sure to set these before calling arc.centroid
@@ -474,7 +474,7 @@ function drawRadialHubAndSpoke( drawingName, focalNode, nodeSet, selectString, c
         return "translate(" + arc2.centroid(d) + ")rotate(" + angle(d, -90, 90) + ")";
       })
       .style("fill", "Black")
-      .style("font", "normal 14px Arial")
+      .style("font", "normal 16px Arial")
       .text(function(d) { return d.data.relName; });
 
   // Add node names to the arcs, translated to the arc centroid and rotated.
