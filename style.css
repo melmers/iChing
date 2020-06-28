@@ -171,25 +171,45 @@
   margin-left: 435px;
   width:400px;
 }
+.noSpoke {
+  width: 120px;
+  display:block;
+  float:left;
+  text-align:left;
+  overflow:hidden;
+  whitespace:nowrap;
+  background-color:lightblue;
+}
 .posNorth {
   position:absolute;
-  top:42%;
-  left:68%;
+  top:41%;
+  left:66%;
+  text-align:center;
 }
 .posSouth {
   position:absolute;
-  top:58%;
-  left:68%;
+  top:59%;
+  left:66%;
+  text-align:center;
 }
 .posEast {
   position:absolute;
   top:50%;
-  left:61.5%;
+  left:58%;
 }
 .posWest {
   position:absolute;
   top:50%;
   left:73%;
+  text-align:right;
+}
+.youInCenter {
+  position:absolute;
+  top:45.5%;
+  left:63%;
+  font-size:98px;
+  color:lightgrey;
+  text-shadow: 2px 2px #000000;
 }
 .triBrowser {
   width:320px;

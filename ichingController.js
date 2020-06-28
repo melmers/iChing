@@ -288,6 +288,13 @@ angular.module('myApp', [])
     };
 
     // ****** THIS NEEDS TO BE IN A FACTORY ******
+    $scope.noSpokeInfo = [
+        {   id:1, hex: 1, classes: "noSpoke posNorth" },
+        {   id:2, hex: 2, classes: "noSpoke posSouth" },
+        {   id:3, hex: 29, classes: "noSpoke posEast" },
+        {   id:4, hex: 30, classes: "noSpoke posWest" },
+    ];
+
     $scope.spokeInfoLeft = [
         {  id: 1, hexInner: 3, hexOuter: 4, angle: 96, classes: "spoke leftSpoke" }, // spoke 1
         {  id: 2, hexInner: 5, hexOuter: 6, angle: 108, classes: "spoke leftSpoke" }, // spoke 2
@@ -305,6 +312,7 @@ angular.module('myApp', [])
         {  id: 14, hexInner: 31, hexOuter: 32, angle: 252, classes: "spoke leftSpoke" },  // spoke 14
         {  id: 15, hexInner: 33, hexOuter: 34, angle: 264, classes: "spoke leftSpoke" },  // spoke 15
     ];
+    
     $scope.spokeInfoRight = [
         {  id: 16, hexInner: 35, hexOuter: 36, angle: -84, classes: "spoke rightSpoke" }, // spoke 16
         {  id: 17, hexInner: 37, hexOuter: 38, angle: -72, classes: "spoke rightSpoke" }, // spoke 17

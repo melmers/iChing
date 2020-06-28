@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <title>iChing.ng</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="wheel-style.css">
   </head>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -32,31 +31,38 @@
       <div ng-show="selTab == '1'">
 
               <div class="spokes30">
-                      <div ng-repeat="i in spokeInfoLeft">
-                        <div class="{{i.classes}}" style="transform: rotate({{i.angle}}deg);"> 
-                          <div class="spokeNbrL">#{{i.id}}</div>
-                          <div class="hexInnerL">
-                              <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].Name.substring(0,22) }}</a>
-                          </div>
-                          <div class="ring"> :: </div>  
-                          <div class="hexOuterL">
-                              <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].Name.substring(0,22) }}</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div ng-repeat="i in spokeInfoRight">
-                        <div class="{{i.classes}}" style="transform: rotate({{i.angle}}deg);"> 
-                          <div class="spokeNbrR">#{{i.id}}</div>
-                          <div class="hexInnerR">
-                              <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].Name.substring(0,22) }}</a>
-                          </div>
-                          <div class="ring"> :: </div> 
-                          <div class="hexOuterR">
-                              <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].Name.substring(0,22) }}</a>
-                          </div> 
-                        </div>
-                      </div>
-
+                <div class="youInCenter">
+                  You
+                </div>
+                <div ng-repeat="i in noSpokeInfo">
+                  <div class="{{i.classes}}"> 
+                      <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hex-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hex-1].Name.substring(0,18) }}</a>
+                  </div>
+                </div>
+                <div ng-repeat="i in spokeInfoLeft">
+                  <div class="{{i.classes}}" style="transform: rotate({{i.angle}}deg);"> 
+                    <div class="spokeNbrL">#{{i.id}}</div>
+                    <div class="hexInnerL">
+                        <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].Name.substring(0,22) }}</a>
+                    </div>
+                    <div class="ring"> :: </div>  
+                    <div class="hexOuterL">
+                        <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].Name.substring(0,22) }}</a>
+                    </div>
+                  </div>
+                </div>
+                <div ng-repeat="i in spokeInfoRight">
+                  <div class="{{i.classes}}" style="transform: rotate({{i.angle}}deg);"> 
+                    <div class="spokeNbrR">#{{i.id}}</div>
+                    <div class="hexInnerR">
+                        <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].Name.substring(0,22) }}</a>
+                    </div>
+                    <div class="ring"> :: </div> 
+                    <div class="hexOuterR">
+                        <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].Name.substring(0,22) }}</a>
+                    </div> 
+                  </div>
+                </div>
               </div>
 
               <div class="triBrowser">
