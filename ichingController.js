@@ -287,73 +287,107 @@ angular.module('myApp', [])
         $scope.selTab = '0';
     };
 
-
     // ****** THIS NEEDS TO BE IN A FACTORY ******
-    $scope.hexNumbers = [
-        {   id: 1   },
-        {   id: 2   },
-        {   id: 3   },
-        {   id: 4   },
-        {   id: 5   },
-        {   id: 6   },
-        {   id: 7   },
-        {   id: 8   },
-        {   id: 9   },
-        {   id: 10   },
-        {   id: 11   },
-        {   id: 12   },
-        {   id: 13   },
-        {   id: 14   },
-        {   id: 15   },
-        {   id: 16   },
-        {   id: 17   },
-        {   id: 18   },
-        {   id: 19   },
-        {   id: 20   },
-        {   id: 21   },
-        {   id: 22   },
-        {   id: 23   },
-        {   id: 24   },
-        {   id: 25   },
-        {   id: 26   },
-        {   id: 27   },
-        {   id: 28   },
-        {   id: 29   },
-        {   id: 30   },
-        {   id: 31   },
-        {   id: 32   },
-        {   id: 33   },
-        {   id: 34   },
-        {   id: 35   },
-        {   id: 36   },
-        {   id: 37   },
-        {   id: 38   },
-        {   id: 39   },
-        {   id: 40   },
-        {   id: 41   },
-        {   id: 42   },
-        {   id: 43   },
-        {   id: 44   },
-        {   id: 45   },
-        {   id: 46   },
-        {   id: 47   },
-        {   id: 48   },
-        {   id: 49   },
-        {   id: 50   },
-        {   id: 51   },
-        {   id: 52   },
-        {   id: 53   },
-        {   id: 54   },
-        {   id: 55   },
-        {   id: 56   },
-        {   id: 57   },
-        {   id: 58   },
-        {   id: 59   },
-        {   id: 60   },
-        {   id: 61   },
-        {   id: 62   },
-        {   id: 63   },
-        {   id: 64   }        
+    $scope.spokeInfoLeft = [
+        {  id: 1, hexInner: 3, hexOuter: 4, angle: 96, classes: "spoke leftSpoke" }, // spoke 1
+        {  id: 2, hexInner: 5, hexOuter: 6, angle: 108, classes: "spoke leftSpoke" }, // spoke 2
+        {  id: 3, hexInner: 7, hexOuter: 8, angle: 120, classes: "spoke leftSpoke" }, // spoke 3
+        {  id: 4, hexInner: 9, hexOuter: 10, angle: 132, classes: "spoke leftSpoke" }, // spoke 4
+        {  id: 5, hexInner: 11, hexOuter: 12, angle: 144, classes: "spoke leftSpoke" }, // spoke 5
+        {  id: 6, hexInner: 13, hexOuter: 14, angle: 156, classes: "spoke leftSpoke" }, // spoke 6
+        {  id: 7, hexInner: 15, hexOuter: 16, angle: 168, classes: "spoke leftSpoke" }, // spoke 7
+        {  id: 8, hexInner: 17, hexOuter: 18, angle: 180, classes: "spoke leftSpoke" },   // spoke 8
+        {  id: 9, hexInner: 19, hexOuter: 20, angle: 192, classes: "spoke leftSpoke" },  // spoke 9
+        {  id: 10, hexInner: 21, hexOuter: 22, angle: 204, classes: "spoke leftSpoke" },  // spoke 10
+        {  id: 11, hexInner: 23, hexOuter: 24, angle: 216, classes: "spoke leftSpoke" },  // spoke 11
+        {  id: 12, hexInner: 25, hexOuter: 26, angle: 228, classes: "spoke leftSpoke" },  // spoke 12
+        {  id: 13, hexInner: 27, hexOuter: 28, angle: 240, classes: "spoke leftSpoke" },  // spoke 13
+        {  id: 14, hexInner: 31, hexOuter: 32, angle: 252, classes: "spoke leftSpoke" },  // spoke 14
+        {  id: 15, hexInner: 33, hexOuter: 34, angle: 264, classes: "spoke leftSpoke" },  // spoke 15
+    ];
+    $scope.spokeInfoRight = [
+        {  id: 16, hexInner: 35, hexOuter: 36, angle: -84, classes: "spoke rightSpoke" }, // spoke 16
+        {  id: 17, hexInner: 37, hexOuter: 38, angle: -72, classes: "spoke rightSpoke" }, // spoke 17
+        {  id: 18, hexInner: 39, hexOuter: 40, angle: -60, classes: "spoke rightSpoke" }, // spoke 18
+        {  id: 19, hexInner: 41, hexOuter: 42, angle: -48, classes: "spoke rightSpoke" }, // spoke 19
+        {  id: 20, hexInner: 43, hexOuter: 44, angle: -36, classes: "spoke rightSpoke" }, // spoke 20
+        {  id: 21, hexInner: 45, hexOuter: 46, angle: -24, classes: "spoke rightSpoke" }, // spoke 21
+        {  id: 22, hexInner: 47, hexOuter: 48, angle: -12, classes: "spoke rightSpoke" }, // spoke 22
+        {  id: 23, hexInner: 49, hexOuter: 50, angle: 0, classes: "spoke rightSpoke" },   // spoke 23
+        {  id: 24, hexInner: 51, hexOuter: 52, angle: 12, classes: "spoke rightSpoke" },  // spoke 24
+        {  id: 25, hexInner: 53, hexOuter: 54, angle: 24, classes: "spoke rightSpoke" },  // spoke 25
+        {  id: 26, hexInner: 55, hexOuter: 56, angle: 36, classes: "spoke rightSpoke" },  // spoke 26
+        {  id: 27, hexInner: 57, hexOuter: 58, angle: 48, classes: "spoke rightSpoke" },  // spoke 27
+        {  id: 28, hexInner: 59, hexOuter: 60, angle: 60, classes: "spoke rightSpoke" },  // spoke 28
+        {  id: 29, hexInner: 61, hexOuter: 62, angle: 72, classes: "spoke rightSpoke" },  // spoke 29
+        {  id: 30, hexInner: 63, hexOuter: 64, angle: 84, classes: "spoke rightSpoke" }  // spoke 30
+    ];
+
+    $scope.hexInfo = [
+        {   id: 1, spokeClasses: "noSpoke posNorth", spokeNumber: 0   },
+        {   id: 2, spokeClasses: "noSpoke posSouth", spokeNumber: 0   },
+        {   id: 3, spokeClasses: "spoke innerSpokeLeft", spokeNumber: 1   },
+        {   id: 4, spokeClasses: "spoke outerSpokeLeft", spokeNumber: 1   },
+        {   id: 5, spokeClasses: "spoke innerSpokeLeft", spokeNumber: 2   },
+        {   id: 6, spokeClasses: "spoke outerSpokeLeft", spokeNumber: 2   },
+        {   id: 7, spokeClasses: "spoke innerSpokeLeft", spokeNumber: 3   },
+        {   id: 8, spokeClasses: "spoke outerSpokeLeft", spokeNumber: 3   },
+        {   id: 9, spokeClasses: "spoke innerSpokeLeft", spokeNumber: 4   },
+        {   id: 10, spokeClasses: "spoke outerSpokeLeft", spokeNumber: 4   },
+        {   id: 11, spokeClasses: "spoke innerSpokeLeft", spokeNumber: 5   },
+        {   id: 12, spokeClasses: "spoke outerSpokeLeft", spokeNumber: 5   },
+        {   id: 13, spokeClasses: "spoke innerSpokeLeft", spokeNumber: 6   },
+        {   id: 14, spokeClasses: "spoke outerSpokeLeft", spokeNumber: 6   },
+        {   id: 15, spokeClasses: "spoke innerSpokeLeft", spokeNumber: 7   },
+        {   id: 16, spokeClasses: "spoke outerSpokeLeft", spokeNumber: 7   },
+        {   id: 17, spokeClasses: "spoke innerSpokeLeft", spokeNumber: 8   },
+        {   id: 18, spokeClasses: "spoke outerSpokeLeft", spokeNumber: 8   },
+        {   id: 19, spokeClasses: "spoke innerSpokeLeft", spokeNumber: 9   },
+        {   id: 20, spokeClasses: "spoke outerSpokeLeft", spokeNumber: 9   },
+        {   id: 21, spokeClasses: "spoke innerSpokeLeft", spokeNumber: 10   },
+        {   id: 22, spokeClasses: "spoke outerSpokeLeft", spokeNumber: 10   },
+        {   id: 23, spokeClasses: "spoke innerSpokeLeft", spokeNumber: 11   },
+        {   id: 24, spokeClasses: "spoke outerSpokeLeft", spokeNumber: 11   },
+        {   id: 25, spokeClasses: "spoke innerSpokeLeft", spokeNumber: 12   },
+        {   id: 26, spokeClasses: "spoke outerSpokeLeft", spokeNumber: 12   },
+        {   id: 27, spokeClasses: "spoke innerSpokeLeft", spokeNumber: 13   },
+        {   id: 28, spokeClasses: "spoke outerSpokeLeft", spokeNumber: 13   },
+        {   id: 29, spokeClasses: "noSpoke posEast", spokeNumber: 0   },
+        {   id: 30, spokeClasses: "noSpoke posWest", spokeNumber: 0   },
+        {   id: 31, spokeClasses: "spoke innerSpokeLeft", spokeNumber: 14   },
+        {   id: 32, spokeClasses: "spoke outerSpokeLeft", spokeNumber: 14   },
+        {   id: 33, spokeClasses: "spoke innerSpokeLeft", spokeNumber: 15   },
+        {   id: 34, spokeClasses: "spoke outerSpokeLeft", spokeNumber: 15   },
+        {   id: 35, spokeClasses: "spoke innerSpokeRight", spokeNumber: 16   },
+        {   id: 36, spokeClasses: "spoke outerSpokeRight", spokeNumber: 16   },
+        {   id: 37, spokeClasses: "spoke innerSpokeRight", spokeNumber: 17   },
+        {   id: 38, spokeClasses: "spoke outerSpokeRight", spokeNumber: 17   },
+        {   id: 39, spokeClasses: "spoke innerSpokeRight", spokeNumber: 18   },
+        {   id: 40, spokeClasses: "spoke outerSpokeRight", spokeNumber: 18   },
+        {   id: 41, spokeClasses: "spoke innerSpokeRight", spokeNumber: 19   },
+        {   id: 42, spokeClasses: "spoke outerSpokeRight", spokeNumber: 19   },
+        {   id: 43, spokeClasses: "spoke innerSpokeRight", spokeNumber: 20   },
+        {   id: 44, spokeClasses: "spoke outerSpokeRight", spokeNumber: 20   },
+        {   id: 45, spokeClasses: "spoke innerSpokeRight", spokeNumber: 21   },
+        {   id: 46, spokeClasses: "spoke outerSpokeRight", spokeNumber: 21   },
+        {   id: 47, spokeClasses: "spoke innerSpokeRight", spokeNumber: 22   },
+        {   id: 48, spokeClasses: "spoke outerSpokeRight", spokeNumber: 22   },
+        {   id: 49, spokeClasses: "spoke innerSpokeRight", spokeNumber: 23   },
+        {   id: 50, spokeClasses: "spoke outerSpokeRight", spokeNumber: 23   },
+        {   id: 51, spokeClasses: "spoke innerSpokeRight", spokeNumber: 24   },
+        {   id: 52, spokeClasses: "spoke outerSpokeRight", spokeNumber: 24   },
+        {   id: 53, spokeClasses: "spoke innerSpokeRight", spokeNumber: 25   },
+        {   id: 54, spokeClasses: "spoke outerSpokeRight", spokeNumber: 25   },
+        {   id: 55, spokeClasses: "spoke innerSpokeRight", spokeNumber: 26   },
+        {   id: 56, spokeClasses: "spoke outerSpokeRight", spokeNumber: 26   },
+        {   id: 57, spokeClasses: "spoke innerSpokeRight", spokeNumber: 27   },
+        {   id: 58, spokeClasses: "spoke outerSpokeRight", spokeNumber: 27   },
+        {   id: 59, spokeClasses: "spoke innerSpokeRight", spokeNumber: 28   },
+        {   id: 60, spokeClasses: "spoke outerSpokeRight", spokeNumber: 28   },
+        {   id: 61, spokeClasses: "spoke innerSpokeRight", spokeNumber: 29   },
+        {   id: 62, spokeClasses: "spoke outerSpokeRight", spokeNumber: 29   },
+        {   id: 63, spokeClasses: "spoke innerSpokeRight", spokeNumber: 30   },
+        {   id: 64, spokeClasses: "spoke outerSpokeRight", spokeNumber: 30   }        
     ];
 
     // Info from various iChing websites

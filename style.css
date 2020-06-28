@@ -69,6 +69,128 @@
   display:block;
   float:left;
 }
+.spokes30 {
+  width:900px;
+  height:1150px;
+  position:relative;
+}
+.spoke {
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:800px;
+}
+.hexInnerL {
+  width: 180px;
+  display:block;
+  float:left;
+  text-align:left;
+  transform: scale(-1,-1);
+  overflow:hidden;
+  whitespace:nowrap;
+  background-color:lightsalmon;
+}
+.hexInnerR {
+  width: 180px;
+  display:block;
+  float:left;
+  text-align:right;
+  overflow:hidden;
+  whitespace:nowrap;
+  text-overflow:clip;
+  background-color:lightsalmon;
+}
+.ring {
+  width: 30px;
+  display:block;
+  float:left;
+  text-align:center;
+  color:white;
+  background-color:red;
+}
+.hexOuterL {
+  width: 180px;
+  display:block;
+  float:left;
+  transform: scale(-1,-1);
+  text-align:right;
+  overflow:hidden;
+  whitespace:nowrap;
+  background-color:lightgrey;
+}
+.hexOuterR {
+  width: 180px;
+  display:block;
+  float:left;
+  overflow:hidden;
+  whitespace:nowrap;
+  background-color:lightgrey;
+}
+.spokeNbrL {
+  width: 30px;
+  display:block;
+  float:left;
+  transform: scale(-1,-1);
+  text-align:right;
+  background-color:blue;
+  color:white;
+}
+.spokeNbrR {
+  width: 30px;
+  display:block;
+  float:left;
+  background-color:blue;
+  color:white;
+}
+.leftSpoke {
+  transform-origin: left center;
+  padding-left:134px;
+  margin-left:200px;
+}
+.rightSpoke {
+  transform-origin: left center;
+  padding-left:134px;
+  margin-left:200px;
+}
+.innerSpokeLeft {
+  transform-origin: 200px 10px;
+  padding-left:0px;
+}
+.innerSpokeRight {
+  transform-origin: 0px 10px;
+  padding-left:108px;
+  margin-left:205px;
+}
+.outerSpokeLeft {
+  transform-origin: 320px 10px;
+  padding-left: 0px;
+  margin-left:-120px;
+}
+.outerSpokeRight {
+  transform-origin: -230px 10px;
+  margin-left: 435px;
+  width:400px;
+}
+.posNorth {
+  position:absolute;
+  top:42%;
+  left:68%;
+}
+.posSouth {
+  position:absolute;
+  top:58%;
+  left:68%;
+}
+.posEast {
+  position:absolute;
+  top:50%;
+  left:61.5%;
+}
+.posWest {
+  position:absolute;
+  top:50%;
+  left:73%;
+}
 .triBrowser {
   width:320px;
   display:block;

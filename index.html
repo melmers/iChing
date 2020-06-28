@@ -12,9 +12,6 @@
 
   <body ng-app="myApp">
 
-    <script type="text/javascript" src="d3.v2.js"></script>
-    <script type="text/javascript" src="wheel.js"></script>
-
     <script src="ichingController.js"></script>
 <!-- <script src="./iching-data.js"></script> -->
 
@@ -34,14 +31,32 @@
 
       <div ng-show="selTab == '1'">
 
-              <div class="hexwheel">
-                <div class="div_RootBody" id="radial_chart">
-                  <div class="chart"></div>
-                </div>
+              <div class="spokes30">
+                      <div ng-repeat="i in spokeInfoLeft">
+                        <div class="{{i.classes}}" style="transform: rotate({{i.angle}}deg);"> 
+                          <div class="spokeNbrL">#{{i.id}}</div>
+                          <div class="hexInnerL">
+                              <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].Name.substring(0,22) }}</a>
+                          </div>
+                          <div class="ring"> :: </div>  
+                          <div class="hexOuterL">
+                              <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].Name.substring(0,22) }}</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div ng-repeat="i in spokeInfoRight">
+                        <div class="{{i.classes}}" style="transform: rotate({{i.angle}}deg);"> 
+                          <div class="spokeNbrR">#{{i.id}}</div>
+                          <div class="hexInnerR">
+                              <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].Name.substring(0,22) }}</a>
+                          </div>
+                          <div class="ring"> :: </div> 
+                          <div class="hexOuterR">
+                              <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].Name.substring(0,22) }}</a>
+                          </div> 
+                        </div>
+                      </div>
 
-                <script type="text/javascript">
-                  drawRadialHubAndSpoke("Drawing 1", focalNode, nodeSet, "#radial_chart .chart", "colorScale20", 10, 100, 5, 0);
-                </script>
               </div>
 
               <div class="triBrowser">
@@ -57,7 +72,7 @@
               </div>
               <div class="hexBrowser">
                   &#9775 Hexagram Browser:
-                  <select ng-model="hexSel" ng-init="hexSel=54" ng-options="hex.id as hex.id for hex in hexNumbers"></select><br><br>
+                  <select ng-model="hexSel" ng-init="hexSel=54" ng-options="hex.id as hex.id for hex in hexInfo"></select><br><br>
                   <a ng-href="{{ iChingInfo[0].Hexagrams[hexSel-1].url }}" target="_blank">{{ iChingInfo[0].Hexagrams[hexSel-1].Name }} --- from {{ iChingInfo[0].Short }}</a><br>
                   <a ng-href="{{ iChingInfo[1].Hexagrams[hexSel-1].url }}" target="_blank">{{ iChingInfo[1].Hexagrams[hexSel-1].Name }} --- from {{ iChingInfo[1].Short }}</a><br>
                   <a ng-href="{{ iChingInfo[2].Hexagrams[hexSel-1].url }}" target="_blank">{{ iChingInfo[2].Hexagrams[hexSel-1].Name }} --- from {{ iChingInfo[2].Short }}</a><br>
