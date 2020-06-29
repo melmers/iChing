@@ -70,9 +70,14 @@
   float:left;
 }
 .spokes30 {
-  width:900px;
-  height:1150px;
+  width:1400px;
+  height:1400px;
   position:relative;
+  background-image: url("wheel4.png");
+  background-position: 120px 130px; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: 83%; /* Resize the background image to cover the entire container */
+
 }
 .spoke {
   position:absolute;
@@ -145,12 +150,12 @@
 .leftSpoke {
   transform-origin: left center;
   padding-left:134px;
-  margin-left:200px;
+  margin-left:0px;
 }
 .rightSpoke {
   transform-origin: left center;
   padding-left:134px;
-  margin-left:200px;
+  margin-left:``0px;
 }
 .innerSpokeLeft {
   transform-origin: 200px 10px;
@@ -182,31 +187,31 @@
 }
 .posNorth {
   position:absolute;
-  top:41%;
-  left:66%;
+  top:43%;
+  left:46%;
   text-align:center;
 }
 .posSouth {
   position:absolute;
-  top:59%;
-  left:66%;
+  top:57%;
+  left:46%;
   text-align:center;
 }
 .posEast {
   position:absolute;
   top:50%;
-  left:58%;
+  left:41%;
 }
 .posWest {
   position:absolute;
   top:50%;
-  left:73%;
+  left:50%;
   text-align:right;
 }
 .youInCenter {
   position:absolute;
-  top:45.5%;
-  left:63%;
+  top:46%;
+  left:44%;
   font-size:98px;
   color:lightgrey;
   text-shadow: 2px 2px #000000;
