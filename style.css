@@ -151,14 +151,12 @@
   float:left;
   transform: scale(-1,-1);
   text-align:right;
-  background-color:navy;
   color:white;
 }
 .spokeNbrR {
   width: 30px;
   display:block;
   float:left;
-  background-color:navy;
   color:white;
 }
 .leftSpoke {
