@@ -14,57 +14,167 @@
     <script src="ichingController.js"></script>
 <!-- <script src="./iching-data.js"></script> -->
 
-    <div ng-controller="iChingCtrl" ng-init="rbThrow.value='ThrowEach'">
+    <div ng-controller="iChingCtrl" ng-init="rbThrow.value='ThrowEach'; selTab='0'; iChingWeb=5; hexSel=54; savedHex=0;">
 
-      <button class="tablink" ng-click="selTab=0" ng-init="selTab='0'">iChing</button>
-      <button class="tablink" ng-click="selTab=1">Explore</button>
-      <button class="tablink" ng-click="selTab=2">About</button>
+      <button class="tablink" ng-click="selTab=0">iChing</button>
+      <button class="tablink" ng-click="selTab=1">About</button>
       &nbsp;&nbsp;
       <div  class="tablink">
         <label id="lbllookup" for="lookup">Default Lookup Hexagrams:</label>
-        <select name="lookup" ng-model="iChingWeb" ng-init="iChingWeb=5"
-                ng-options="iChing.id as iChing.Short for iChing in iChingInfo">
+        <select name="lookup" ng-model="iChingWeb" ng-options="iChing.id as iChing.Short for iChing in iChingInfo">
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <label id="lblSaved" for="saved">{{divinations.length-1}} saved reading(s):</label>
+        <select name="saved" ng-change="highlightHexs(divinations[savedHex].hexagramNow.number, divinations[savedHex].hexagramNext.number)" 
+            ng-model="savedHex" ng-options="x.id as x.idName for x in divinations">
         </select>
       </div>
       <br><br>
 
-      <div ng-show="selTab == '1'">
+      <div ng-show="selTab == '0'">
 
               <div class="spokes30">
+                <svg width="1400" height="1400">
+                  <circle cx="580px" cy="582px" r="575" stroke="black" stroke-width="1" fill="brown" />
+                  <circle cx="580px" cy="582px" r="555" stroke="black" stroke-width="1" fill="navy" />
+                  <circle cx="580px" cy="582px" r="373" stroke="black" stroke-width="1" fill="red" />
+                  <circle cx="580px" cy="582px" r="345" stroke="black" stroke-width="1" fill="white" />
+                  <circle cx="580px" cy="582px" r="163" stroke="black" stroke-width="1" fill="navy" />
+                  <circle cx="580px" cy="582px" r="129" stroke="black" stroke-width="1" fill="white" />
+                </svg>
                 <div class="youInCenter">
                   You
                 </div>
                 <div ng-repeat="i in noSpokeInfo">
-                  <div class="{{i.classes}}"> 
-                      <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hex-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hex-1].Name.substring(0,16) }}</a>
+                  <div class="{{i.classes}} hex{{i.hex}}"> 
+                      <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hex-1].url }}" target="_blank">{{ flipName(i.flip, iChingInfo[iChingWeb].Hexagrams[i.hex-1].Name.substring(0,16)) }}</a>
                   </div>
                 </div>
                 <div ng-repeat="i in spokeInfoLeft">
-                  <div class="{{i.classes}}" style="transform: rotate({{i.angle}}deg);"> 
-                    <div class="spokeNbrL">#{{i.id}}</div>
-                    <div class="hexInnerL">
+                  <div class="{{i.classes}}" style="transform: rotate({{i.angle}}deg)">
+                    <div class="spokeNbrL">{{i.id}} -</div>
+                    <div class="hexInnerL hex{{i.hexInner}}">
                         <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].Name.substring(0,22) }}</a>
                     </div>
                     <div class="ring"> :: </div>  
-                    <div class="hexOuterL">
-                        <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].Name.substring(0,22) }}</a>
+                    <div class="hexOuterL hex{{i.hexOuter}}">
+                        <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].url }}" target="_blank">{{ flipName(true, iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].Name.substring(0,22)) }}</a>
                     </div>
                   </div>
                 </div>
                 <div ng-repeat="i in spokeInfoRight">
-                  <div class="{{i.classes}}" style="transform: rotate({{i.angle}}deg);"> 
-                    <div class="spokeNbrR">#{{i.id}}</div>
-                    <div class="hexInnerR">
-                        <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].Name.substring(0,22) }}</a>
+                  <div class="{{i.classes}}" style="transform: rotate({{i.angle}}deg)">
+                    <div class="spokeNbrR">- {{i.id}}</div>
+                    <div class="hexInnerR hex{{i.hexInner}}">
+                        <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].url }}" target="_blank">{{ flipName(true, iChingInfo[iChingWeb].Hexagrams[i.hexInner-1].Name.substring(0,22)) }}</a>
                     </div>
                     <div class="ring"> :: </div> 
-                    <div class="hexOuterR">
+                    <div class="hexOuterR hex{{i.hexOuter}}">
                         <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[i.hexOuter-1].Name.substring(0,22) }}</a>
                     </div> 
                   </div>
                 </div>
-              </div>
+                <div class="controlsWheel">
+                  <div  ng-show="savedHex==0">
+                    <input type="radio" ng-model="rbThrow.value" value="ThrowEach">Each line<br>
+                    <input type="radio" ng-model="rbThrow.value" value="ThrowAll">All at once<br>
+                    <button id="btnThrow" ng-click="ThrowCoins()">Throw Coins</button><br>
+                    <br><br>
+                    <button ng-show="divinations[0].coins[0] != ''" ng-click="clearDivination()">Clear</button><br>
+                    <button ng-show="divinations[0].coins[5] != ''" ng-click="saveDivination()">Save</button>
+                  </div>
+                </div>
+                <div class="questionWheel">
+                  <div ng-show="savedHex==0">
+                    <textarea type="text" class="boxQuestion" ng-model="divinations[savedHex].question.value" spellcheck="false" data-gramm="false" placeholder='Enter your question here and click "Throw Coins"'></textarea><br>
+                  </div>
 
+                  <!-- for saved throws, readonly textarea (for now) -->
+                  <div ng-show="savedHex>0">
+                    <textarea readonly type="text" class="boxQuestion" ng-model="divinations[savedHex].question.value" spellcheck="false" data-gramm="false"></textarea><br>
+                    <div class="timeWheel">
+                        Time:<br>
+                        on {{divinations[savedHex].time | date:'mediumDate'}}<br>
+                        at {{divinations[savedHex].time | date:'mediumTime'}}<br>
+                        <br><br>
+                        <button ng-click="deleteDivination(savedHex)">Delete</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="readingCoins" ng-show="divinations[savedHex].coins[0]!=''">
+                    <div class="coins coinsWheel">
+                          Coins:<br>
+                      <div class="coinsBorder">
+                        {{ showCoins(divinations[savedHex].coins[5]) }}<br>
+                        {{ showCoins(divinations[savedHex].coins[4]) }}<br>
+                        {{ showCoins(divinations[savedHex].coins[3]) }}<br>
+                        {{ showCoins(divinations[savedHex].coins[2]) }}<br>
+                        {{ showCoins(divinations[savedHex].coins[1]) }}<br>
+                        {{ showCoins(divinations[savedHex].coins[0]) }}
+                      </div>
+                    </div>
+                    <div class="hexagram hexNowWheel">
+                          Present<br>
+
+                          <div class="hexBorder hexNow">
+                            {{ linePatterns[divinations[savedHex].hexagramNow.lines[5]] }}<br>
+                            {{ linePatterns[divinations[savedHex].hexagramNow.lines[4]] }}<br>
+                            {{ linePatterns[divinations[savedHex].hexagramNow.lines[3]] }}<br>
+                            {{ linePatterns[divinations[savedHex].hexagramNow.lines[2]] }}<br>
+                            {{ linePatterns[divinations[savedHex].hexagramNow.lines[1]] }}<br>
+                            {{ linePatterns[divinations[savedHex].hexagramNow.lines[0]] }}
+                          </div>
+                    </div>
+                </div>
+                <div class="reading" ng-show="divinations[savedHex].coins[5]!=''">
+
+                      <div class="hexNowLinksWheel">
+                          <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[divinations[savedHex].hexagramNow.number-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[divinations[savedHex].hexagramNow.number-1].Name }}</a>
+                          <div class="dropdown hexlist">
+                            <button class="dropbtn"> v </button>
+                            <div class="dropdown-content">
+                              <a ng-href="{{ iChingInfo[0].Hexagrams[divinations[savedHex].hexagramNow.number-1].url }}" target="_blank">{{ iChingInfo[savedHex].Hexagrams[divinations[0].hexagramNow.number-1].Name }} --- from {{ iChingInfo[0].Short }}</a>
+                              <a ng-href="{{ iChingInfo[1].Hexagrams[divinations[savedHex].hexagramNow.number-1].url }}" target="_blank">{{ iChingInfo[savedHex].Hexagrams[divinations[0].hexagramNow.number-1].Name }} --- from {{ iChingInfo[1].Short }}</a>
+                              <a ng-href="{{ iChingInfo[2].Hexagrams[divinations[savedHex].hexagramNow.number-1].url }}" target="_blank">{{ iChingInfo[savedHex].Hexagrams[divinations[0].hexagramNow.number-1].Name }} --- from {{ iChingInfo[2].Short }}</a>
+                              <a ng-href="{{ iChingInfo[3].Hexagrams[divinations[savedHex].hexagramNow.number-1].url }}" target="_blank">{{ iChingInfo[savedHex].Hexagrams[divinations[0].hexagramNow.number-1].Name }} --- from {{ iChingInfo[3].Short }}</a>
+                              <a ng-href="{{ iChingInfo[4].Hexagrams[divinations[savedHex].hexagramNow.number-1].url }}" target="_blank">{{ iChingInfo[savedHex].Hexagrams[divinations[0].hexagramNow.number-1].Name }} --- from {{ iChingInfo[4].Short }}</a>
+                              <a ng-href="{{ iChingInfo[5].Hexagrams[divinations[savedHex].hexagramNow.number-1].url }}" target="_blank">{{ iChingInfo[savedHex].Hexagrams[divinations[0].hexagramNow.number-1].Name }} --- from {{ iChingInfo[5].Short }}</a>
+                            </div>
+                          </div>
+                          <br><br>
+                          <div class="trigram2">{{ divinations[savedHex].hexagramNow.trigram2 }}<br></div>
+                          {{ divinations[savedHex].hexagramNow.trigram1 }}
+                      </div>
+                      <div class="hexagram hexNextWheel">
+                          Future<br>
+                          <div class="hexBorder hexNext">
+                            {{ linePatterns[divinations[savedHex].hexagramNext.lines[5]] }}<br>
+                            {{ linePatterns[divinations[savedHex].hexagramNext.lines[4]] }}<br>
+                            {{ linePatterns[divinations[savedHex].hexagramNext.lines[3]] }}<br>
+                            {{ linePatterns[divinations[savedHex].hexagramNext.lines[2]] }}<br>
+                            {{ linePatterns[divinations[savedHex].hexagramNext.lines[1]] }}<br>
+                            {{ linePatterns[divinations[savedHex].hexagramNext.lines[0]] }}
+                          </div>
+                      </div>
+                      <div class="hexNextLinksWheel">
+                          <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[divinations[savedHex].hexagramNext.number-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[divinations[savedHex].hexagramNext.number-1].Name }}</a>
+                          <div class="dropdown hexlist">
+                            <button class="dropbtn"> v </button>
+                            <div class="dropdown-content">
+                              <a ng-href="{{ iChingInfo[0].Hexagrams[divinations[savedHex].hexagramNext.number-1].url }}" target="_blank">{{ iChingInfo[0].Hexagrams[divinations[savedHex].hexagramNext.number-1].Name }} --- from {{ iChingInfo[0].Short }}</a>
+                              <a ng-href="{{ iChingInfo[1].Hexagrams[divinations[savedHex].hexagramNext.number-1].url }}" target="_blank">{{ iChingInfo[1].Hexagrams[divinations[savedHex].hexagramNext.number-1].Name }} --- from {{ iChingInfo[1].Short }}</a>
+                              <a ng-href="{{ iChingInfo[2].Hexagrams[divinations[savedHex].hexagramNext.number-1].url }}" target="_blank">{{ iChingInfo[2].Hexagrams[divinations[savedHex].hexagramNext.number-1].Name }} --- from {{ iChingInfo[2].Short }}</a>
+                              <a ng-href="{{ iChingInfo[3].Hexagrams[divinations[savedHex].hexagramNext.number-1].url }}" target="_blank">{{ iChingInfo[3].Hexagrams[divinations[savedHex].hexagramNext.number-1].Name }} --- from {{ iChingInfo[3].Short }}</a>
+                              <a ng-href="{{ iChingInfo[4].Hexagrams[divinations[savedHex].hexagramNext.number-1].url }}" target="_blank">{{ iChingInfo[4].Hexagrams[divinations[savedHex].hexagramNext.number-1].Name }} --- from {{ iChingInfo[4].Short }}</a>
+                              <a ng-href="{{ iChingInfo[5].Hexagrams[divinations[savedHex].hexagramNext.number-1].url }}" target="_blank">{{ iChingInfo[5].Hexagrams[divinations[savedHex].hexagramNext.number-1].Name }} --- from {{ iChingInfo[5].Short }}</a>
+                            </div>
+                          </div>
+                          <br><br>
+                          <div class="trigram2">{{ divinations[savedHex].hexagramNext.trigram2 }}<br></div>
+                          {{ divinations[savedHex].hexagramNext.trigram1 }}
+                      </div>
+                  </div>
+              </div>
               <div class="triBrowser">
                   The Trigrams:<br><br>
                   {{ trigramNames[0] }}<br>
@@ -78,7 +188,7 @@
               </div>
               <div class="hexBrowser">
                   &#9775 Hexagram Browser:
-                  <select ng-model="hexSel" ng-init="hexSel=54" ng-options="hex.id as hex.id for hex in hexInfo"></select><br><br>
+                  <select ng-model="hexSel" ng-options="hex.id as hex.id for hex in hexInfo"></select><br><br>
                   <a ng-href="{{ iChingInfo[0].Hexagrams[hexSel-1].url }}" target="_blank">{{ iChingInfo[0].Hexagrams[hexSel-1].Name }} --- from {{ iChingInfo[0].Short }}</a><br>
                   <a ng-href="{{ iChingInfo[1].Hexagrams[hexSel-1].url }}" target="_blank">{{ iChingInfo[1].Hexagrams[hexSel-1].Name }} --- from {{ iChingInfo[1].Short }}</a><br>
                   <a ng-href="{{ iChingInfo[2].Hexagrams[hexSel-1].url }}" target="_blank">{{ iChingInfo[2].Hexagrams[hexSel-1].Name }} --- from {{ iChingInfo[2].Short }}</a><br>
@@ -144,144 +254,8 @@
                   <div class="imgbox"><img src="image149.jpg" width="100%"></div>
               </div>
       </div>
-
-      <div ng-show="selTab == '0'">
-        <table class="listChings">
-          <tr ng-repeat="x in divinations track by $index" class="listChing">
-
-              <!-- The buttons card displays differently in the first row vs later rows -->
-              <td class="card buttons">
-
-              <!-- This format is used in the first row, lots of buttons for doing new throws -->
-              <div ng-show="$index == '0'">
-                <input type="radio" ng-model="rbThrow.value" value="ThrowEach">Each line<br>
-                <input type="radio" ng-model="rbThrow.value" value="ThrowAll">All at once<br>
-                <button id="btnThrow" ng-click="ThrowCoins()">Throw Coins</button><br>
-                <br>
-                <button ng-show="divinations[0].coins[0] != ''" ng-click="clearDivination()">Clear</button><br>
-                <button ng-show="divinations[0].coins[5] != ''" ng-click="saveDivination()">Save</button>
-
-                <div ng-show="divinations.length > 1">
-                  <br>{{ divinations.length-1 }} saved (below)
-                </div>
-              </div>
-
-              <!-- This format is used in the additional rows for saved throws, only needs delete button -->
-              <div ng-show="$index > '0'">
-                <button ng-click="deleteDivination($index)">Delete</button><br>
-                <br><br><br><br><br>#{{ $index }} of {{ divinations.length-1 }} saved
-              </div>
-            </td>
-
-            <td class="card question">
-              <table><tr>
-                <td>
-                  <!-- first row only, editable textarea to enter questions -->
-                  <div ng-show="$index == '0'">
-                    My Question:<br>
-                    <textarea type="text" class="boxQuestion" ng-model="x.question.value" spellcheck="false" data-gramm="false" placeholder='Enter your question here and click "Throw Coins"'></textarea><br>
-                  </div>
-
-                  <!-- for saved throws, readonly textarea (for now) -->
-                  <div ng-show="$index > '0'">
-                    My question was:<br>
-                    <textarea readonly type="text" class="boxQuestion" ng-model="x.question.value" spellcheck="false" data-gramm="false"></textarea><br>
-                  </div>
-
-                  <br>
-                  <!-- for saved throws, show time of throw -->
-                  <div ng-show="$index >= '0'">
-                    {{x.time | date:'medium'}}
-                  </div>
-                </td>
-                <td class="coins">
-                  <div ng-show="x.coins[0]!=''">Coins</div>
-                  {{ showCoins(x.coins[5]) }}<br>
-                  {{ showCoins(x.coins[4]) }}<br>
-                  {{ showCoins(x.coins[3]) }}<br>
-                  {{ showCoins(x.coins[2]) }}<br>
-                  {{ showCoins(x.coins[1]) }}<br>
-                  {{ showCoins(x.coins[0]) }}<br><br>
-                </td>
-              </tr></table>
-            </td>
-
-            <td class="card throw">
-              <table><tr>
-                <td class="hexagram">
-                  <div ng-show="x.coins[0]!=''">
-                    Present<br>
-                  </div>
-                  <div class="hexborder" ng-show="x.coins[0]!=''">
-                    {{ linePatterns[x.hexagramNow.lines[5]] }}<br>
-                    {{ linePatterns[x.hexagramNow.lines[4]] }}<br>
-                    {{ linePatterns[x.hexagramNow.lines[3]] }}<br>
-                    {{ linePatterns[x.hexagramNow.lines[2]] }}<br>
-                    {{ linePatterns[x.hexagramNow.lines[1]] }}<br>
-                    {{ linePatterns[x.hexagramNow.lines[0]] }}
-                  </div>
-                </td>
-                <td class="decoder present" ng-show="x.coins[5]!=''">
-                  <br>
-                  <div class="hexselect">
-
-                    <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[x.hexagramNow.number-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[x.hexagramNow.number-1].Name }}</a>
-                    <div class="dropdown hexlist">
-                      <button class="dropbtn"> v </button>
-                      <div class="dropdown-content">
-                        <a ng-href="{{ iChingInfo[0].Hexagrams[x.hexagramNow.number-1].url }}" target="_blank">{{ iChingInfo[0].Hexagrams[x.hexagramNow.number-1].Name }} --- from {{ iChingInfo[0].Short }}</a>
-                        <a ng-href="{{ iChingInfo[1].Hexagrams[x.hexagramNow.number-1].url }}" target="_blank">{{ iChingInfo[1].Hexagrams[x.hexagramNow.number-1].Name }} --- from {{ iChingInfo[1].Short }}</a>
-                        <a ng-href="{{ iChingInfo[2].Hexagrams[x.hexagramNow.number-1].url }}" target="_blank">{{ iChingInfo[2].Hexagrams[x.hexagramNow.number-1].Name }} --- from {{ iChingInfo[2].Short }}</a>
-                        <a ng-href="{{ iChingInfo[3].Hexagrams[x.hexagramNow.number-1].url }}" target="_blank">{{ iChingInfo[3].Hexagrams[x.hexagramNow.number-1].Name }} --- from {{ iChingInfo[3].Short }}</a>
-                        <a ng-href="{{ iChingInfo[4].Hexagrams[x.hexagramNow.number-1].url }}" target="_blank">{{ iChingInfo[4].Hexagrams[x.hexagramNow.number-1].Name }} --- from {{ iChingInfo[4].Short }}</a>
-                        <a ng-href="{{ iChingInfo[5].Hexagrams[x.hexagramNow.number-1].url }}" target="_blank">{{ iChingInfo[5].Hexagrams[x.hexagramNow.number-1].Name }} --- from {{ iChingInfo[5].Short }}</a>
-                      </div>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="trigram2">{{ x.hexagramNow.trigram2 }}<br></div>
-                  {{ x.hexagramNow.trigram1 }}
-                </td>
-                <td class="hexagram">
-                  <div ng-show="x.coins[0]!=''">
-                    Future<br>
-                  </div>
-                  <div class="hexborder" ng-show="x.coins[0]!=''">
-                    {{ linePatterns[x.hexagramNext.lines[5]] }}<br>
-                    {{ linePatterns[x.hexagramNext.lines[4]] }}<br>
-                    {{ linePatterns[x.hexagramNext.lines[3]] }}<br>
-                    {{ linePatterns[x.hexagramNext.lines[2]] }}<br>
-                    {{ linePatterns[x.hexagramNext.lines[1]] }}<br>
-                    {{ linePatterns[x.hexagramNext.lines[0]] }}
-                  </div>
-                </td>
-                <td class="decoder future"  ng-show="x.coins[5]!=''">
-                  <br>
-                  <div class="hexselect">
-                    <a ng-href="{{ iChingInfo[iChingWeb].Hexagrams[x.hexagramNext.number-1].url }}" target="_blank">{{ iChingInfo[iChingWeb].Hexagrams[x.hexagramNext.number-1].Name }}</a>
-                    <div class="dropdown hexlist">
-                      <button class="dropbtn"> v </button>
-                      <div class="dropdown-content">
-                        <a ng-href="{{ iChingInfo[0].Hexagrams[x.hexagramNext.number-1].url }}" target="_blank">{{ iChingInfo[0].Hexagrams[x.hexagramNext.number-1].Name }} --- from {{ iChingInfo[0].Short }}</a>
-                        <a ng-href="{{ iChingInfo[1].Hexagrams[x.hexagramNext.number-1].url }}" target="_blank">{{ iChingInfo[1].Hexagrams[x.hexagramNext.number-1].Name }} --- from {{ iChingInfo[1].Short }}</a>
-                        <a ng-href="{{ iChingInfo[2].Hexagrams[x.hexagramNext.number-1].url }}" target="_blank">{{ iChingInfo[2].Hexagrams[x.hexagramNext.number-1].Name }} --- from {{ iChingInfo[2].Short }}</a>
-                        <a ng-href="{{ iChingInfo[3].Hexagrams[x.hexagramNext.number-1].url }}" target="_blank">{{ iChingInfo[3].Hexagrams[x.hexagramNext.number-1].Name }} --- from {{ iChingInfo[3].Short }}</a>
-                        <a ng-href="{{ iChingInfo[4].Hexagrams[x.hexagramNext.number-1].url }}" target="_blank">{{ iChingInfo[4].Hexagrams[x.hexagramNext.number-1].Name }} --- from {{ iChingInfo[4].Short }}</a>
-                        <a ng-href="{{ iChingInfo[5].Hexagrams[x.hexagramNext.number-1].url }}" target="_blank">{{ iChingInfo[5].Hexagrams[x.hexagramNext.number-1].Name }} --- from {{ iChingInfo[5].Short }}</a>
-                      </div>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="trigram2">{{ x.hexagramNext.trigram2 }}<br></div>
-                  {{ x.hexagramNext.trigram1 }}
-                </td>
-              </tr></table>
-            </td>
-          </tr>
-        </table>
-      </div>
       
-      <div ng-show="selTab == '2'">
+      <div ng-show="selTab == '1'">
         <div class="infoAbout">
           This program makes divining from the iChing quick and easy.<br>
           <br>

@@ -5,7 +5,8 @@
   float:left;
 }
 .coins {
-  width:50px;
+  width:60px;
+  text-align:center;
   line-height:130%;
   vertical-align:text-top;
 }
@@ -18,13 +19,26 @@
   padding-left:10px;
   padding-right:10px;
 }
-.hexborder {
+.hexBorder {
   font-family:"Courier New", Courier, monospace;
   font-size:13.5px;
   font-weight:bold;
   border: 1px solid #666;
-  background-color:lightcyan;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.coinsBorder {
+  border: 1px solid #666;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.boxQuestion {
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.hexNow {
+  background-color:aqua;
+}
+.hexNext {
+  background-color:gold;
+ 
 }
 .trigram2 {
   border-bottom:1px solid #000;
@@ -37,7 +51,7 @@
 }
 .boxQuestion {
   width:280px;
-  height:110px;
+  height:50px;
   overflow:auto;
   resize:none;
   margin-right:10px;
@@ -70,19 +84,19 @@
   float:left;
 }
 .spokes30 {
-  width:1400px;
-  height:1400px;
+  width:1580px;
+  height:1180px;
   position:relative;
-  background-image: url("wheel4.png");
-  background-position: 120px 130px; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: 83%; /* Resize the background image to cover the entire container */
-
+/*  background-image: url("wheel4.png");  */
+/*  background-position: 0px 0px; /* Center the image */
+/*  background-repeat: no-repeat; /* Do not repeat the image */
+/*  background-size: 98.5%; /* Resize the background image to cover the entire container */
+  background-color:white;
 }
 .spoke {
   position:absolute;
-  top:50%;
-  left:50%;
+  top:573px;
+  left:581px;
   width:800px;
 }
 .hexInnerL {
@@ -93,7 +107,7 @@
   transform: scale(-1,-1);
   overflow:hidden;
   whitespace:nowrap;
-  background-color:lightsalmon;
+  background-color:lightgrey;
 }
 .hexInnerR {
   width: 180px;
@@ -103,7 +117,7 @@
   overflow:hidden;
   whitespace:nowrap;
   text-overflow:clip;
-  background-color:lightsalmon;
+  background-color:lightgrey;
 }
 .ring {
   width: 30px;
@@ -137,14 +151,14 @@
   float:left;
   transform: scale(-1,-1);
   text-align:right;
-  background-color:blue;
+  background-color:navy;
   color:white;
 }
 .spokeNbrR {
   width: 30px;
   display:block;
   float:left;
-  background-color:blue;
+  background-color:navy;
   color:white;
 }
 .leftSpoke {
@@ -183,38 +197,78 @@
   text-align:left;
   overflow:hidden;
   whitespace:nowrap;
-  background-color:lightblue;
+  background-color:lightgrey;
 }
 .posNorth {
   position:absolute;
-  top:43%;
-  left:46%;
+  top:475px;
+  left:520px;
   text-align:center;
 }
 .posSouth {
   position:absolute;
-  top:57%;
-  left:46%;
+  top:670px;
+  left:520px;
   text-align:center;
 }
 .posEast {
   position:absolute;
-  top:50%;
-  left:41%;
+  top:575px;
+  left:455px;
 }
 .posWest {
   position:absolute;
-  top:50%;
-  left:50%;
+  top:575px;
+  left:585px;
   text-align:right;
 }
 .youInCenter {
   position:absolute;
-  top:46%;
-  left:44%;
+  top:520px;
+  left:505px;
   font-size:98px;
-  color:lightgrey;
+  color:chartreuse;
   text-shadow: 2px 2px #000000;
+}
+.controlsWheel {
+  position:absolute;
+  top:80px;
+  left:10px;
+}
+.timeWheel {
+  position:absolute;
+  top:80px;
+  left:0px;
+}
+.questionWheel {
+  position:absolute;
+  top:10px;
+  left:10px;
+}
+.coinsWheel {
+  position:absolute;
+  top:10px;
+  left:1020px;
+}
+.hexNowWheel {
+  position:absolute;
+  top:10px;
+  left:1110px;
+}
+.hexNowLinksWheel {
+  position:absolute;
+  top:30px;
+  left:1230px;
+}
+.hexNextWheel {
+  position:absolute;
+  top:180px;
+  left:1110px;
+}
+.hexNextLinksWheel {
+  position:absolute;
+  top:200px;
+  left:1230px;
 }
 .triBrowser {
   width:320px;

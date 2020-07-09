@@ -4,13 +4,13 @@
   'use strict';
 
 angular.module('myApp', [])
-  .controller('iChingCtrl', ['$scope', '$sce', function($scope, $sce) {
+  .controller('iChingCtrl', ['$scope', '$sce', '$filter', function($scope, $sce, $filter) {
 
     //
     // iChing data
     //
     // this copy never gets changed and is used to initialze and quickly restore clear data
-    $scope.no_divination = {question:{value:""}, coins:["","","","","",""], time:"", hexagramNow:{number:"", name:"", lines:[-1,-1,-1,-1,-1,-1], trigram1:"", trigram2:"", ndx:-1, key:-1}, hexagramNext:{number:"", name:"", lines:[-1,-1,-1,-1,-1,-1], trigram1:"", trigram2:"", ndx:-1, key:-1}};
+    $scope.no_divination = {id:0, idName:"New", question:{value:""}, coins:["","","","","",""], time:"", hexagramNow:{number:"", name:"", lines:[-1,-1,-1,-1,-1,-1], trigram1:"", trigram2:"", ndx:-1, key:-1}, hexagramNext:{number:"", name:"", lines:[-1,-1,-1,-1,-1,-1], trigram1:"", trigram2:"", ndx:-1, key:-1}};
 
     // line codes:
     //
@@ -54,6 +54,10 @@ angular.module('myApp', [])
     $scope.lineNow = 0;
     $scope.urlHexagram = "";
     $scope.txtLocalData = "";
+
+    //var hexNowHighlighted = 0;
+    //var hexNextHighlighted = 0;
+
     //$scope.divinations = [];
     //$scope.divinations.push(angular.copy(no_divination));   // start with a blank
 
@@ -109,6 +113,56 @@ angular.module('myApp', [])
     }
 
 ***/
+
+    $scope.flipName = function(flip, sName) {
+        if (flip) {
+            var dash = sName.search("-");
+            var str = dash+2;
+            var end = sName.length;
+            var name = sName.substring(str, end);
+            var nbr = sName.substring(0, dash-1);
+            var rev = name +  " - " + nbr;
+
+            return rev;
+        }
+        else
+            return sName;
+    }
+
+    $scope.highlightHexs = function(hexNow, hexNext) {
+
+        if ( typeof $scope.highlightHexs.hexElements == 'undefined' ) {
+            // find the elements for all 64 hexagrams in the DOM
+            $scope.highlightHexs.hexElements = [];
+            $scope.highlightHexs.hexElements[0] = 0; // no hexagram 0
+            for (let i = 1; i< 65; ++i)
+                 $scope.highlightHexs.hexElements[i] = angular.element( document.querySelector( '.hex' + i.toString()) );
+
+            $scope.highlightHexs.hexNowHighlighted = 0;
+            $scope.highlightHexs.hexNextHighlighted = 0;
+        }
+
+        if($scope.highlightHexs.hexNowHighlighted>0) {
+            //$scope.highlightHexs.hexElements[$scope.highlightHexs.hexNowHighlighted].css('border','0');
+            $scope.highlightHexs.hexElements[$scope.highlightHexs.hexNowHighlighted].css('background-color','lightgrey');
+        }
+        if($scope.highlightHexs.hexNextHighlighted>0) {
+            //$scope.highlightHexs.hexElements[$scope.highlightHexs.hexNextHighlighted].css('border','0');
+            $scope.highlightHexs.hexElements[$scope.highlightHexs.hexNextHighlighted].css('background-color','lightgrey');
+        }
+
+        if(hexNow>0) {
+            //$scope.highlightHexs.hexElements[hexNow].css('border','4px solid #0F0');
+            $scope.highlightHexs.hexElements[hexNow].css('background-color','aqua');
+        }
+        if(hexNext>0) {
+            //$scope.highlightHexs.hexElements[hexNext].css('border','4px solid #F00');
+            $scope.highlightHexs.hexElements[hexNext].css('background-color','gold');
+        }
+
+        $scope.highlightHexs.hexNowHighlighted = hexNow;
+        $scope.highlightHexs.hexNextHighlighted = hexNext;
+    };
 
     //
     // COIN DISPLAY HELPER
@@ -222,6 +276,7 @@ angular.module('myApp', [])
           }
         }
       }
+      $scope.highlightHexs($scope.divinations[0].hexagramNow.number, $scope.divinations[0].hexagramNext.number);
       // show hexagram now decoded from web
       //$scope.showHexWeb($scope.divinations[0].hexagramNow.number);
     };
@@ -261,11 +316,22 @@ angular.module('myApp', [])
     //
     $scope.clearDivination = function() {
         $scope.divinations[0] = JSON.parse(JSON.stringify($scope.no_divination));   // restore to a blank divination
+        $scope.highlightHexs(0, 0);
     };
 
     $scope.deleteDivination = function(n) {
         $scope.divinations.splice(n, 1);        // delete 1 at index n
         $scope.clearDivination();
+
+        for(let i=0; i<$scope.divinations.length; ++i) {
+            $scope.divinations[i].id = i;
+        }
+        if($scope.divinations.length>1)
+            $scope.savedHex = 1;
+        else
+            $scope.savedHex = 0;
+
+        $scope.highlightHexs($scope.divinations[$scope.savedHex].hexagramNow.number, $scope.divinations[$scope.savedHex].hexagramNext.number);
 
         // save the divinations in local storage (on disk)
         localStorage.setItem('iching', JSON.stringify($scope.divinations));
@@ -275,6 +341,16 @@ angular.module('myApp', [])
         // skip edit buff at 0
         $scope.divinations.splice(1, 0, angular.copy($scope.divinations[0]));   // saved at index 1, 0 deleted
         $scope.clearDivination();
+
+        for(let i=0; i<$scope.divinations.length; ++i) {
+            $scope.divinations[i].id = i;
+            if(i>0) $scope.divinations[i].idName = $scope.divinations[i].question.value.substring(0,20) +
+                "? on " + $filter('date')($scope.divinations[i].time, "mediumDate") +
+                " at " + $filter('date')($scope.divinations[i].time, "mediumTime");
+        }
+
+        $scope.savedHex=1;
+        $scope.highlightHexs($scope.divinations[$scope.savedHex].hexagramNow.number, $scope.divinations[$scope.savedHex].hexagramNext.number);
 
         // save the divinations in local storage (on disk)
         localStorage.setItem('iching', JSON.stringify($scope.divinations));
@@ -289,46 +365,46 @@ angular.module('myApp', [])
 
     // ****** THIS NEEDS TO BE IN A FACTORY ******
     $scope.noSpokeInfo = [
-        {   id:1, hex: 1, classes: "noSpoke posNorth" },
-        {   id:2, hex: 2, classes: "noSpoke posSouth" },
-        {   id:3, hex: 29, classes: "noSpoke posEast" },
-        {   id:4, hex: 30, classes: "noSpoke posWest" },
+        {   id:1, hex: 1, flip:false, classes: "noSpoke posNorth" },
+        {   id:2, hex: 2, flip:false, classes: "noSpoke posSouth" },
+        {   id:3, hex: 29, flip:false, classes: "noSpoke posEast" },
+        {   id:4, hex: 30, flip:true, classes: "noSpoke posWest" },
     ];
 
     $scope.spokeInfoLeft = [
-        {  id: 1, hexInner: 3, hexOuter: 4, angle: 96, classes: "spoke leftSpoke" }, // spoke 1
-        {  id: 2, hexInner: 5, hexOuter: 6, angle: 108, classes: "spoke leftSpoke" }, // spoke 2
-        {  id: 3, hexInner: 7, hexOuter: 8, angle: 120, classes: "spoke leftSpoke" }, // spoke 3
-        {  id: 4, hexInner: 9, hexOuter: 10, angle: 132, classes: "spoke leftSpoke" }, // spoke 4
-        {  id: 5, hexInner: 11, hexOuter: 12, angle: 144, classes: "spoke leftSpoke" }, // spoke 5
-        {  id: 6, hexInner: 13, hexOuter: 14, angle: 156, classes: "spoke leftSpoke" }, // spoke 6
-        {  id: 7, hexInner: 15, hexOuter: 16, angle: 168, classes: "spoke leftSpoke" }, // spoke 7
-        {  id: 8, hexInner: 17, hexOuter: 18, angle: 180, classes: "spoke leftSpoke" },   // spoke 8
-        {  id: 9, hexInner: 19, hexOuter: 20, angle: 192, classes: "spoke leftSpoke" },  // spoke 9
-        {  id: 10, hexInner: 21, hexOuter: 22, angle: 204, classes: "spoke leftSpoke" },  // spoke 10
-        {  id: 11, hexInner: 23, hexOuter: 24, angle: 216, classes: "spoke leftSpoke" },  // spoke 11
-        {  id: 12, hexInner: 25, hexOuter: 26, angle: 228, classes: "spoke leftSpoke" },  // spoke 12
-        {  id: 13, hexInner: 27, hexOuter: 28, angle: 240, classes: "spoke leftSpoke" },  // spoke 13
-        {  id: 14, hexInner: 31, hexOuter: 32, angle: 252, classes: "spoke leftSpoke" },  // spoke 14
-        {  id: 15, hexInner: 33, hexOuter: 34, angle: 264, classes: "spoke leftSpoke" },  // spoke 15
+        {  id: 1, hexInner: 3, hexOuter: 4, angle: 96, classes: "spoke leftSpoke angle96" }, // spoke 1
+        {  id: 2, hexInner: 5, hexOuter: 6, angle: 108, classes: "spoke leftSpoke angle108" }, // spoke 2
+        {  id: 3, hexInner: 7, hexOuter: 8, angle: 120, classes: "spoke leftSpoke angle120" }, // spoke 3
+        {  id: 4, hexInner: 9, hexOuter: 10, angle: 132, classes: "spoke leftSpoke angle132" }, // spoke 4
+        {  id: 5, hexInner: 11, hexOuter: 12, angle: 144, classes: "spoke leftSpoke angle144" }, // spoke 5
+        {  id: 6, hexInner: 13, hexOuter: 14, angle: 156, classes: "spoke leftSpoke angle156" }, // spoke 6
+        {  id: 7, hexInner: 15, hexOuter: 16, angle: 168, classes: "spoke leftSpoke angle168" }, // spoke 7
+        {  id: 8, hexInner: 17, hexOuter: 18, angle: 180, classes: "spoke leftSpoke angle180" },   // spoke 8
+        {  id: 9, hexInner: 19, hexOuter: 20, angle: 192, classes: "spoke leftSpoke angle192" },  // spoke 9
+        {  id: 10, hexInner: 21, hexOuter: 22, angle: 204, classes: "spoke leftSpoke angle204" },  // spoke 10
+        {  id: 11, hexInner: 23, hexOuter: 24, angle: 216, classes: "spoke leftSpoke angle216" },  // spoke 11
+        {  id: 12, hexInner: 25, hexOuter: 26, angle: 228, classes: "spoke leftSpoke angle228" },  // spoke 12
+        {  id: 13, hexInner: 27, hexOuter: 28, angle: 240, classes: "spoke leftSpoke angle240" },  // spoke 13
+        {  id: 14, hexInner: 31, hexOuter: 32, angle: 252, classes: "spoke leftSpoke angle252" },  // spoke 14
+        {  id: 15, hexInner: 33, hexOuter: 34, angle: 264, classes: "spoke leftSpoke angle264" },  // spoke 15
     ];
     
     $scope.spokeInfoRight = [
-        {  id: 16, hexInner: 35, hexOuter: 36, angle: -84, classes: "spoke rightSpoke" }, // spoke 16
-        {  id: 17, hexInner: 37, hexOuter: 38, angle: -72, classes: "spoke rightSpoke" }, // spoke 17
-        {  id: 18, hexInner: 39, hexOuter: 40, angle: -60, classes: "spoke rightSpoke" }, // spoke 18
-        {  id: 19, hexInner: 41, hexOuter: 42, angle: -48, classes: "spoke rightSpoke" }, // spoke 19
-        {  id: 20, hexInner: 43, hexOuter: 44, angle: -36, classes: "spoke rightSpoke" }, // spoke 20
-        {  id: 21, hexInner: 45, hexOuter: 46, angle: -24, classes: "spoke rightSpoke" }, // spoke 21
-        {  id: 22, hexInner: 47, hexOuter: 48, angle: -12, classes: "spoke rightSpoke" }, // spoke 22
-        {  id: 23, hexInner: 49, hexOuter: 50, angle: 0, classes: "spoke rightSpoke" },   // spoke 23
-        {  id: 24, hexInner: 51, hexOuter: 52, angle: 12, classes: "spoke rightSpoke" },  // spoke 24
-        {  id: 25, hexInner: 53, hexOuter: 54, angle: 24, classes: "spoke rightSpoke" },  // spoke 25
-        {  id: 26, hexInner: 55, hexOuter: 56, angle: 36, classes: "spoke rightSpoke" },  // spoke 26
-        {  id: 27, hexInner: 57, hexOuter: 58, angle: 48, classes: "spoke rightSpoke" },  // spoke 27
-        {  id: 28, hexInner: 59, hexOuter: 60, angle: 60, classes: "spoke rightSpoke" },  // spoke 28
-        {  id: 29, hexInner: 61, hexOuter: 62, angle: 72, classes: "spoke rightSpoke" },  // spoke 29
-        {  id: 30, hexInner: 63, hexOuter: 64, angle: 84, classes: "spoke rightSpoke" }  // spoke 30
+        {  id: 16, hexInner: 35, hexOuter: 36, angle: -84, classes: "spoke rightSpoke angleN84" }, // spoke 16
+        {  id: 17, hexInner: 37, hexOuter: 38, angle: -72, classes: "spoke rightSpoke angleN72" }, // spoke 17
+        {  id: 18, hexInner: 39, hexOuter: 40, angle: -60, classes: "spoke rightSpoke angleN60" }, // spoke 18
+        {  id: 19, hexInner: 41, hexOuter: 42, angle: -48, classes: "spoke rightSpoke angleN48" }, // spoke 19
+        {  id: 20, hexInner: 43, hexOuter: 44, angle: -36, classes: "spoke rightSpoke angleN36" }, // spoke 20
+        {  id: 21, hexInner: 45, hexOuter: 46, angle: -24, classes: "spoke rightSpoke angleN24" }, // spoke 21
+        {  id: 22, hexInner: 47, hexOuter: 48, angle: -12, classes: "spoke rightSpoke angleN12" }, // spoke 22
+        {  id: 23, hexInner: 49, hexOuter: 50, angle: 0, classes: "spoke rightSpoke angle0" },   // spoke 23
+        {  id: 24, hexInner: 51, hexOuter: 52, angle: 12, classes: "spoke rightSpoke angle12" },  // spoke 24
+        {  id: 25, hexInner: 53, hexOuter: 54, angle: 24, classes: "spoke rightSpoke angle24" },  // spoke 25
+        {  id: 26, hexInner: 55, hexOuter: 56, angle: 36, classes: "spoke rightSpoke angle36" },  // spoke 26
+        {  id: 27, hexInner: 57, hexOuter: 58, angle: 48, classes: "spoke rightSpoke angle48" },  // spoke 27
+        {  id: 28, hexInner: 59, hexOuter: 60, angle: 60, classes: "spoke rightSpoke angle60" },  // spoke 28
+        {  id: 29, hexInner: 61, hexOuter: 62, angle: 72, classes: "spoke rightSpoke angle72" },  // spoke 29
+        {  id: 30, hexInner: 63, hexOuter: 64, angle: 84, classes: "spoke rightSpoke angle84" }  // spoke 30
     ];
 
     $scope.hexInfo = [
