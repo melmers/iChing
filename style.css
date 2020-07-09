@@ -205,27 +205,27 @@
 }
 .posSouth {
   position:absolute;
-  top:670px;
+  top:672px;
   left:520px;
   text-align:center;
 }
 .posEast {
   position:absolute;
-  top:575px;
-  left:455px;
+  top:542px;
+  left:463px;
 }
 .posWest {
   position:absolute;
-  top:575px;
-  left:585px;
+  top:605px;
+  left:575px;
   text-align:right;
 }
 .youInCenter {
   position:absolute;
-  top:498px;
-  left:455px;
-  font-size:108px;
-  color:chartreuse;
+  top:510px;
+  left:465px;
+  font-size:98px;
+  color:magenta;
   text-shadow: 2px 2px #000000;
 }
 .controlsWheel {
