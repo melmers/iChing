@@ -211,20 +211,20 @@
 }
 .posEast {
   position:absolute;
-  top:542px;
-  left:463px;
+  top:555px;
+  left:460px;
 }
 .posWest {
   position:absolute;
-  top:605px;
-  left:575px;
+  top:600px;
+  left:580px;
   text-align:right;
 }
 .youInCenter {
   position:absolute;
-  top:510px;
-  left:465px;
-  font-size:98px;
+  top:505px;
+  left:455px;
+  font-size:108px;
   color:magenta;
   text-shadow: 2px 2px #000000;
 }
