@@ -1,3 +1,23 @@
+.titleBar {
+  width:1500px;
+  background-color:lightgrey;
+  padding:5px;
+  padding-left:10px;
+  padding-bottom:20px;
+  margin-bottom:15px;
+  border: 1px solid #666;
+  box-shadow: 4px 8px 8px 0px rgba(0,0,0,0.2);
+}
+.siteTitle {
+  font-size:30px;
+  margin-left:100px;
+  margin-right:100px;
+  display:block;
+  float:right;
+}
+.selBar {
+  display:inline-block;
+}
 .card {
   border: 1px solid #666;
   height:180px;
@@ -24,21 +44,20 @@
   font-size:13.5px;
   font-weight:bold;
   border: 1px solid #666;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 4px 4px 16px 0px rgba(0,0,0,0.2);
 }
 .coinsBorder {
   border: 1px solid #666;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 4px 4px 16px 0px rgba(0,0,0,0.2);
 }
 .boxQuestion {
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 4px 4px 16px 0px rgba(0,0,0,0.2);
 }
 .hexNow {
   background-color:aqua;
 }
 .hexNext {
   background-color:gold;
- 
 }
 .trigram2 {
   border-bottom:1px solid #000;
@@ -65,9 +84,12 @@
 .hexlist {
   width:auto;
 }
-.hexlink {
+.hexLink {
   display: block;
   float: left;
+  border: 1px solid #666;
+  padding-right:20px;
+
 }
 .hexselect {
   border: 1px solid #666;
@@ -76,7 +98,9 @@
 .lblLookup {
   float:right;
 }
-
+.selSaved {
+  width:330px;
+}
 .infoAbout {
   padding-left: 30px;
   color:blue;
@@ -84,8 +108,8 @@
   float:left;
 }
 .spokes30 {
-  width:1580px;
-  height:1180px;
+  width:1520px;
+  height:1100px;
   position:relative;
 /*  background-image: url("wheel4.png");  */
 /*  background-position: 0px 0px; /* Center the image */
@@ -95,27 +119,27 @@
 }
 .spoke {
   position:absolute;
-  top:573px;
-  left:581px;
+  top:533px;
+  left:561px;
   width:800px;
 }
 .hexInnerL {
-  width: 180px;
+  width: 160px;
   display:block;
   float:left;
   text-align:left;
   transform: scale(-1,-1);
   overflow:hidden;
-  whitespace:nowrap;
+  white-space:nowrap;
   background-color:lightgrey;
 }
 .hexInnerR {
-  width: 180px;
+  width: 160px;
   display:block;
   float:left;
   text-align:right;
   overflow:hidden;
-  whitespace:nowrap;
+  white-space:nowrap;
   text-overflow:clip;
   background-color:lightgrey;
 }
@@ -128,21 +152,21 @@
   background-color:red;
 }
 .hexOuterL {
-  width: 180px;
+  width: 160px;
   display:block;
   float:left;
   transform: scale(-1,-1);
   text-align:right;
   overflow:hidden;
-  whitespace:nowrap;
+  white-space:nowrap;
   background-color:lightgrey;
 }
 .hexOuterR {
-  width: 180px;
+  width: 160px;
   display:block;
   float:left;
   overflow:hidden;
-  whitespace:nowrap;
+  white-space:nowrap;
   background-color:lightgrey;
 }
 .spokeNbrL {
@@ -199,34 +223,34 @@
 }
 .posNorth {
   position:absolute;
-  top:475px;
-  left:520px;
+  top:435px;
+  left:500px;
   text-align:center;
 }
 .posSouth {
   position:absolute;
-  top:672px;
-  left:520px;
+  top:632px;
+  left:500px;
   text-align:center;
 }
 .posEast {
   position:absolute;
-  top:555px;
-  left:460px;
+  top:515px;
+  left:440px;
 }
 .posWest {
   position:absolute;
-  top:600px;
-  left:580px;
+  top:560px;
+  left:560px;
   text-align:right;
 }
 .youInCenter {
   position:absolute;
-  top:505px;
-  left:455px;
+  top:465px;
+  left:435px;
   font-size:108px;
-  color:magenta;
-  text-shadow: 2px 2px #000000;
+  color:blue;
+  text-shadow: 2px 2px #ff0000;
 }
 .controlsWheel {
   position:absolute;
@@ -245,28 +269,30 @@
 }
 .coinsWheel {
   position:absolute;
-  top:10px;
-  left:1020px;
+  top:0px;
+  left:970px;
 }
 .hexNowWheel {
   position:absolute;
-  top:10px;
-  left:1110px;
+  top:0px;
+  left:1060px;
 }
 .hexNowLinksWheel {
   position:absolute;
-  top:30px;
-  left:1230px;
+  top:20px;
+  left:1180px;
+  width:320px;
 }
 .hexNextWheel {
   position:absolute;
-  top:180px;
-  left:1110px;
+  top:170px;
+  left:1060px;
 }
 .hexNextLinksWheel {
   position:absolute;
-  top:200px;
-  left:1230px;
+  top:190px;
+  left:1180px;
+  width:320px;
 }
 .triBrowser {
   width:320px;
@@ -310,23 +336,27 @@
   overflow:auto;
   resize:none;
 }
-
+.imgbox {
+  padding-right:0px;
+}
 .tablink {
   display: inline-block;
 }
 .dropbtn {
   font-size: 12px;
-  color: darkgray;
+  color: black;
   background-color: white;
   border: none;
   display: block;
-  padding-left: 50px;
+  padding-left: 7px;
+  padding-bottom: 4px;
+  border: 1px solid #666;
 }
 
 .dropdown {
   position: relative;
   display: block;
-  float: right;
+  float: left;
 }
 
 .dropdown-content {
