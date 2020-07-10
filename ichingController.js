@@ -184,7 +184,7 @@ angular.module('myApp', [])
     // ThrowCoins - calls calcHexagrams
     //
     $scope.ThrowCoins = function() {
-      var l, mask=0xE, toss, divider=2;
+      var c, mult, l, mask=0x7, toss, divider=2;
 
         // See if we want to throw each line individually
         if ($scope.rbThrow.value == 'ThrowEach') {
@@ -195,32 +195,19 @@ angular.module('myApp', [])
                 $scope.lineNow=0;
             }
 
-            // generate a 16 bit random number and pull 3 bits out to use as coin states
-            var random_number = Math.floor(Math.random()*65535);
-            toss = (random_number & mask)/divider;  // 1110 pull these three bits for number
-            //var n = ((random_number)>>>0).toString(16).padStart(4, '0')  // show in hex with 4 digits padded to 0
-            var n = ((toss)>>>0).toString(2).padStart(3, '0')  // show in binary with 3 digits padded to 0
+            var n = get3coins();  // show in binary with 3 digits padded to 0
             $scope.rndCoins = n;     // show the coins after the throw button for debug
             $scope.divinations[0].coins[$scope.lineNow] = n;   // save the coins for each line
             $scope.lineNow += 1;         // move to next line
 
-//            if ($scope.lineNow > 5) {    // if all 6 lines done?
-                $scope.divinations[0].time = Date.now();
-                calcHexagrams();
-//            }
+            $scope.divinations[0].time = Date.now();
+            calcHexagrams();
         }
         else {
-          // generate a 20 bit random number and pull 18 bits out as 6 groups of three bits to use as coin states
-          var random_number = Math.floor(Math.random()*1048560);
-          var r = ((random_number)>>>0).toString(2).padStart(20, '0')  // show in binary with 20 digits padded to 0 
-          $scope.rndCoins = r;
-
+          // get all 6 lines at one time
           for (l=0; l<6; l++) {
             $scope.lineNow = l;
-            toss = (random_number & mask)/divider;  // 1110 pull these three bits for number
-            mask = mask * 8;              // move mask and divider over 3 bits
-            divider = divider * 8;
-            var n = ((toss)>>>0).toString(2).padStart(3, '0')  // show in binary with 3 digits padded to 0
+            var n = get3coins();  // show in binary with 3 digits padded to 0
             $scope.divinations[0].coins[$scope.lineNow] = n;       // save the coin for each line 
           }
 
@@ -228,6 +215,19 @@ angular.module('myApp', [])
           $scope.lineNow = 6;
           calcHexagrams();
         }
+    }
+
+    function get3coins() {
+        var i=0,mult=1,toss=0,coin=0,coins3="";
+        for(i=0; i<3; ++i) {
+            // generate a 16 bit random number and pull 3 bits out to use as coin states
+            var random_number = Math.floor(Math.random()*65535);
+            coin = (random_number & 1);  // pull bit 0
+            toss=toss+(coin*mult);
+            mult*=2;
+        }
+        coins3 = toss.toString(2).padStart(3, '0');  // show in binary with 3 digits padded to 0
+        return coins3;
     }
 
     function calcHexagrams() {
