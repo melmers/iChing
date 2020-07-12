@@ -107,6 +107,7 @@
   color:blue;
   display:block;
   float:left;
+  width:700px;
 }
 .spokes30 {
   width:1520px;
@@ -333,11 +334,14 @@ img {
   padding-left: 30px;
   display:block;
   float:left;
+  width:00px;
 }
 
 .boxLocalData {
-  width:700px;
+  width:600px;
   height:600px;
+  display:block;
+  float:left;
   overflow:auto;
   resize:none;
 }

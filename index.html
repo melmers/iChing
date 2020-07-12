@@ -17,8 +17,8 @@
     <div ng-controller="iChingCtrl" ng-init="rbThrow.value='ThrowEach'; selTab='0'; iChingSite=5; hexSel=54; selSaved=0;">
 
       <div class="titleBar">
-        <button class="tablink" ng-click="selTab=0">iChing</button>
-        <button class="tablink" ng-click="selTab=1">About</button>
+        <button class="tablink" ng-click="selTab='0'">iChing</button>
+        <button class="tablink" ng-click="selTab='1'">About</button>
 
         <div class="selBar" ng-show="selTab == '0'">
           <label id="lblSaved" for="saved">{{divinations.length-1}} saved reading(s):</label>
@@ -169,6 +169,7 @@
                 </div>
               </div>
             </div>
+      
             <table><tr>
               <td>
                 <div class="triBrowser">
@@ -182,7 +183,7 @@
                   <select ng-model="hexSel" ng-options="hex.id as hex.id for hex in hexInfo"></select><br><br>
                   <a ng-repeat="site in iChingSites" ng-href="{{ getHexagram(site.id, hexSel-1).url }}" target="_blank">{{ getHexagram(site.id, hexSel-1).Name }} --- from {{ iChingSites[site.id].Short }}</a><br>
                 </div>
-
+ 
                 <br><br>
                 These four (hexagrams #1, #2, #29, #30) in indistinction,<br>
                 are right with empty non-being.<br><br>
@@ -244,43 +245,43 @@
               </td>
             </tr></table>
           </div>
+
+          <div ng-show="selTab == '1'">
+            <div class="infoAbout">
+              This program makes divining from the iChing quick and easy.<br>
+              <br>
+              I wrote a computer version of throwing the coins using a random number generator years ago.<br>
+              I wanted to be able to focus on my question, without being distracted by recording my coin tosses.<br>
+              I also wanted to decode and look up the resulting hexagrams easier.<br>
+              This version looks up hexagrams on multiple websites to give more perspective on each hexagram.
+              <br>
+              Some may question if random numbers on the computer work the same as tossing coins or sticks.<br>
+              I have found I continue to get the same wisdom, whichever way I divine the hexagrams.<br>
+              <br>
+              You can throw three coins each time and create each of the six lines individually with each click.<br>
+              Or, you can throw the coins for all lines at once with a single click.<br>
+              <br>
+              Select which way you want to throw the coins, and enter a question.<br>
+              When you are centered and focused on your question, click "Throw Coins".<br>
+              <br>
+              Hexagrams are decoded for the present and future using any change lines thrown.<br>
+              Click on the hexagram number or name to see it explained by various websites.<br>
+              <br>
+              Use the "Lookup Hexagrams" pulldown list to select which website is used to explain the hexagrams.<br>
+              <br>
+              Hexagrams you have thrown can be saved for continued contemplation at a later time.<br>
+              Data is saved in your browsers local data, so your data is private.<br>
+              Also, no accounts need to be created on other sites.<br><br>
+              <button ng-click="resetDivinations()">Delete iChing in Local Data</button> (You shouldn't need to do this)<br>
+              <br>
+              Click the iChing tab above to continue:<br>
+            </div>
+            <div class="txtLocalData">
+              LocalData:<br>
+              <textarea readonly type="text" class="boxLocalData" ng-model="txtLocalData" spellcheck="false" data-gramm="false"></textarea><br>
+            </div>          
+          </div>
         </div>
-      </div>
-      
-      <div ng-show="selTab == '1'">
-        <div class="infoAbout">
-          This program makes divining from the iChing quick and easy.<br>
-          <br>
-          I wrote a computer version of throwing the coins using a random number generator years ago.<br>
-          I wanted to be able to focus on my question, without being distracted by recording my coin tosses.<br>
-          I also wanted to decode and look up the resulting hexagrams easier.<br>
-          This version looks up hexagrams on multiple websites to give more perspective on each hexagram.
-          <br>
-          Some may question if random numbers on the computer work the same as tossing coins or sticks.<br>
-          I have found I continue to get the same wisdom, whichever way I divine the hexagrams.<br>
-          <br>
-          You can throw three coins each time and create each of the six lines individually with each click.<br>
-          Or, you can throw the coins for all lines at once with a single click.<br>
-          <br>
-          Select which way you want to throw the coins, and enter a question.<br>
-          When you are centered and focused on your question, click "Throw Coins".<br>
-          <br>
-          Hexagrams are decoded for the present and future using any change lines thrown.<br>
-          Click on the hexagram number or name to see it explained by various websites.<br>
-          <br>
-          Use the "Lookup Hexagrams" pulldown list to select which website is used to explain the hexagrams.<br>
-          <br>
-          Hexagrams you have thrown can be saved for continued contemplation at a later time.<br>
-          Data is saved in your browsers local data, so your data is private.<br>
-          Also, no accounts need to be created on other sites.<br><br>
-          <button ng-click="resetDivinations()">Delete iChing in Local Data</button> (You shouldn't need to do this)<br>
-          <br>
-          Click the iChing tab above to continue:<br>
-        </div>
-        <div class="txtLocalData">
-          LocalData:<br>
-          <textarea readonly type="text" class="boxLocalData" ng-model="txtLocalData" spellcheck="false" data-gramm="false"></textarea><br>
-        </div>          
       </div>
 
     </div>
