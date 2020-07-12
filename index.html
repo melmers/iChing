@@ -17,8 +17,8 @@
     <div ng-controller="iChingCtrl" ng-init="rbThrow.value='ThrowEach'; selTab='0'; iChingSite=5; hexSel=54; selSaved=0;">
 
       <div class="titleBar">
-        <button class="tablink" ng-click="selTab='0'">iChing</button>
-        <button class="tablink" ng-click="selTab='1'">About</button>
+        <button class="btnAbout" ng-click="okAboutShow()">About</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
 
         <div class="selBar" ng-show="selTab == '0'">
           <label id="lblSaved" for="saved">{{divinations.length-1}} saved reading(s):</label>
@@ -246,7 +246,6 @@
             </tr></table>
           </div>
 
-          <div ng-show="selTab == '1'">
             <div class="infoAbout">
               This program makes divining from the iChing quick and easy.<br>
               <br>
@@ -273,14 +272,16 @@
               Data is saved in your browsers local data, so your data is private.<br>
               Also, no accounts need to be created on other sites.<br><br>
               <button ng-click="resetDivinations()">Delete iChing in Local Data</button> (You shouldn't need to do this)<br>
-              <br>
-              Click the iChing tab above to continue:<br>
-            </div>
+              <br><br>
+              <button class="okAbout" ng-click="okAboutHide()">OK</button>
+<!--
             <div class="txtLocalData">
               LocalData:<br>
               <textarea readonly type="text" class="boxLocalData" ng-model="txtLocalData" spellcheck="false" data-gramm="false"></textarea><br>
-            </div>          
+            </div>
+-->          
           </div>
+
         </div>
       </div>
 

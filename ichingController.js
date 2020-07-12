@@ -100,6 +100,16 @@ app.controller('iChingCtrl', ['$scope', 'iChingLinks', '$sce', '$filter', functi
       return x;
     }
 
+    $scope.okAboutHide = function() {
+      var boxAbout = angular.element( document.querySelector( '.infoAbout' ));
+      boxAbout.css('display','none');
+    }
+
+    $scope.okAboutShow = function() {
+      var boxAbout = angular.element( document.querySelector( '.infoAbout' ));
+      boxAbout.css('display','block');
+    }
+    
     //
     // STORAGE HELPERS - CLEAR, DELETE and SAVE - these use the LocalStorage API
     //
