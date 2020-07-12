@@ -17,6 +17,7 @@
 }
 .selBar {
   display:inline-block;
+  margin-left:20px;
 }
 .card {
   border: 1px solid #666;
@@ -294,18 +295,22 @@
   left:1180px;
   width:320px;
 }
+td {
+  vertical-align: text-top;
+  display:inline-block;
+}
+img {
+  width:700px;
+}
 .triBrowser {
   width:320px;
-  display:block;
-  float:left;
   margin-left:15px;
 }
 .hexBrowser {
   width: 580px;
   text-align:left;
   font-weight:normal;
-  display:block;
-  float:left;
+  margin-bottom:90px;
 }
 .hexBrowser a {
   display:block;
@@ -371,7 +376,7 @@
 .dropdown-content a {
   color: black;
   padding: 6px 20px;
-  min-width: 400px;
+  min-width: 500px;
   display: block;
 }
 
