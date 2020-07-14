@@ -26,7 +26,7 @@
             ng-model="selSaved" ng-options="x.id as x.idName for x in divinations">
           </select>
           &nbsp;&nbsp;&nbsp;&nbsp;
-          <label id="lbllookup" for="lookup">Default Lookup Hexagrams:</label>
+          <label id="lbllookup" for="lookup">Lookup Hexagrams:</label>
           <select class="tablink" name="lookup" ng-model="iChingSite" ng-options="iChingSite.id as iChingSite.Short for iChingSite in iChingSites">
           </select>
         </div>
@@ -169,122 +169,120 @@
                 </div>
               </div>
             </div>
-      
-            <table><tr>
-              <td>
-                <div class="triBrowser">
-                  The Trigrams:<br><br>
-                  <div ng-repeat="x in trigramNames">{{ trigramNames[$index] }}<br></div>
-                </div>
-                <br><br>
-                
-                <div class="hexBrowser">
-                  &#9775 Hexagram Browser:
-                  <select ng-model="hexSel" ng-options="hex.id as hex.id for hex in hexInfo"></select><br><br>
-                  <a ng-repeat="site in iChingSites" ng-href="{{ getHexagram(site.id, hexSel-1).url }}" target="_blank">{{ getHexagram(site.id, hexSel-1).Name }} --- from {{ iChingSites[site.id].Short }}</a><br>
-                </div>
- 
-                <br><br>
-                These four (hexagrams #1, #2, #29, #30) in indistinction,<br>
-                are right with empty non-being.<br><br>
-                Sixty hexagrams revolve around them,<br>
-                outspread like a chariot.<br>
-                Harnessing a dragon and a mare,<br><br>
-                The enlightened ruler holds the reins of time.<br>
+          </div>          
 
-                -- Wei Boyang (Cantong Qi, Triplex unity, 2nd c. Taoist text)<br>
-                <br>
-                The thirty spokes unite in the one nave;<br>
-                but it is the empty space for the axle, that makes the wheel useful.<br>
-                -- Dao De Jing #11<br>
-                <br>
-                #1 Qian (Heaven) and #2 Kun (Earth) form the crucible and furnace within;<br>
-                #29 Kan (Water) and #30 Li (Fire) are the medicinal substances<br>
-                from which the Elixir is made.<br>
-                <br>
-                The rest of the sixty hexagrams consequently make up the firing times<br>
-                – through which the Elixir is taken.<br>
-                -- Master Shangyang (Commentary on Cantong Qi)<br>
-                <br>
-                Qian is represented in the heavens above, and Kun in the earth beneath.<br>
-                They form the image of the axle and are the body of change.<br>
-                Kan and Li rising and falling between them represent the hub<br>
-                that turns upon the axle and make up the function of change.<br>
-                <br>
-                Within a human, Qian and Kun are the cauldron and the furnace<br>
-                while Kan and Li make up the ingredients of the Elixir.<br>
-                <br>
-                Of the sixty-four hexagrams of the I Ching,<br>
-                the reason Heaven ☰ and Earth ☷ are the gate and door<br>
-                is to show people the path of firmness and flexibility, simplicity and readiness.<br>
-                <br>
-                The other sixty-two hexagrams show people the path of modification<br>
-                of simplicity and readiness.<br>
-                <br>
-                The three hundred eighty-four lines of the sixty-four hexagrams all teach people<br>
-                how to know when they are not simple and ready,<br>
-                and to modify this so that they may eventually become simple and ready.<br>
-                <br>
-                Modification to simplicity and readiness means that awareness<br>
-                and capability (to have self-awareness) are in their innate condition of innocence,<br>
-                and one is a superior person.<br>
-                <br>
-                If one does not change to simplicity and readiness, then awareness and capacity are faulty,<br>
-                and one is an inferior person.<br>
-                <br>
-                The difference between superior people and inferior people is simply a matter of whether<br>
-                or not they know how to make this change. <br>
-                <br>
-                -- Liu Yiming (Taoist I Ching, The path of superior people is eternal, the path of inferior people is miserable.)
-                <br><br>
-              </td>
-              <td>
-                <div class="imgbox"><img src="image149.jpg"></div>
-                <br>
-                <div class="imgbox"><img src="image150.jpg"></div>
-              </td>
-            </tr></table>
+          <div class="iChingInfo">
+            <div class="iChingInfoCol2">
+               <div class="imgbox"><img src="image149.jpg"></div>
+               <br>
+               <div class="imgbox"><img src="image150.jpg"></div>
+            </div>
+            <div class="iChingInfoCol1">
+              <div class="triBrowser">
+                The Trigrams:<br><br>
+                <div ng-repeat="x in trigramNames">{{ trigramNames[$index] }}<br></div>
+              </div>
+              <br><br>
+                
+              <div class="hexBrowser">
+                &#9775 Hexagram Browser:
+                <select ng-model="hexSel" ng-options="hex.id as hex.id for hex in hexInfo"></select><br><br>
+                <a ng-repeat="site in iChingSites" ng-href="{{ getHexagram(site.id, hexSel-1).url }}" target="_blank">{{ getHexagram(site.id, hexSel-1).Name }} --- from {{ iChingSites[site.id].Short }}</a><br>
+              </div>
+              <br><br>
+              These four (hexagrams #1, #2, #29, #30) in indistinction,<br>
+              are right with empty non-being.<br><br>
+              Sixty hexagrams revolve around them,<br>
+              outspread like a chariot.<br>
+              Harnessing a dragon and a mare,<br><br>
+              The enlightened ruler holds the reins of time.<br>
+
+              -- Wei Boyang (Cantong Qi, Triplex unity, 2nd c. Taoist text)<br>
+              <br>
+              The thirty spokes unite in the one nave;<br>
+              but it is the empty space for the axle, that makes the wheel useful.<br>
+              -- Dao De Jing #11<br>
+              <br>
+              #1 Qian (Heaven) and #2 Kun (Earth) form the crucible and furnace within;<br>
+              #29 Kan (Water) and #30 Li (Fire) are the medicinal substances<br>
+              from which the Elixir is made.<br>
+              <br>
+              The rest of the sixty hexagrams consequently make up the firing times<br>
+              – through which the Elixir is taken.<br>
+              -- Master Shangyang (Commentary on Cantong Qi)<br>
+              <br>
+              Qian is represented in the heavens above, and Kun in the earth beneath.<br>
+              They form the image of the axle and are the body of change.<br>
+              Kan and Li rising and falling between them represent the hub<br>
+              that turns upon the axle and make up the function of change.<br>
+              <br>
+              Within a human, Qian and Kun are the cauldron and the furnace<br>
+              while Kan and Li make up the ingredients of the Elixir.<br>
+              <br>
+              Of the sixty-four hexagrams of the I Ching,<br>
+              the reason Heaven ☰ and Earth ☷ are the gate and door<br>
+              is to show people the path of firmness and flexibility, simplicity and readiness.<br>
+              <br>
+              The other sixty-two hexagrams show people the path of modification<br>
+              of simplicity and readiness.<br>
+              <br>
+              The three hundred eighty-four lines of the sixty-four hexagrams all teach people<br>
+              how to know when they are not simple and ready,<br>
+              and to modify this so that they may eventually become simple and ready.<br>
+              <br>
+              Modification to simplicity and readiness means that awareness<br>
+              and capability (to have self-awareness) are in their innate condition of innocence,<br>
+              and one is a superior person.<br>
+              <br>
+              If one does not change to simplicity and readiness, then awareness and capacity are faulty,<br>
+              and one is an inferior person.<br>
+              <br>
+              The difference between superior people and inferior people is simply a matter of whether<br>
+              or not they know how to make this change. <br>
+              <br>
+              -- Liu Yiming (Taoist I Ching, The path of superior people is eternal, the path of inferior people is miserable.)
+            </div>
           </div>
 
-            <div class="infoAbout">
-              This program makes divining from the iChing quick and easy.<br>
+          <div class="aboutInfo">
+            <div class="aboutTitleImg"><img src="image77.jpg"></div>
+            <div class="aboutTitle">&#9775</div>
+
+            This program makes divining from the iChing quick and easy.<br>
+            <br>
+            Enter your question. When you are centered on your question, click "Throw Coins".<br>
+            <br>
+            Your coins are decoded into hexagrams for the present and future, noting any change lines you have thrown.<br>
+            Your hexagrams are also highlighted on the 30 Spokes of the wheel.<br>
+            <br>
+            You can click on any hexagrams name to see it explained from various websites.<br>
+            This includes all the hexagrams on the spokes of wheel.<br>
+            Use the "Lookup Hexagrams" pulldown list to select which website is used to explain the hexagrams.<br>
+            <br>
+            You can save readings you have thrown for continued contemplation at a later time.<br>
+            Click the "save" button on any new reading to save it.<br>
+            Use the "saved readings" pulldown list to select which saved reading to view, or go back to a new reading.<br>
+            <br>
+            Data is saved in your browsers local data, so your data is private, and no accounts need to be created.<br>
+            I will add a feature to save data to the server so you can see readings from other devices (coming soon)<br>
+            <br><br>
+            <div class="deleteLocal">
+              <button ng-click="resetDivinations()">Delete iChing in Local Data</button><br>
+              (You shouldn't need to do this)<br>
               <br>
-              I wrote a computer version of throwing the coins using a random number generator years ago.<br>
-              I wanted to be able to focus on my question, without being distracted by recording my coin tosses.<br>
-              I also wanted to decode and look up the resulting hexagrams easier.<br>
-              This version looks up hexagrams on multiple websites to give more perspective on each hexagram.
-              <br>
-              Some may question if random numbers on the computer work the same as tossing coins or sticks.<br>
-              I have found I continue to get the same wisdom, whichever way I divine the hexagrams.<br>
-              <br>
-              You can throw three coins each time and create each of the six lines individually with each click.<br>
-              Or, you can throw the coins for all lines at once with a single click.<br>
-              <br>
-              Select which way you want to throw the coins, and enter a question.<br>
-              When you are centered and focused on your question, click "Throw Coins".<br>
-              <br>
-              Hexagrams are decoded for the present and future using any change lines thrown.<br>
-              Click on the hexagram number or name to see it explained by various websites.<br>
-              <br>
-              Use the "Lookup Hexagrams" pulldown list to select which website is used to explain the hexagrams.<br>
-              <br>
-              Hexagrams you have thrown can be saved for continued contemplation at a later time.<br>
-              Data is saved in your browsers local data, so your data is private.<br>
-              Also, no accounts need to be created on other sites.<br><br>
-              <button ng-click="resetDivinations()">Delete iChing in Local Data</button> (You shouldn't need to do this)<br>
-              <br><br>
-              <button class="okAbout" ng-click="okAboutHide()">OK</button>
+            </div>
+            <button class="okAbout" ng-click="okAboutHide()">OK</button>
 <!--
             <div class="txtLocalData">
               LocalData:<br>
               <textarea readonly type="text" class="boxLocalData" ng-model="txtLocalData" spellcheck="false" data-gramm="false"></textarea><br>
             </div>
 -->          
-          </div>
+          </div>    <!-- aboutInfo      -->
 
-        </div>
-      </div>
+        </div>      <!-- spokes30       -->
+      </div>        <!-- selTab=0       -->
 
-    </div>
+    </div>          <!-- controller     -->
   </body>
 </html>

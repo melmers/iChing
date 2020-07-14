@@ -101,12 +101,12 @@ app.controller('iChingCtrl', ['$scope', 'iChingLinks', '$sce', '$filter', functi
     }
 
     $scope.okAboutHide = function() {
-      var boxAbout = angular.element( document.querySelector( '.infoAbout' ));
+      var boxAbout = angular.element( document.querySelector( '.aboutInfo' ));
       boxAbout.css('display','none');
     }
 
     $scope.okAboutShow = function() {
-      var boxAbout = angular.element( document.querySelector( '.infoAbout' ));
+      var boxAbout = angular.element( document.querySelector( '.aboutInfo' ));
       boxAbout.css('display','block');
     }
     
