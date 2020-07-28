@@ -48,6 +48,53 @@
       </div>
       <div ng-show="selTab == '0'">
         <div class="spokes30">
+
+          <div class="aboutInfo">
+            <div class="aboutTitleImg"><img src="image77.jpg"></div>
+            <div class="aboutTitle">&#9775</div>
+
+            This site makes learning from the iChing quick and easy.<br>
+            All hexagrams are linked to many different sites, giving you great perspective.<br>
+            <br>
+            The site displays all 64 hexagrams of the iChing on a wheel with 30 Spokes.<br>
+            You are in the center, the Hub, making the wheel useful, along with the four main indistinct hexagrams.<br>
+            The sixty hexagrams around you are the elixer you need to return to the center and be simple and correct.<br>
+            <br>
+            You can enter your question. When you are centered on your question, click "Throw Coins".<br>
+            <br>
+            The coins you throw are decoded into hexagrams for the present and future, showing any change lines.<br>
+            Your hexagrams are also highlighted on the 30 Spokes of the wheel.<br>
+            <br>
+            You can click on any hexagrams name to see it explained on various websites.<br>
+            This includes all the hexagrams on the spokes and hub of wheel.<br>
+            <br>
+            Use the "Lookup Hexagrams" pulldown list to select which website is used to explain the hexagrams.<br>
+            <br>
+            You can save your readings for continued contemplation at a later time.<br>
+            Click the "Save" button on any new reading to save it.<br>
+            Use the "Saved Readings" pulldown list to select which saved reading to view, or go back to a new reading.<br>
+            <br>
+            Readings are saved in your browsers local data, so your data is private, and no accounts need to be created.<br>
+            I will add a feature to save data to the server so you can see readings from other devices (coming soon).<br>
+            <br><br>
+            <div class="deleteLocal">
+              <button ng-click="resetDivinations()">Delete iChing in Local Data</button><br>
+              (You shouldn't need to do this)<br>
+              <br>
+            </div>
+            <a href="mailto:mmelmers@gmail.com">Contact Site Designer</a>
+            <button class="okAbout" ng-click="okAboutHide()">OK</button>
+<!--
+            <div class="txtLocalData">
+              LocalData:<br>
+              <textarea readonly type="text" class="boxLocalData" ng-model="txtLocalData" spellcheck="false" data-gramm="false"></textarea><br>
+            </div>
+-->          
+          </div>    <!-- aboutInfo      -->
+
+
+
+        
           <svg width="1200" height="1100">
             <defs>
               <filter id="f1" x="-40%" y="-40%" height="200%" width="200%">
@@ -257,50 +304,6 @@
                <div class="imgbox"><img src="image212.jpg"></div>
             </div>
           </div>
-
-          <div class="aboutInfo">
-            <div class="aboutTitleImg"><img src="image77.jpg"></div>
-            <div class="aboutTitle">&#9775</div>
-
-            This site makes learning from the iChing quick and easy.<br>
-            All hexagrams are linked to many different sites, giving you great perspective.<br>
-            <br>
-            The site displays all 64 hexagrams of the iChing on a wheel with 30 Spokes.<br>
-            You are in the center, the Hub, making the wheel useful, along with the four main indistinct hexagrams.<br>
-            The sixty hexagrams around you are the elixer you need to return to the center and be simple and correct.<br>
-            <br>
-            You can enter your question. When you are centered on your question, click "Throw Coins".<br>
-            <br>
-            The coins you throw are decoded into hexagrams for the present and future, showing any change lines.<br>
-            Your hexagrams are also highlighted on the 30 Spokes of the wheel.<br>
-            <br>
-            Your reading is the elixer you need now to get back to the center and be simple and correct.<br>
-            <br>
-            You can click on any hexagrams name to see it explained from various websites.<br>
-            This includes all the hexagrams on the spokes of wheel.<br>
-            Use the "Lookup Hexagrams" pulldown list to select which website is used to explain the hexagrams.<br>
-            <br>
-            You can save your readings for continued contemplation at a later time.<br>
-            Click the "Save" button on any new reading to save it.<br>
-            Use the "Saved Readings" pulldown list to select which saved reading to view, or go back to a new reading.<br>
-            <br>
-            Readings are saved in your browsers local data, so your data is private, and no accounts need to be created.<br>
-            I will add a feature to save data to the server so you can see readings from other devices (coming soon).<br>
-            <br><br>
-            <div class="deleteLocal">
-              <button ng-click="resetDivinations()">Delete iChing in Local Data</button><br>
-              (You shouldn't need to do this)<br>
-              <br>
-            </div>
-            <a href="mailto:mmelmers@gmail.com">Contact Site Designer</a>
-            <button class="okAbout" ng-click="okAboutHide()">OK</button>
-<!--
-            <div class="txtLocalData">
-              LocalData:<br>
-              <textarea readonly type="text" class="boxLocalData" ng-model="txtLocalData" spellcheck="false" data-gramm="false"></textarea><br>
-            </div>
--->          
-          </div>    <!-- aboutInfo      -->
 
         </div>      <!-- spokes30       -->
       </div>        <!-- selTab=0       -->
